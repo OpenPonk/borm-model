@@ -1,0 +1,14 @@
+{
+	"category" : "BaselineOfBormModel",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "BaselineOfBormModel",
+	"pools" : [
+		 ],
+	"super" : "BaselineOf",
+	"type" : "normal" }
