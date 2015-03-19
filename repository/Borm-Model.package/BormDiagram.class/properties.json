@@ -1,0 +1,14 @@
+{
+	"category" : "Borm-Model",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "BormDiagram",
+	"pools" : [
+		 ],
+	"super" : "DCDiagram",
+	"type" : "normal" }
