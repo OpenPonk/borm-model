@@ -23,7 +23,7 @@ load project (in Playground); **Do not forget to point to /repository subfolder.
 
 ```
 Metacello new
-	baseline: 'DynaCASE';
+	baseline: 'BormModel';
 	repository: 'gitfiletree:///my_path_to_wherever/repository';
 	load.
 ```
@@ -32,7 +32,7 @@ Metacello new
 
 ```
 Metacello new
-	baseline: 'DynaCASE';
+	baseline: 'BormModel';
 	repository: 'github://dynacase/borm-model/repository';
 	load.
 ```
