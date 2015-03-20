@@ -1,0 +1,1 @@
+Transition is a link between process nodes. It can have associated constraint label.

@@ -1,0 +1,14 @@
+{
+	"category" : "Borm-Model-Tests",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "BormCommunicationTest",
+	"pools" : [
+		 ],
+	"super" : "BormTest",
+	"type" : "normal" }

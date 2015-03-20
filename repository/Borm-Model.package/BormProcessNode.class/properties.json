@@ -1,0 +1,15 @@
+{
+	"category" : "Borm-Model-Models",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "PeterUhnak 3/20/2015 23:44",
+	"instvars" : [
+		"transitions",
+		"subdiagram" ],
+	"name" : "BormProcessNode",
+	"pools" : [
+		 ],
+	"super" : "DCNamedElement",
+	"type" : "normal" }

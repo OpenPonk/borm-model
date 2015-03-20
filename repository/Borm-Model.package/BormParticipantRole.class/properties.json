@@ -1,0 +1,14 @@
+{
+	"category" : "Borm-Model-Models",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "PeterUhnak 3/20/2015 23:44",
+	"instvars" : [
+		 ],
+	"name" : "BormParticipantRole",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }

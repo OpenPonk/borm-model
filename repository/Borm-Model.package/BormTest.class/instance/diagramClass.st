@@ -1,0 +1,3 @@
+setup
+diagramClass
+	^ BormDiagram

@@ -1,0 +1,1 @@
+Communication is a channel between two activities. Activites can send data flows in both directions through this channel

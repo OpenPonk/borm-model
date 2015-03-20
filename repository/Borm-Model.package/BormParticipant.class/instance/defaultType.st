@@ -1,0 +1,3 @@
+defaults
+defaultType
+	^ BormParticipantType Person

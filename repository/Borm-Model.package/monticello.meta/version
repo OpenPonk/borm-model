@@ -1,1 +1,2 @@
-(name 'Borm-Model-PeterUhnak.1' message 'Initial commit.' id 'ff3383d0-f128-44a4-bfba-2178eb74f9fe' date '19 March 2015' time '7:22:32.390062 pm' author 'PeterUhnak' ancestors () stepChildren ())
+(name 'Borm-Model-PeterUhnak.2' message 'Added basics of BORM model.' id '6bef36c9-7696-4f25-b811-ee60ce2ca1fe' date '20 March 2015' time '11:51:21.237101 pm' author 'PeterUhnak' ancestors ((name 'Borm-Model-PeterUhnÃk.1' message 'Initial commit.
+' id '804ee0fe-3b36-5046-b7b2-6eba7eab4995' date '19 March 2015' time '7:22:32 pm' author 'PeterUhnÃk' ancestors () stepChildren ())) stepChildren ())

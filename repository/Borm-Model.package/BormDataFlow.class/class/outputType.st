@@ -1,0 +1,3 @@
+enumeration
+outputType
+	^ #output

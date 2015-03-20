@@ -1,0 +1,20 @@
+{
+	"category" : "Borm-Model-Tests",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"emptyDiagram",
+		"emptyParticipant",
+		"emptyState",
+		"emptyActivity",
+		"emptyDataFlow",
+		"emptyCommunication",
+		"emptyTransition" ],
+	"name" : "BormTest",
+	"pools" : [
+		 ],
+	"super" : "TestCase",
+	"type" : "normal" }

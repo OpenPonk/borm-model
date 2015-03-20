@@ -1,0 +1,14 @@
+{
+	"category" : "Borm-Model-Models",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "PeterUhnak 3/20/2015 23:46",
+	"instvars" : [
+		"constraint" ],
+	"name" : "BormTransition",
+	"pools" : [
+		 ],
+	"super" : "DCEdge",
+	"type" : "normal" }

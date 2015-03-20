@@ -1,0 +1,15 @@
+{
+	"category" : "Borm-Model-Models",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "PeterUhnak 3/20/2015 23:46",
+	"instvars" : [
+		"isInitial",
+		"isFinal" ],
+	"name" : "BormState",
+	"pools" : [
+		 ],
+	"super" : "BormProcessNode",
+	"type" : "normal" }

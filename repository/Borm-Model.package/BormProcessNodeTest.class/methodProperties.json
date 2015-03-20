@@ -1,0 +1,12 @@
+{
+	"class" : {
+		"isAbstract" : "PeterUhnak 3/19/2015 23:58" },
+	"instance" : {
+		"emptyNode" : "PeterUhnak 3/19/2015 23:50",
+		"initialize" : "PeterUhnak 3/19/2015 23:50",
+		"setUp" : "PeterUhnak 3/20/2015 00:16",
+		"testAddNode" : "PeterUhnak 3/20/2015 22:50",
+		"testAddTransition" : "PeterUhnak 3/20/2015 23:12",
+		"testEmptyProcessNode" : "PeterUhnak 3/20/2015 23:32",
+		"testRemoveTransition" : "PeterUhnak 3/20/2015 23:13",
+		"testSubdiagram" : "PeterUhnak 3/20/2015 23:34" } }

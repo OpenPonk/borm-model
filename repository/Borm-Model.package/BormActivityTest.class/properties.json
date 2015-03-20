@@ -1,0 +1,16 @@
+{
+	"category" : "Borm-Model-Tests",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"sender",
+		"receiver",
+		"communication" ],
+	"name" : "BormActivityTest",
+	"pools" : [
+		 ],
+	"super" : "BormProcessNodeTest",
+	"type" : "normal" }

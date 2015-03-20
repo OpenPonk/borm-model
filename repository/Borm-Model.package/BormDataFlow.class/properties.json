@@ -1,0 +1,14 @@
+{
+	"category" : "Borm-Model-Models",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "PeterUhnak 3/20/2015 23:49",
+	"instvars" : [
+		"type" ],
+	"name" : "BormDataFlow",
+	"pools" : [
+		 ],
+	"super" : "DCNamedElement",
+	"type" : "normal" }
