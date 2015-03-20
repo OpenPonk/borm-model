@@ -1,0 +1,3 @@
+enumeration
+Any
+	^ #Any

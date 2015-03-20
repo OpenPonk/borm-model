@@ -1,0 +1,1 @@
+Clause is an inner node of a boolean expression tree. It can have multiple children.
