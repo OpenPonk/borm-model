@@ -1,4 +1,4 @@
 initialization
 initialize
 	super initialize.
-	communications := OrderedCollection new
+	communications := Set new

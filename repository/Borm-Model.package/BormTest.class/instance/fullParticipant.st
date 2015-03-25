@@ -1,6 +1,6 @@
 testing - instance creation
 fullParticipant
-	| participant |
+	| participant nodes |
 	participant := self emptyParticipant.
 	"initial -(a1)> mid -(a2)> final"
 	participant
@@ -16,6 +16,7 @@ fullParticipant
 			(self emptyState
 				name: 'final';
 				isFinal: true).
-	self transitionsFrom: participant nodes first to: participant nodes third with: participant nodes second.
-	self transitionsFrom: participant nodes third to: participant nodes fifth with: participant nodes fourth.
+	nodes := participant nodes asOrderedCollection.
+	self transitionsFrom: nodes first to: nodes third with: nodes second.
+	self transitionsFrom: nodes third to: nodes fifth with: nodes fourth.
 	^ participant
