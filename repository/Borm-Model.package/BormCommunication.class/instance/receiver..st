@@ -1,3 +1,3 @@
 accessing
 receiver: anActivity
-	receiver := anActivity
+	self target: anActivity
