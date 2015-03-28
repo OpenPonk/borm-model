@@ -1,4 +1,5 @@
 adding
 add: aNode
 	nodes add: aNode.
-	aNode addedTo: self
+	aNode addedTo: self.
+	self changed
