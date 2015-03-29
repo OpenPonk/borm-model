@@ -12,7 +12,8 @@
 		"emptyActivity",
 		"emptyDataFlow",
 		"emptyCommunication",
-		"emptyTransition" ],
+		"emptyTransition",
+		"eventTriggered" ],
 	"name" : "BormTest",
 	"pools" : [
 		 ],

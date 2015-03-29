@@ -6,4 +6,5 @@ setUp
 	emptyActivity := self emptyActivity.
 	emptyDataFlow := self emptyDataFlow.
 	emptyCommunication := self emptyCommunication.
-	emptyTransition := self emptyTransition
+	emptyTransition := self emptyTransition.
+	eventTriggered := false
