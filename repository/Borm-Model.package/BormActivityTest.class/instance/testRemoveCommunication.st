@@ -5,4 +5,4 @@ testRemoveCommunication
 	sender removeCommunication: communication.
 	receiver removeCommunication: communication.
 	self assert: sender sent isEmpty.
-	self assert: receiver sent isEmpty.
+	self assert: receiver received isEmpty

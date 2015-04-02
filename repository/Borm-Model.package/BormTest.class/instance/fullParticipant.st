@@ -8,9 +8,9 @@ fullParticipant
 			(self emptyState
 				name: 'initial';
 				isInitial: true).
-	participant add: self emptyActivity.
+	participant add: (self emptyActivity name: 'a1').
 	participant add: (self emptyState name: 'mid').
-	participant add: self emptyActivity.
+	participant add: (self emptyActivity name: 'a2').
 	participant
 		add:
 			(self emptyState

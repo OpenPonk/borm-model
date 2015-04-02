@@ -3,10 +3,10 @@
 		"isAbstract" : "PeterUhnak 3/25/2015 07:14:26" },
 	"instance" : {
 		"emptyNode" : "PeterUhnak 3/25/2015 07:14:26",
-		"initialize" : "PeterUhnak 3/25/2015 07:14:26",
 		"setUp" : "PeterUhnak 3/25/2015 07:14:26",
-		"testAddNode" : "PeterUhnak 3/25/2015 07:14:26",
-		"testAddTransition" : "PeterUhnak 3/25/2015 22:39",
+		"testAddTransition" : "PeterUhnak 4/2/2015 07:40",
 		"testEmptyProcessNode" : "PeterUhnak 3/25/2015 07:14:26",
-		"testRemoveTransition" : "PeterUhnak 3/25/2015 07:14:26",
+		"testRemoveAllTransitionsFromSource" : "PeterUhnak 4/2/2015 07:42",
+		"testRemoveAllTransitionsFromTarget" : "PeterUhnak 4/2/2015 07:43",
+		"testRemoveTransition" : "PeterUhnak 4/2/2015 07:40",
 		"testSubdiagram" : "PeterUhnak 3/25/2015 07:14:26" } }
