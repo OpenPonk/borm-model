@@ -2,9 +2,9 @@
 	"class" : {
 		 },
 	"instance" : {
-		"addTransition:" : "PeterUhnak 4/2/2015 07:09",
+		"addTransition:" : "PeterUhnak 4/6/2015 02:13",
 		"incoming" : "PeterUhnak 3/25/2015 07:14:26",
-		"initialize" : "PeterUhnak 4/2/2015 08:26",
+		"initialize" : "PeterUhnak 4/6/2015 02:14",
 		"isSubdiagramNode" : "PeterUhnak 3/25/2015 07:14:26",
 		"outgoing" : "PeterUhnak 3/25/2015 07:14:26",
 		"removeAllTransitions" : "PeterUhnak 4/2/2015 08:23",

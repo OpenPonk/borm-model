@@ -1,5 +1,5 @@
 initialization
 initialize
 	super initialize.
-	dataFlows := Set new.
+	dataFlows := OrderedCollection new.
 	constraint := ''

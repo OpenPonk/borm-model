@@ -1,5 +1,7 @@
 adding
 addTransition: aTransition
+	(transitions includes: aTransition)
+		ifTrue: [ ^ self ].
 	transitions add: aTransition.
 	aTransition source = self
 		ifTrue: [ 

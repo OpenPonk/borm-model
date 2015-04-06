@@ -1,6 +1,6 @@
 initialization
 initialize
 	super initialize.
-	nodes := Set new.
+	nodes := OrderedCollection new.
 	type := self defaultType.
 	role := self defaultRole
