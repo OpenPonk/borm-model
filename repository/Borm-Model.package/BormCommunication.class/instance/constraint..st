@@ -1,3 +1,7 @@
 accessing
-constraint: aString
-	constraint := aString
+constraint: aConstraint
+	self hasConstraint
+		ifTrue: [ ^ self ].
+	constraint := aConstraint.
+	aConstraint addedTo: self.
+	self announceAdded: aConstraint
