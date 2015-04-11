@@ -2,4 +2,4 @@ initialization
 initialize
 	super initialize.
 	dataFlows := OrderedCollection new.
-	constraint := ''
+	constraint := BormConstraint new

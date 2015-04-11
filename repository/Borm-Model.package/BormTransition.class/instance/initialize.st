@@ -1,4 +1,4 @@
 accessing
 initialize
 	super initialize.
-	constraint := ''
+	constraint := BormConstraint new
