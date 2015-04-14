@@ -1,3 +1,3 @@
 as yet unclassified
 testyEmptyConstraint
-	self assert: emptyTransition constraint equals: ''
+	self assert: emptyTransition constraint name equals: ''
