@@ -2,11 +2,13 @@
 	"class" : {
 		 },
 	"instance" : {
+		"@" : "PeterUhnak 7/12/2015 21:20",
 		"add:" : "PeterUhnak 7/4/2015 00:32",
 		"defaultRole" : "PeterUhnak 4/14/2015 18:54:32",
 		"defaultType" : "PeterUhnak 4/14/2015 18:54:32",
 		"gtInspectorPresentation:" : "PeterUhnak 4/14/2015 18:54:32",
 		"initialize" : "PeterUhnak 4/14/2015 18:54:32",
+		"nodeNamed:" : "PeterUhnak 7/12/2015 21:20",
 		"nodes" : "PeterUhnak 4/14/2015 18:54:32",
 		"remove:" : "PeterUhnak 4/14/2015 18:54:32",
 		"removeAllNodes" : "PeterUhnak 4/14/2015 18:54:32",

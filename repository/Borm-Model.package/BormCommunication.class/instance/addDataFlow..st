@@ -4,4 +4,5 @@ addDataFlow: aDataFlow
 		ifTrue: [ ^ self ].
 	dataFlows add: aDataFlow.
 	aDataFlow addedTo: self.
-	self announceAdded: aDataFlow
+	self announceAdded: aDataFlow.
+	^ aDataFlow
