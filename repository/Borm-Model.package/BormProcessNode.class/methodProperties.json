@@ -2,13 +2,13 @@
 	"class" : {
 		 },
 	"instance" : {
-		"addTransition:" : "PeterUhnak 4/6/2015 02:15:21",
-		"incoming" : "PeterUhnak 4/6/2015 02:15:21",
-		"initialize" : "PeterUhnak 4/6/2015 02:15:21",
-		"isSubdiagramNode" : "PeterUhnak 4/6/2015 02:15:21",
-		"outgoing" : "PeterUhnak 4/6/2015 02:15:21",
-		"removeAllTransitions" : "PeterUhnak 4/6/2015 02:15:21",
-		"removeTransition:" : "PeterUhnak 4/6/2015 02:15:21",
-		"removedFrom:" : "PeterUhnak 4/6/2015 02:15:21",
-		"subdiagram" : "PeterUhnak 4/6/2015 02:15:21",
-		"subdiagram:" : "PeterUhnak 4/6/2015 02:15:21" } }
+		"addTransition:" : "PeterUhnak 4/14/2015 18:54:32",
+		"incoming" : "PeterUhnak 4/14/2015 18:54:32",
+		"initialize" : "PeterUhnak 4/14/2015 18:54:32",
+		"isSubdiagramNode" : "PeterUhnak 4/14/2015 18:54:32",
+		"outgoing" : "PeterUhnak 4/14/2015 18:54:32",
+		"removeAllTransitions" : "PeterUhnak 4/14/2015 18:54:32",
+		"removeTransition:" : "PeterUhnak 4/14/2015 18:54:32",
+		"removedFrom:" : "PeterUhnak 4/14/2015 18:54:32",
+		"subdiagram" : "PeterUhnak 4/14/2015 18:54:32",
+		"subdiagram:" : "PeterUhnak 4/14/2015 18:54:32" } }
