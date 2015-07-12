@@ -1,0 +1,14 @@
+{
+	"category" : "Borm-Model-Factory",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		 ],
+	"name" : "BormFactory",
+	"pools" : [
+		 ],
+	"super" : "Object",
+	"type" : "normal" }
