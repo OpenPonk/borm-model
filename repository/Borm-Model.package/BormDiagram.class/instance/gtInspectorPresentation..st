@@ -2,5 +2,5 @@ gt-inspector
 gtInspectorPresentation: composite
 	<gtInspectorPresentationOrder: 30>
 	composite table
-		title: 'Participants';
+		title: 'Table Participants';
 		display: [ self participants ]

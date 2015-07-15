@@ -2,5 +2,5 @@ gt-inspector
 gtInspectorPresentation: composite
 	<gtInspectorPresentationOrder: 30>
 	composite table
-		title: 'Nodes';
+		title: 'Old Nodes';
 		display: [ self nodes ]
