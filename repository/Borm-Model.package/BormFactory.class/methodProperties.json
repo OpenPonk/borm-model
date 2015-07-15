@@ -2,7 +2,9 @@
 	"class" : {
 		"addFqnTransitions:in:" : "PeterUhnak 7/15/2015 12:20",
 		"communicationFrom:to:" : "PeterUhnak 7/12/2015 15:26",
+		"detachParticipantsFrom:" : "PeterUhnak 7/15/2015 18:24",
 		"fqnTransitionFrom:to:in:" : "PeterUhnak 7/12/2015 21:18",
+		"moveParticipantsFrom:to:" : "PeterUhnak 7/15/2015 18:26",
 		"transitionFrom:to:" : "PeterUhnak 7/15/2015 12:16" },
 	"instance" : {
 		 } }
