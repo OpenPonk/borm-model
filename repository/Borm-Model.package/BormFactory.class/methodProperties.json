@@ -1,7 +1,8 @@
 {
 	"class" : {
+		"addFqnTransitions:in:" : "PeterUhnak 7/15/2015 12:20",
 		"communicationFrom:to:" : "PeterUhnak 7/12/2015 15:26",
 		"fqnTransitionFrom:to:in:" : "PeterUhnak 7/12/2015 21:18",
-		"transitionFrom:to:" : "PeterUhnak 7/12/2015 15:29" },
+		"transitionFrom:to:" : "PeterUhnak 7/15/2015 12:16" },
 	"instance" : {
 		 } }
