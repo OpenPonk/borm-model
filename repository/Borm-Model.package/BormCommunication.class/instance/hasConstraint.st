@@ -1,3 +1,3 @@
 testing
 hasConstraint
-	^ constraint isNil
+	^ constraint isNotNil
