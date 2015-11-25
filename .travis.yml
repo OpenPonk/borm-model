@@ -1,0 +1,10 @@
+language: smalltalk
+sudo: false
+smalltalk:
+    - Pharo-5.0
+env:
+    global:
+        - BASELINE="BormModel"
+        - TESTS="Borm.*"
+        - PACKAGES="repository"
+
