@@ -1,5 +1,9 @@
 language: smalltalk
 sudo: false
+addons:
+    apt:
+    packages:
+        - libssl1.0.2
 smalltalk:
     - Pharo-5.0
 env:
