@@ -7,4 +7,4 @@ env:
         - BASELINE="BormModel"
         - TESTS="Borm.*"
         - PACKAGES="/repository"
-
+        - BASELINE_GROUP="default"
