@@ -4,10 +4,6 @@ addons:
     apt:
         packages:
             - libssl1.0.0:i386
-#install:
-#    - sudo apt-get -qq install libssl1.0.0:i386
-#    - sudo ln -s /lib/i386-linux-gnu/libcrypto.so.1.0.0 /lib/i386-linux-gnu/libcrypto.so.10
-#    - sudo ln -s /lib/i386-linux-gnu/libssl.so.1.0.0 /lib/i386-linux-gnu/libssl.so.10
 smalltalk:
     - Pharo-5.0
 env:
