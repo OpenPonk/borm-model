@@ -1,38 +1,14 @@
 # BORM model [![Build Status](https://travis-ci.org/dynacase/borm-model.svg?branch=master)](https://travis-ci.org/dynacase/borm-model)
 
-## load GitFileTree
+Smalltalk model for BORM http://ccmi.fit.cvut.cz/methodologies/borm/
 
-```
-Gofer new
-	url: 'http://smalltalkhub.com/mc/Pharo/MetaRepoForPharo30/main';
-	configurationOf: 'GitFileTree';
-	loadDevelopment.
-```
+For editor see [borm-editor](https://github.com/dynacase/borm-editor)
 
-## load repo
-
-### READ/WRITE
-
-clone git repo
-
-```
-git clone git@github.com:dynacase/borm-model.git my_path_to_wherever
-```
-
-load project (in Playground); **Do not forget to point to /repository subfolder.**
+## Installation
 
 ```
 Metacello new
 	baseline: 'BormModel';
-	repository: 'gitfiletree:///my_path_to_wherever/repository';
-	load.
-```
-
-### READ-only
-
-```
-Metacello new
-	baseline: 'BormModel';
-	repository: 'github://dynacase/borm-model/repository';
+	repository: 'github://dynacase/borm-editor/repository';
 	load.
 ```
