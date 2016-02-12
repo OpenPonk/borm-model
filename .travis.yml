@@ -1,14 +1,11 @@
 language: smalltalk
 sudo: false
-addons:
-    apt:
-        packages:
-            - libssl1.0.0:i386
+
+# Select operating system(s)
+os:
+  - linux
+#  - osx
+
+# Select compatible Smalltalk image(s)
 smalltalk:
-    - Pharo-5.0
-env:
-    global:
-        - BASELINE="BormModel"
-        - TESTS="Borm.*"
-        - PACKAGES="/repository"
-        - BASELINE_GROUP="default"
+  - Pharo-5.0
