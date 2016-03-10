@@ -1,10 +1,10 @@
 {
 	"class" : {
-		"addFqnTransitions:in:" : "PeterUhnak 7/18/2015 22:18:31",
-		"communicationFrom:to:" : "PeterUhnak 7/18/2015 22:18:31",
-		"detachParticipantsFrom:" : "PeterUhnak 7/18/2015 22:18:31",
-		"fqnTransitionFrom:to:in:" : "PeterUhnak 7/18/2015 22:18:31",
-		"moveParticipantsFrom:to:" : "PeterUhnak 7/18/2015 22:18:31",
-		"transitionFrom:to:" : "PeterUhnak 7/18/2015 22:18:31" },
+		"addFqnTransitions:in:" : "PeterUhnak 9/18/2015 01:26:43",
+		"communicationFrom:to:" : "PeterUhnak 9/18/2015 01:26:43",
+		"detachParticipantsFrom:" : "PeterUhnak 9/18/2015 01:26:43",
+		"fqnTransitionFrom:to:in:" : "PeterUhnak 9/18/2015 01:26:43",
+		"moveParticipantsFrom:to:" : "PeterUhnak 9/18/2015 01:26:43",
+		"transitionFrom:to:" : "PeterUhnak 9/18/2015 01:26:43" },
 	"instance" : {
 		 } }

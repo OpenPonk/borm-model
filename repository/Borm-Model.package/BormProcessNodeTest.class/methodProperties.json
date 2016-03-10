@@ -1,12 +1,12 @@
 {
 	"class" : {
-		"isAbstract" : "PeterUhnak 7/18/2015 22:18:31" },
+		"isAbstract" : "PeterUhnak 9/18/2015 01:26:43" },
 	"instance" : {
-		"emptyNode" : "PeterUhnak 7/18/2015 22:18:31",
-		"setUp" : "PeterUhnak 7/18/2015 22:18:31",
-		"testAddTransition" : "PeterUhnak 7/18/2015 22:18:31",
-		"testEmptyProcessNode" : "PeterUhnak 7/18/2015 22:18:31",
-		"testRemoveAllTransitionsFromSource" : "PeterUhnak 7/18/2015 22:18:31",
-		"testRemoveAllTransitionsFromTarget" : "PeterUhnak 7/18/2015 22:18:31",
-		"testRemoveTransition" : "PeterUhnak 7/18/2015 22:18:31",
-		"testSubdiagram" : "PeterUhnak 7/18/2015 22:18:31" } }
+		"emptyNode" : "PeterUhnak 9/18/2015 01:26:43",
+		"setUp" : "PeterUhnak 9/18/2015 01:26:43",
+		"testAddTransition" : "PeterUhnak 9/18/2015 01:26:43",
+		"testEmptyProcessNode" : "PeterUhnak 9/18/2015 01:26:43",
+		"testRemoveAllTransitionsFromSource" : "PeterUhnak 9/18/2015 01:26:43",
+		"testRemoveAllTransitionsFromTarget" : "PeterUhnak 9/18/2015 01:26:43",
+		"testRemoveTransition" : "PeterUhnak 9/18/2015 01:26:43",
+		"testSubdiagram" : "PeterUhnak 9/18/2015 01:26:43" } }

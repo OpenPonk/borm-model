@@ -1,16 +1,16 @@
 {
 	"class" : {
-		"isAbstract" : "PeterUhnak 7/18/2015 22:18:31" },
+		"isAbstract" : "PeterUhnak 9/18/2015 01:26:43" },
 	"instance" : {
-		"diagramClass" : "PeterUhnak 7/18/2015 22:18:31",
-		"emptyActivity" : "PeterUhnak 7/18/2015 22:18:31",
-		"emptyCommunication" : "PeterUhnak 7/18/2015 22:18:31",
-		"emptyDataFlow" : "PeterUhnak 7/18/2015 22:18:31",
-		"emptyDiagram" : "PeterUhnak 7/18/2015 22:18:31",
-		"emptyParticipant" : "PeterUhnak 7/18/2015 22:18:31",
-		"emptyState" : "PeterUhnak 7/18/2015 22:18:31",
-		"emptyTransition" : "PeterUhnak 7/18/2015 22:18:31",
-		"fullParticipant" : "PeterUhnak 7/18/2015 22:18:31",
-		"setUp" : "PeterUhnak 7/18/2015 22:18:31",
-		"transitionFrom:to:" : "PeterUhnak 7/18/2015 22:18:31",
-		"transitionsFrom:to:with:" : "PeterUhnak 7/18/2015 22:18:31" } }
+		"diagramClass" : "PeterUhnak 3/10/2016 12:02",
+		"emptyActivity" : "PeterUhnak 9/18/2015 01:26:43",
+		"emptyCommunication" : "PeterUhnak 9/18/2015 01:26:43",
+		"emptyDataFlow" : "PeterUhnak 9/18/2015 01:26:43",
+		"emptyDiagram" : "PeterUhnak 9/18/2015 01:26:43",
+		"emptyParticipant" : "PeterUhnak 9/18/2015 01:26:43",
+		"emptyState" : "PeterUhnak 9/18/2015 01:26:43",
+		"emptyTransition" : "PeterUhnak 9/18/2015 01:26:43",
+		"fullParticipant" : "PeterUhnak 9/18/2015 01:26:43",
+		"setUp" : "PeterUhnak 9/18/2015 01:26:43",
+		"transitionFrom:to:" : "PeterUhnak 9/18/2015 01:26:43",
+		"transitionsFrom:to:with:" : "PeterUhnak 9/18/2015 01:26:43" } }

@@ -1,3 +1,3 @@
 setup
 diagramClass
-	^ BormDiagram
+	^ BormORModel
