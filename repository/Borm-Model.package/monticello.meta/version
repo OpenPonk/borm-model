@@ -1,2 +1,2 @@
-(name 'Borm-Model-PeterUhnak.31' message 'BormDiagram -> BormORModel because it''s not a diagram.' id '0684df2e-8e14-4cd2-b3d2-aa145e87bb91' date '10 March 2016' time '12:03:09.307841 pm' author 'PeterUhnak' ancestors ((name 'Borm-Model-PeterUhnak.30' message 'Fixed test.
-' id '11ff3bc8-82e1-552f-862b-adad2e953b80' date '18 September 2015' time '1:26:43 am' author 'PeterUhnak' ancestors () stepChildren ())) stepChildren ())
+(name 'Borm-Model-PeterUhnak.32' message 'Don''t use announcer for inner updates.' id '205bc81a-25eb-4bbc-92e7-a204bfab23c8' date '3 April 2016' time '3:59:29.604329 pm' author 'PeterUhnak' ancestors ((name 'Borm-Model-PeterUhnak.31' message 'BormDiagram -> BormORModel because it''s not a diagram.
+' id '49ee9a4d-24ad-5216-a346-3018affa15df' date '10 March 2016' time '12:03:10 pm' author 'PeterUhnak' ancestors () stepChildren ())) stepChildren ())
