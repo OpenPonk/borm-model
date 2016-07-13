@@ -1,2 +1,2 @@
-(name 'Borm-Model-PeterUhnak.32' message 'Don''t use announcer for inner updates.' id '205bc81a-25eb-4bbc-92e7-a204bfab23c8' date '3 April 2016' time '3:59:29.604329 pm' author 'PeterUhnak' ancestors ((name 'Borm-Model-PeterUhnak.31' message 'BormDiagram -> BormORModel because it''s not a diagram.
-' id '49ee9a4d-24ad-5216-a346-3018affa15df' date '10 March 2016' time '12:03:10 pm' author 'PeterUhnak' ancestors () stepChildren ())) stepChildren ())
+(name 'Borm-Model-PeterUhnak.33' message 'renamed subdiagram -> submodel' id '97ddfac1-31a6-4a7b-aef0-2b6fb556c9f4' date '13 July 2016' time '5:08:06.363415 pm' author 'PeterUhnak' ancestors ((name 'Borm-Model-PeterUhnak.32' message 'Don''t use announcer for inner updates.
+' id 'd41bb561-7d09-564e-b348-0c07d38a8ff0' date '3 April 2016' time '3:59:31 pm' author 'PeterUhnak' ancestors () stepChildren ())) stepChildren ())

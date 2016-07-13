@@ -1,3 +1,0 @@
-testing
-isSubdiagramNode
-	^ subdiagram isNotNil
