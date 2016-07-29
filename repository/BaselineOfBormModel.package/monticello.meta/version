@@ -1,1 +1,2 @@
-(name 'BaselineOfBormModel-PeterUhnak.1' message 'Added baseline.' id '591d70d4-9653-4538-8d85-13ad6f1ad69f' date '19 March 2015' time '7:24:01.898954 pm' author 'PeterUhnak' ancestors () stepChildren ())
+(name 'BaselineOfBormModel-PeterUhnak.2' message 'Missing fame dependency.' id 'd8e47c50-0af3-4c1c-ae74-953bf098a115' date '29 July 2016' time '2:43:44.613687 pm' author 'PeterUhnak' ancestors ((name 'BaselineOfBormModel-PeterUhnÃk.1' message 'Added baseline.
+' id 'f0c82820-63fa-5ca1-8a63-4e2c3cfceb1a' date '19 March 2015' time '7:24:02 pm' author 'PeterUhnÃk' ancestors () stepChildren ())) stepChildren ())

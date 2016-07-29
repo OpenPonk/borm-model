@@ -1,12 +1,15 @@
 accessing
 baseline: spec
 	<baseline>
-	spec for: #'common' do: [
-		spec 
-			baseline: 'DynaCASEModel' with: [
-				spec
-					repository: 'github://dynacase/dynacase-model/repository' ].
-		spec 
-			package: 'Borm-Model' with: [
-				spec requires: #('DynaCASEModel' ). ].
-		spec group: 'default' with: #('Borm-Model' ). ]
+	spec
+		for: #common
+		do: [ spec
+				baseline: 'DynaCASEModel'
+					with: [ spec repository: 'github://dynacase/dynacase-model/repository' ];
+				project: 'Fame'
+					with: [ spec
+						className: #ConfigurationOfFame;
+						versionString: #development;
+						repository: 'http://www.smalltalkhub.com/mc/Moose/Fame/main' ].
+			spec package: 'Borm-Model' with: [ spec requires: #('DynaCASEModel' 'Fame') ].
+			spec group: 'default' with: #('Borm-Model') ]
