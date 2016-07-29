@@ -3,6 +3,9 @@
 		 },
 	"instance" : {
 		"testAddDataFlow" : "PeterUhnak 4/3/2016 15:59:31",
+		"testAllEntities" : "PeterUhnak 7/28/2016 12:04",
+		"testAllEntities2" : "PeterUhnak 7/28/2016 12:05",
+		"testAllEntities3" : "PeterUhnak 7/28/2016 12:08",
 		"testEmptyCommunication" : "PeterUhnak 4/3/2016 15:59:31",
 		"testRemoveAllDataFlows" : "PeterUhnak 4/3/2016 15:59:31",
 		"testRemoveDataFlow" : "PeterUhnak 4/3/2016 15:59:31" } }

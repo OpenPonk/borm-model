@@ -1,4 +1,4 @@
-as yet unclassified
+tests
 testBigParticipant
 	| person |
 	person := self fullParticipant.

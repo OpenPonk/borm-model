@@ -6,14 +6,15 @@
 		 ],
 	"commentStamp" : "",
 	"instvars" : [
-		"emptyDiagram",
 		"emptyParticipant",
 		"emptyState",
 		"emptyActivity",
 		"emptyDataFlow",
 		"emptyCommunication",
 		"emptyTransition",
-		"eventTriggered" ],
+		"eventTriggered",
+		"emptyConstraint",
+		"emptyModel" ],
 	"name" : "BormTest",
 	"pools" : [
 		 ],

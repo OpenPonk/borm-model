@@ -1,0 +1,14 @@
+{
+	"category" : "Borm-Model-Models",
+	"classinstvars" : [
+		 ],
+	"classvars" : [
+		 ],
+	"commentStamp" : "",
+	"instvars" : [
+		"entity" ],
+	"name" : "BormElement",
+	"pools" : [
+		 ],
+	"super" : "DCNamedElement",
+	"type" : "normal" }

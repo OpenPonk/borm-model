@@ -1,12 +1,15 @@
 {
 	"class" : {
-		 },
+		"stonAllInstVarNames" : "PeterUhnak 7/28/2016 12:23" },
 	"instance" : {
 		"@" : "PeterUhnak 4/3/2016 15:59:31",
 		"add:" : "PeterUhnak 4/3/2016 15:59:31",
+		"allEntities" : "PeterUhnak 7/28/2016 12:16",
 		"gtModelOn:" : "PeterUhnak 4/3/2016 15:59:31",
 		"nodeNamed:" : "PeterUhnak 4/3/2016 15:59:31",
 		"participantNamed:" : "PeterUhnak 4/3/2016 15:59:31",
 		"participants" : "PeterUhnak 4/3/2016 15:59:31",
+		"project" : "PeterUhnak 7/28/2016 12:19",
+		"project:" : "PeterUhnak 7/28/2016 12:19",
 		"remove:" : "PeterUhnak 4/3/2016 15:59:31",
 		"spotterForModelFor:" : "PeterUhnak 4/3/2016 15:59:31" } }

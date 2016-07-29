@@ -11,5 +11,5 @@
 	"name" : "BormProcessNode",
 	"pools" : [
 		 ],
-	"super" : "DCNamedElement",
+	"super" : "BormElement",
 	"type" : "normal" }

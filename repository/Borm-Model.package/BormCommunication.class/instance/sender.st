@@ -1,3 +1,3 @@
 accessing
 sender
-	^ self source
+	^ sender

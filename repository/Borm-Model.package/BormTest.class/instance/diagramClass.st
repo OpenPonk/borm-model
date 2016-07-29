@@ -1,3 +1,0 @@
-setup
-diagramClass
-	^ BormORModel

@@ -1,3 +1,3 @@
 accessing
 sender: anActivity
-	self source: anActivity
+	sender := anActivity

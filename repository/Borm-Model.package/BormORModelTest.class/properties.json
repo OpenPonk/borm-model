@@ -7,7 +7,7 @@
 	"commentStamp" : "",
 	"instvars" : [
 		 ],
-	"name" : "BormDiagramTest",
+	"name" : "BormORModelTest",
 	"pools" : [
 		 ],
 	"super" : "BormTest",

@@ -2,13 +2,17 @@
 	"category" : "Borm-Model-Models",
 	"classinstvars" : [
 		 ],
+	"classtraitcomposition" : "TBormRelationship classTrait",
 	"classvars" : [
 		 ],
 	"commentStamp" : "PeterUhnak 3/20/2015 23:46",
 	"instvars" : [
-		"constraint" ],
+		"constraint",
+		"source",
+		"target" ],
 	"name" : "BormTransition",
 	"pools" : [
 		 ],
-	"super" : "DCEdge",
+	"super" : "BormElement",
+	"traitcomposition" : "TBormRelationship",
 	"type" : "normal" }

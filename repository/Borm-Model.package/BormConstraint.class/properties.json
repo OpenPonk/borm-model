@@ -10,5 +10,5 @@
 	"name" : "BormConstraint",
 	"pools" : [
 		 ],
-	"super" : "DCNamedElement",
+	"super" : "BormElement",
 	"type" : "normal" }

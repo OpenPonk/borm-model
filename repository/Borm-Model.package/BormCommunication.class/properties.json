@@ -2,14 +2,18 @@
 	"category" : "Borm-Model-Models",
 	"classinstvars" : [
 		 ],
+	"classtraitcomposition" : "TBormRelationship classTrait",
 	"classvars" : [
 		 ],
 	"commentStamp" : "PeterUhnak 3/20/2015 23:47",
 	"instvars" : [
 		"constraint",
-		"dataFlows" ],
+		"dataFlows",
+		"sender",
+		"receiver" ],
 	"name" : "BormCommunication",
 	"pools" : [
 		 ],
-	"super" : "DCEdge",
+	"super" : "BormElement",
+	"traitcomposition" : "TBormRelationship",
 	"type" : "normal" }

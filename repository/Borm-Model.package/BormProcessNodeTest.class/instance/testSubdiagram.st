@@ -1,9 +1,9 @@
 tests
 testSubdiagram
 	self deny: emptyNode isSubmodelNode.
-	emptyNode submodel: emptyDiagram.
+	emptyNode submodel: emptyModel.
 	self assert: emptyNode isSubmodelNode.
-	self assert: emptyNode submodel equals: emptyDiagram.
+	self assert: emptyNode submodel equals: emptyModel.
 	emptyNode submodel: nil.
 	self deny: emptyNode isSubmodelNode.
 	self assert: emptyNode submodel equals: nil

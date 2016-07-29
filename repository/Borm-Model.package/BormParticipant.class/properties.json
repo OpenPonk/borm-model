@@ -12,5 +12,5 @@
 	"name" : "BormParticipant",
 	"pools" : [
 		 ],
-	"super" : "DCNamedElement",
+	"super" : "BormElement",
 	"type" : "normal" }
