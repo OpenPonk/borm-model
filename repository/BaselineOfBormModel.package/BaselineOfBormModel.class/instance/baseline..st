@@ -5,7 +5,7 @@ baseline: spec
 		for: #common
 		do: [ spec
 				baseline: 'DynaCASEModel'
-					with: [ spec repository: 'github://dynacase/dynacase-model/repository' ];
+					with: [ spec repository: 'github://openponk/openponk-model/repository' ];
 				project: 'Fame'
 					with: [ spec
 						className: #ConfigurationOfFame;
