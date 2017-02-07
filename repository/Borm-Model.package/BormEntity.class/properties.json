@@ -10,5 +10,5 @@
 	"name" : "BormEntity",
 	"pools" : [
 		 ],
-	"super" : "DCNamedElement",
+	"super" : "OPNamedElement",
 	"type" : "normal" }

@@ -6,4 +6,4 @@ remove: anElement
 	elements remove: anElement.
 	anElement removedFrom: self.
 	self changed.
-	self announce: (DCElementRemoved element: anElement)
+	self announce: (OPElementRemoved element: anElement)

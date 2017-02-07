@@ -1,6 +1,6 @@
 tests
 testRemoveParticipant
-	emptyModel when: DCElementRemoved do: [ :event | eventTriggered := true ].
+	emptyModel when: OPElementRemoved do: [ :event | eventTriggered := true ].
 	emptyModel add: emptyParticipant.
 	emptyModel remove: emptyParticipant.
 	self assert: emptyModel participants size equals: 0.
