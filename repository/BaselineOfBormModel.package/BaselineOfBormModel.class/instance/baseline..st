@@ -4,12 +4,12 @@ baseline: spec
 	spec
 		for: #common
 		do: [ spec
-				baseline: 'DynaCASEModel'
+				baseline: 'OpenPonkModel'
 					with: [ spec repository: 'github://openponk/openponk-model/repository' ];
 				project: 'Fame'
 					with: [ spec
 						className: #ConfigurationOfFame;
 						versionString: #development;
 						repository: 'http://www.smalltalkhub.com/mc/Moose/Fame/main' ].
-			spec package: 'Borm-Model' with: [ spec requires: #('DynaCASEModel' 'Fame') ].
+			spec package: 'Borm-Model' with: [ spec requires: #('OpenPonkModel' 'Fame') ].
 			spec group: 'default' with: #('Borm-Model') ]
