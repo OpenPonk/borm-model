@@ -1,14 +1,13 @@
 {
-	"category" : "Borm-Model-Tests",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "",
-	"instvars" : [
-		"emptyNode" ],
-	"name" : "BormProcessNodeTest",
-	"pools" : [
-		 ],
 	"super" : "BormTest",
-	"type" : "normal" }
+	"category" : "Borm-Model-Tests",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [
+		"emptyNode"
+	],
+	"name" : "BormProcessNodeTest",
+	"type" : "normal"
+}

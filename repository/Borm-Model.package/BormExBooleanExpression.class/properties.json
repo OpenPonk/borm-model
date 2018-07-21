@@ -1,14 +1,11 @@
 {
-	"category" : "Borm-Model-Conditions",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "PeterUhnak 3/20/2015 23:55",
-	"instvars" : [
-		 ],
-	"name" : "BormExBooleanExpression",
-	"pools" : [
-		 ],
 	"super" : "Object",
-	"type" : "normal" }
+	"category" : "Borm-Model-Conditions",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
+	"instvars" : [ ],
+	"name" : "BormExBooleanExpression",
+	"type" : "normal"
+}

@@ -6,10 +6,9 @@ baseline: spec
 		do: [ spec
 				baseline: 'OpenPonkModel'
 					with: [ spec repository: 'github://openponk/openponk-model/repository' ];
-				project: 'Fame'
-					with: [ spec
-						className: #ConfigurationOfFame;
-						versionString: #development;
-						repository: 'http://www.smalltalkhub.com/mc/Moose/Fame/main' ].
-			spec package: 'Borm-Model' with: [ spec requires: #('OpenPonkModel' 'Fame') ].
+				baseline: 'SynchronizedLinks'
+					with: [ spec repository: 'github://openponk/synchronized-links/repository' ].
+			spec
+				package: 'Borm-Model'
+				with: [ spec requires: #('OpenPonkModel' 'SynchronizedLinks') ].
 			spec group: 'default' with: #('Borm-Model') ]

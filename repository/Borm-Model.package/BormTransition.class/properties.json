@@ -1,18 +1,17 @@
 {
-	"category" : "Borm-Model-Models",
-	"classinstvars" : [
-		 ],
 	"classtraitcomposition" : "TBormRelationship classTrait",
-	"classvars" : [
-		 ],
-	"commentStamp" : "PeterUhnak 3/20/2015 23:46",
+	"classvars" : [ ],
 	"instvars" : [
 		"constraint",
 		"source",
-		"target" ],
+		"target"
+	],
 	"name" : "BormTransition",
-	"pools" : [
-		 ],
+	"commentStamp" : "PeterUhnak 3/20/2015 23:46",
 	"super" : "BormElement",
 	"traitcomposition" : "TBormRelationship",
-	"type" : "normal" }
+	"type" : "normal",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"category" : "Borm-Model-Models"
+}

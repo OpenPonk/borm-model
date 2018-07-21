@@ -1,4 +1,4 @@
 as yet unclassified
 initialize
 	super initialize.
-	representations := FMMultivalueLink on: self opposite: #entity:
+	representations := SRToManyLink on: self slot: #representations oppositeSlot: #entity

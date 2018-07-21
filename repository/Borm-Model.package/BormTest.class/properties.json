@@ -1,10 +1,10 @@
 {
-	"category" : "Borm-Model-Tests",
-	"classinstvars" : [
-		 ],
-	"classvars" : [
-		 ],
 	"commentStamp" : "",
+	"super" : "TestCase",
+	"category" : "Borm-Model-Tests",
+	"classinstvars" : [ ],
+	"pools" : [ ],
+	"classvars" : [ ],
 	"instvars" : [
 		"emptyParticipant",
 		"emptyState",
@@ -14,9 +14,8 @@
 		"emptyTransition",
 		"eventTriggered",
 		"emptyConstraint",
-		"emptyModel" ],
+		"emptyModel"
+	],
 	"name" : "BormTest",
-	"pools" : [
-		 ],
-	"super" : "TestCase",
-	"type" : "normal" }
+	"type" : "normal"
+}

@@ -1,7 +1,8 @@
 accessing
 entity: anEntity
-	entity := FMMultivalueLink
+	entity := SRToOneLink
 		on: self
-		update: #representations
-		from: entity
+		slot: #entity
+		oppositeSlot: #representations
+		updateFrom: entity
 		to: anEntity
