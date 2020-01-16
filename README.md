@@ -1,5 +1,5 @@
 # BORM model
-[![Build Status](https://travis-ci.org/OpenPonk/borm-model.svg?branch=master)](https://travis-ci.org/OpenPonk/borm-model) [![Coverage Status](https://coveralls.io/repos/github/OpenPonk/borm-model/badge.svg?branch=master)](https://coveralls.io/github/OpenPonk/borm-model?branch=master)
+[![Build Status](https://travis-ci.com/OpenPonk/borm-model.svg?branch=master)](https://travis-ci.com/OpenPonk/borm-model) [![Coverage Status](https://coveralls.io/repos/github/OpenPonk/borm-model/badge.svg?branch=master)](https://coveralls.io/github/OpenPonk/borm-model?branch=master)
 
 Smalltalk meta-model for BORM http://ccmi.fit.cvut.cz/methodologies/borm/
 
