@@ -1,5 +1,7 @@
 {
-	"name" : "TBormRelationship",
 	"commentStamp" : "",
-	"category" : "Borm-Model-Models"
+	"classinstvars" : [ ],
+	"category" : "Borm-Model-Models",
+	"instvars" : [ ],
+	"name" : "TBormRelationship"
 }
