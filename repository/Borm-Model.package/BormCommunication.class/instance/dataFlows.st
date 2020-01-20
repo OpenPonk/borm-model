@@ -1,3 +1,3 @@
 accessing
 dataFlows
-	^ dataFlows
+	^ self elements

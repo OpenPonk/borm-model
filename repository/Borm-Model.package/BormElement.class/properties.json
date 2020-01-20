@@ -1,6 +1,6 @@
 {
 	"commentStamp" : "",
-	"super" : "OPModelElement",
+	"super" : "OPModelObject",
 	"category" : "Borm-Model-Models",
 	"classinstvars" : [ ],
 	"pools" : [ ],

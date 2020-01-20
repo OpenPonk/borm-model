@@ -1,3 +1,3 @@
 adding
 addDataFlowNamed: aString
-	^ self addDataFlow: (BormDataFlow named: aString)
+	^ self add: (BormDataFlow named: aString)
