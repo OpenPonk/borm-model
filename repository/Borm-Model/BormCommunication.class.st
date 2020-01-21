@@ -11,7 +11,7 @@ Class {
 		'sender',
 		'receiver'
 	],
-	#category : 'Borm-Model-Models'
+	#category : #'Borm-Model-Models'
 }
 
 { #category : #adding }
@@ -69,7 +69,7 @@ BormCommunication >> receiver: anActivity [
 
 { #category : #removing }
 BormCommunication >> removeAllDataFlows [
-	self removeAll
+	^ self removeAll
 ]
 
 { #category : #removing }
@@ -83,7 +83,7 @@ BormCommunication >> removeConstraint [
 
 { #category : #removing }
 BormCommunication >> removeDataFlow: aDataFlow [
-	self remove: aDataFlow
+	^ self remove: aDataFlow
 ]
 
 { #category : #accessing }
