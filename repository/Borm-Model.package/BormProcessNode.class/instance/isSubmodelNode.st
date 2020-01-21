@@ -1,3 +1,0 @@
-testing
-isSubmodelNode
-	^ submodel isNotNil

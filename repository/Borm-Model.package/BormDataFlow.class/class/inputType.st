@@ -1,3 +1,0 @@
-enumeration
-inputType
-	^ #input

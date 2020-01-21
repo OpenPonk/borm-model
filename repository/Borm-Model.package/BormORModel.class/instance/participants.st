@@ -1,3 +1,0 @@
-accessing
-participants
-	^ self elements

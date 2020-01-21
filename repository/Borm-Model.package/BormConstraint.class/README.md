@@ -1,1 +1,0 @@
-I represent a constraint label of a transition or a communication.

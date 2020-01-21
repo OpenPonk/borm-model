@@ -1,3 +1,0 @@
-removing
-removeAllNodes
-	self removeAll

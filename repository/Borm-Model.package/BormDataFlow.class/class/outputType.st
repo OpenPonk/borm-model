@@ -1,3 +1,0 @@
-enumeration
-outputType
-	^ #output

@@ -1,1 +1,0 @@
-I provide some shortcuts for doing Borm-Model related operations like creation, moving, etc.

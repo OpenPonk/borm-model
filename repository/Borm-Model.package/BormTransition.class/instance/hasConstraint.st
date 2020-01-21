@@ -1,3 +1,0 @@
-testing
-hasConstraint
-	^ constraint isNotNil

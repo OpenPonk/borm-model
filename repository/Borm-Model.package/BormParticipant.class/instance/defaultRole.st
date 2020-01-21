@@ -1,3 +1,0 @@
-defaults
-defaultRole
-	^ BormParticipantRole Undefined

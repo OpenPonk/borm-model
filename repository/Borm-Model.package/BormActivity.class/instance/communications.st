@@ -1,3 +1,0 @@
-accessing
-communications
-	^ communications copy

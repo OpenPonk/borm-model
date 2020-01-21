@@ -1,1 +1,0 @@
-BooleanExpression is an abstract class representing a tree expression.
