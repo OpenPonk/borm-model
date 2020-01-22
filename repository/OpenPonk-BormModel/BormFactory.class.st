@@ -4,7 +4,7 @@ I provide some shortcuts for doing Borm-Model related operations like creation, 
 Class {
 	#name : #BormFactory,
 	#superclass : #Object,
-	#category : 'Borm-Model-Factory'
+	#category : #'OpenPonk-BormModel-Factory'
 }
 
 { #category : #'instance creation' }

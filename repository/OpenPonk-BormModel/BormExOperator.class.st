@@ -4,7 +4,7 @@ Operator lists all possible types of a Clause. See class-side for listing.
 Class {
 	#name : #BormExOperator,
 	#superclass : #Object,
-	#category : 'Borm-Model-Conditions'
+	#category : #'OpenPonk-BormModel-Conditions'
 }
 
 { #category : #enumeration }

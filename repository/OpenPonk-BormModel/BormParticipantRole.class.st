@@ -6,7 +6,7 @@ See the class side for the listing.
 Class {
 	#name : #BormParticipantRole,
 	#superclass : #Object,
-	#category : 'Borm-Model-Models'
+	#category : #'OpenPonk-BormModel-Models'
 }
 
 { #category : #'as yet unclassified' }

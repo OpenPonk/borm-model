@@ -1,7 +1,7 @@
 Class {
 	#name : #BormDataFlowTest,
 	#superclass : #BormTest,
-	#category : 'Borm-Model-Tests'
+	#category : #'OpenPonk-BormModel-Tests'
 }
 
 { #category : #'as yet unclassified' }

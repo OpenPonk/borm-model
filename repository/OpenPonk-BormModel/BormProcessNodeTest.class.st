@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'emptyNode'
 	],
-	#category : 'Borm-Model-Tests'
+	#category : #'OpenPonk-BormModel-Tests'
 }
 
 { #category : #testing }

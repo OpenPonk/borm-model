@@ -7,5 +7,5 @@ Class {
 	#instVars : [
 		'operator'
 	],
-	#category : 'Borm-Model-Conditions'
+	#category : #'OpenPonk-BormModel-Conditions'
 }

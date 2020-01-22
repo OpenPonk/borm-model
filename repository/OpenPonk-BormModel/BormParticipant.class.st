@@ -10,7 +10,7 @@ Class {
 		'type',
 		'role'
 	],
-	#category : 'Borm-Model-Models'
+	#category : #'OpenPonk-BormModel-Models'
 }
 
 { #category : #accessing }

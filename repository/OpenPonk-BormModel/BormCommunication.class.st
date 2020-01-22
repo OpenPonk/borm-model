@@ -11,7 +11,7 @@ Class {
 		'sender',
 		'receiver'
 	],
-	#category : #'Borm-Model-Models'
+	#category : #'OpenPonk-BormModel-Models'
 }
 
 { #category : #adding }

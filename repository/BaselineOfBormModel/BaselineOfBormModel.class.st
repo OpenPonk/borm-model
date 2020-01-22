@@ -1,7 +1,7 @@
 Class {
 	#name : #BaselineOfBormModel,
 	#superclass : #BaselineOf,
-	#category : 'BaselineOfBormModel'
+	#category : #BaselineOfBormModel
 }
 
 { #category : #accessing }
@@ -15,7 +15,7 @@ BaselineOfBormModel >> baseline: spec [
 				baseline: 'SynchronizedLinks'
 					with: [ spec repository: 'github://openponk/synchronized-links:v1.x/repository' ].
 			spec
-				package: 'Borm-Model'
+				package: 'OpenPonk-BormModel'
 				with: [ spec requires: #('OpenPonkModel' 'SynchronizedLinks') ].
-			spec group: 'default' with: #('Borm-Model') ]
+			spec group: 'default' with: #('OpenPonk-BormModel') ]
 ]

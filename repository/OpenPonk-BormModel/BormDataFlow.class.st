@@ -9,7 +9,7 @@ Class {
 	#instVars : [
 		'type'
 	],
-	#category : 'Borm-Model-Models'
+	#category : #'OpenPonk-BormModel-Models'
 }
 
 { #category : #enumeration }

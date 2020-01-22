@@ -7,5 +7,5 @@ Class {
 	#instVars : [
 		'node'
 	],
-	#category : 'Borm-Model-Conditions'
+	#category : #'OpenPonk-BormModel-Conditions'
 }

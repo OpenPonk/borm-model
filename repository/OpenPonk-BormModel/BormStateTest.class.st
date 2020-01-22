@@ -1,7 +1,7 @@
 Class {
 	#name : #BormStateTest,
 	#superclass : #BormProcessNodeTest,
-	#category : 'Borm-Model-Tests'
+	#category : #'OpenPonk-BormModel-Tests'
 }
 
 { #category : #'testing - instance creation' }

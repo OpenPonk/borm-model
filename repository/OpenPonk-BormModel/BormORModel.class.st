@@ -7,7 +7,7 @@ Class {
 	#instVars : [
 		'project'
 	],
-	#category : 'Borm-Model-Models'
+	#category : #'OpenPonk-BormModel-Models'
 }
 
 { #category : #'as yet unclassified' }

@@ -1,6 +1,6 @@
 Extension { #name : #GTSpotter }
 
-{ #category : #'*Borm-Model' }
+{ #category : #'*OpenPonk-BormModel' }
 GTSpotter >> spotterBormModelFor: aStep [
 "	<spotterOrder: -1>
 	^ aStep listProcessor

@@ -1,6 +1,6 @@
 Trait {
 	#name : #TBormRelationship,
-	#category : 'Borm-Model-Models'
+	#category : #'OpenPonk-BormModel-Models'
 }
 
 { #category : #'instance creation' }
