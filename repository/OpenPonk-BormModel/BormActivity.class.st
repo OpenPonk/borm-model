@@ -18,6 +18,11 @@ BormActivity >> ==> anActivity [
 ]
 
 { #category : #accessing }
+BormActivity >> allEntities [
+	^ super allEntities , (self sent flatCollect: #allEntities)
+]
+
+{ #category : #accessing }
 BormActivity >> communications [
 	^ communications copy
 ]
