@@ -37,6 +37,11 @@ BormTransition >> constraint: aConstraint [
 	self announceAdded: aConstraint
 ]
 
+{ #category : #accessing }
+BormTransition >> constraints [
+	^ constraint ifNil: [ #() ] ifNotNil: [ ^ {constraint} ]
+]
+
 { #category : #testing }
 BormTransition >> hasConstraint [
 	^ constraint isNotNil

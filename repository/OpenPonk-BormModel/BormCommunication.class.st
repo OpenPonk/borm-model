@@ -48,6 +48,11 @@ BormCommunication >> constraint: aConstraint [
 ]
 
 { #category : #accessing }
+BormCommunication >> constraints [
+	^ constraint ifNil: [ #() ] ifNotNil: [ ^ {constraint} ]
+]
+
+{ #category : #accessing }
 BormCommunication >> dataFlows [
 	^ self elements
 ]
