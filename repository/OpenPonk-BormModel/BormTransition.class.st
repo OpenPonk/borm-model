@@ -42,6 +42,11 @@ BormTransition >> constraints [
 	^ constraint ifNil: [ #() ] ifNotNil: [ ^ {constraint} ]
 ]
 
+{ #category : #accessing }
+BormTransition >> has: anEntity [
+	^ constraint = anEntity
+]
+
 { #category : #testing }
 BormTransition >> hasConstraint [
 	^ constraint isNotNil

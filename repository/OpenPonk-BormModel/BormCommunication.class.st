@@ -58,6 +58,11 @@ BormCommunication >> dataFlows [
 ]
 
 { #category : #testing }
+BormCommunication >> has: anEntity [
+	^ (super has: anEntity) or: [ constraint = anEntity ]
+]
+
+{ #category : #testing }
 BormCommunication >> hasConstraint [
 	^ constraint isNotNil
 ]

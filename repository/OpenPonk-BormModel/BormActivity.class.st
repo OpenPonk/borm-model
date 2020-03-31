@@ -38,6 +38,11 @@ BormActivity >> gtInspectorPresentation: composite [
 		display: [ communications ]
 ]
 
+{ #category : #accessing }
+BormActivity >> has: anElement [
+	^ (super has: anElement) or: [ communications includes: anElement ]
+]
+
 { #category : #initialization }
 BormActivity >> initialize [
 	super initialize.

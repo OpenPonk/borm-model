@@ -34,6 +34,11 @@ BormProcessNode >> allEntities [
 ]
 
 { #category : #accessing }
+BormProcessNode >> has: anElement [
+	^ transitions includes: anElement
+]
+
+{ #category : #accessing }
 BormProcessNode >> incoming [
 	^ transitions select: [ :each | each target = self ]
 ]
