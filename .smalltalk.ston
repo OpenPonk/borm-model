@@ -7,9 +7,9 @@ SmalltalkCISpec {
 		}
 	],
 	#testing : {
-		#packages : [ 'OpenPonk-BormModel' ],
+		#packages : [ 'OpenPonk-BormModel*' ],
 		#coverage : {
-			#packages : [ 'OpenPonk-BormModel']
+			#packages : [ 'OpenPonk-BormModel*' ]
 		}
 	}
 }
