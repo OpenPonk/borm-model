@@ -38,6 +38,27 @@ BormORModel >> gtModelOn: aComposite [
 		column: 'Number of nodes' evaluated: [ :each | each nodes size ]
 ]
 
+{ #category : #'gt-inspector' }
+BormORModel >> inspectionParticipants [
+
+	<inspectorPresentationOrder: 30 title: 'Participants'>
+	^ SpTablePresenter new
+		  items: self participants;
+		  addColumn: (SpStringTableColumn new
+				   title: 'Name';
+				   evaluated: #name;
+				   yourself);
+		  addColumn: (SpStringTableColumn new
+				   title: 'Type';
+				   evaluated: #type;
+				   yourself);
+		  addColumn: (SpStringTableColumn new
+				   title: 'Number of nodes';
+				   evaluated: [ :each | each nodes size ];
+				   yourself);
+		  yourself
+]
+
 { #category : #accessing }
 BormORModel >> nodeNamed: aString [
 	| aName |
