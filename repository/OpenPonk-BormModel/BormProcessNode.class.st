@@ -11,7 +11,7 @@ Class {
 	#category : #'OpenPonk-BormModel-Models'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #associating }
 BormProcessNode >> -> aNode [
 	^ BormFactory transitionFrom: self to: aNode
 ]
@@ -47,6 +47,33 @@ BormProcessNode >> incoming [
 BormProcessNode >> initialize [
 	super initialize.
 	transitions := OrderedCollection new
+]
+
+{ #category : #inspection }
+BormProcessNode >> inspectionTransitions [
+
+	<inspectorPresentationOrder: 30 title: 'Transitions'>
+	^ SpTablePresenter new
+		  items: self transitions;
+		  addColumn: (SpStringTableColumn new
+				   title: 'Name';
+				   evaluated: #name;
+				   yourself);
+		  addColumn: (SpStringTableColumn new
+				   title: 'Direction';
+				   evaluated: [ :transition | 
+					   transition source = self
+						   ifTrue: [ 'outgoing' ]
+						   ifFalse: [ 'incoming' ] ];
+				   yourself);
+		  addColumn: (SpStringTableColumn new
+				   title: 'Source / Target';
+				   evaluated: [ :transition | 
+					   transition source = self
+						   ifTrue: [ transition target name ]
+						   ifFalse: [ transition source name ] ];
+				   yourself);
+		  yourself
 ]
 
 { #category : #accessing }
