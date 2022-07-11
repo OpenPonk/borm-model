@@ -23,14 +23,6 @@ BormState >> beInitial [
 	self isInitial: true
 ]
 
-{ #category : #'gt-inspector' }
-BormState >> gtInspectorPresentation: composite [
-	<gtInspectorPresentationOrder: 30>
-	composite table
-		title: 'Transitions';
-		display: [ transitions ]
-]
-
 { #category : #initialization }
 BormState >> initialize [
 	super initialize.

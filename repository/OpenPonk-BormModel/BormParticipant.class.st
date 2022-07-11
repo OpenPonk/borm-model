@@ -39,35 +39,6 @@ BormParticipant >> defaultType [
 	^ BormParticipantType Person
 ]
 
-{ #category : #'gt-inspector' }
-BormParticipant >> gtInspectorPresentation: composite [
-	<gtInspectorPresentationOrder: 30>
-	composite table
-		title: 'Nodes';
-		display: [ self nodes ];
-		column: 'Type'
-			evaluated: [ :each | 
-					each isState
-						ifTrue: [ 'state' ]
-						ifFalse: [ 'activity' ] ]
-			width: 60;
-		column: 'Name' evaluated: #name width: 100
-]
-
-{ #category : #'gt-inspector' }
-BormParticipant >> gtModelOn: aComposite [
-	<gtInspectorPresentationOrder: 30>
-	aComposite table
-		title: 'Details';
-		display: [ { 
-			'Name' -> self name.
-			'Type' -> self type.
-			'Role' -> self role.
-			 } ];
-		column: 'Detail' evaluated: #key;
-		column: 'Value' evaluated: #value
-]
-
 { #category : #initialization }
 BormParticipant >> initialize [
 	super initialize.
@@ -76,7 +47,7 @@ BormParticipant >> initialize [
 ]
 
 { #category : #'gt-inspector' }
-BormParticipant >> inspectionParticipants [
+BormParticipant >> inspectionNodes [
 
 	<inspectorPresentationOrder: 30 title: 'Nodes'>
 	^ SpTablePresenter new

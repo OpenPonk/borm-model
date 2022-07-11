@@ -27,17 +27,6 @@ BormActivity >> communications [
 	^ communications copy
 ]
 
-{ #category : #'gt-inspector' }
-BormActivity >> gtInspectorPresentation: composite [
-	<gtInspectorPresentationOrder: 30>
-	composite table
-		title: 'Transitions';
-		display: [ transitions ].
-	composite table
-		title: 'Communications';
-		display: [ communications ]
-]
-
 { #category : #accessing }
 BormActivity >> has: anElement [
 	^ (super has: anElement) or: [ communications includes: anElement ]

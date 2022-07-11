@@ -28,17 +28,6 @@ BormORModel >> allEntities [
 ]
 
 { #category : #'gt-inspector' }
-BormORModel >> gtModelOn: aComposite [
-	<gtInspectorPresentationOrder: 30>
-	aComposite table
-		title: 'Participants';
-		display: [ self participants ];
-		column: 'Name' evaluated: [ :each | each name ] width: 100;
-		column: 'Type' evaluated: [ :each | each type ] width: 80;
-		column: 'Number of nodes' evaluated: [ :each | each nodes size ]
-]
-
-{ #category : #'gt-inspector' }
 BormORModel >> inspectionParticipants [
 
 	<inspectorPresentationOrder: 30 title: 'Participants'>
@@ -84,14 +73,4 @@ BormORModel >> project [
 { #category : #accessing }
 BormORModel >> project: aProject [
 	project := aProject
-]
-
-{ #category : #'gt-spotter' }
-BormORModel >> spotterForModelFor: aStep [
-	<spotterOrder: 5>
-	^ aStep listProcessor
-		title: 'Borm Participants';
-		allCandidates: [ self participants ];
-		itemName: #name;
-		filter: GTFilterSubstring
 ]
