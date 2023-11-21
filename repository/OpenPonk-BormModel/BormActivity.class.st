@@ -12,9 +12,17 @@ Class {
 	#category : #'OpenPonk-BormModel-Models'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #associating }
 BormActivity >> ==> anActivity [
 	^ BormFactory communicationFrom: self to: anActivity
+]
+
+{ #category : #accessing }
+BormActivity >> allElements [
+	"should return all elements recursively (incl. sub-elements)"
+
+	^ super allElements , (self communications flatCollect: [ :each |
+		   (Set with: each) , each allElements ])
 ]
 
 { #category : #accessing }

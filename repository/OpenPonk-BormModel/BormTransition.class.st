@@ -43,6 +43,13 @@ BormTransition >> constraints [
 ]
 
 { #category : #accessing }
+BormTransition >> elements [
+
+	self hasConstraint ifFalse: [ ^ #(  ) ].
+	^ { self constraint }
+]
+
+{ #category : #accessing }
 BormTransition >> has: anEntity [
 	^ constraint = anEntity
 ]

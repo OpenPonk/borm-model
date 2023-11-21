@@ -29,6 +29,14 @@ BormProcessNode >> addTransition: aTransition [
 ]
 
 { #category : #accessing }
+BormProcessNode >> allElements [
+	"should return all elements recursively (incl. sub-elements)"
+
+	^ super allElements , (self transitions flatCollect: [ :each |
+		   (Set with: each) , each allElements ])
+]
+
+{ #category : #accessing }
 BormProcessNode >> allEntities [
 	^ (Set with: self entity) , (self outgoing flatCollect: #allEntities)
 ]

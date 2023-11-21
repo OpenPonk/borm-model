@@ -54,7 +54,15 @@ BormCommunication >> constraints [
 
 { #category : #accessing }
 BormCommunication >> dataFlows [
-	^ self elements
+
+	^ elements
+]
+
+{ #category : #accessing }
+BormCommunication >> elements [
+
+	self hasConstraint ifFalse: [ ^ super elements ].
+	^ super elements , { self constraint }
 ]
 
 { #category : #testing }
