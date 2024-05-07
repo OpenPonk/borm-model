@@ -1,29 +1,31 @@
 Class {
-	#name : #BormProcessNodeTest,
-	#superclass : #BormTest,
+	#name : 'BormProcessNodeTest',
+	#superclass : 'BormTest',
 	#instVars : [
 		'emptyNode'
 	],
-	#category : #'OpenPonk-BormModel-Tests'
+	#category : 'OpenPonk-BormModel-Tests',
+	#package : 'OpenPonk-BormModel',
+	#tag : 'Tests'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 BormProcessNodeTest class >> isAbstract [
 	^ self = BormProcessNodeTest
 ]
 
-{ #category : #'testing - instance creation' }
+{ #category : 'testing - instance creation' }
 BormProcessNodeTest >> emptyNode [
 	^ self subclassResponsibility
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 BormProcessNodeTest >> setUp [
 	super setUp.
 	emptyNode := self emptyNode
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BormProcessNodeTest >> testAddTransition [
 	| source target transition |
 	source := emptyState.
@@ -38,7 +40,7 @@ BormProcessNodeTest >> testAddTransition [
 	self assert: transition target equals: target
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BormProcessNodeTest >> testAllEntitiesOutgoing [
 	| source target transition |
 	source := emptyState.
@@ -48,14 +50,14 @@ BormProcessNodeTest >> testAllEntitiesOutgoing [
 	self assert: target allEntities equals: (Set with: target entity)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BormProcessNodeTest >> testEmptyProcessNode [
 	self assert: emptyNode incoming isEmpty.
 	self assert: emptyNode outgoing isEmpty.
 	self deny: emptyNode isSubmodelNode
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BormProcessNodeTest >> testRemoveAllTransitionsFromSource [
 	| source target transition |
 	source := emptyState.
@@ -66,7 +68,7 @@ BormProcessNodeTest >> testRemoveAllTransitionsFromSource [
 	self assert: target incoming size equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BormProcessNodeTest >> testRemoveAllTransitionsFromTarget [
 	| source target transition |
 	source := emptyState.
@@ -77,7 +79,7 @@ BormProcessNodeTest >> testRemoveAllTransitionsFromTarget [
 	self assert: target incoming size equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BormProcessNodeTest >> testRemoveTransition [
 	| source target transition |
 	source := emptyState.
@@ -89,7 +91,7 @@ BormProcessNodeTest >> testRemoveTransition [
 	self assert: target incoming size equals: 0
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BormProcessNodeTest >> testSubdiagram [
 	self deny: emptyNode isSubmodelNode.
 	emptyNode submodel: emptyModel.

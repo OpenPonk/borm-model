@@ -1,20 +1,22 @@
 Class {
-	#name : #BormStateTest,
-	#superclass : #BormProcessNodeTest,
-	#category : #'OpenPonk-BormModel-Tests'
+	#name : 'BormStateTest',
+	#superclass : 'BormProcessNodeTest',
+	#category : 'OpenPonk-BormModel-Tests',
+	#package : 'OpenPonk-BormModel',
+	#tag : 'Tests'
 }
 
-{ #category : #'testing - instance creation' }
+{ #category : 'testing - instance creation' }
 BormStateTest >> emptyNode [
 	^ emptyState
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BormStateTest >> testAllEntities [
 	self assert: emptyState allEntities equals: (Set with: emptyState entity)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BormStateTest >> testChangeState [
 	self deny: emptyState isInitial.
 	self deny: emptyState isFinal.
@@ -41,7 +43,7 @@ BormStateTest >> testChangeState [
 	self assert: emptyState isFinal
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BormStateTest >> testEmptyState [
 	self deny: emptyState isInitial.
 	self deny: emptyState isFinal

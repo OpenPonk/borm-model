@@ -1,21 +1,23 @@
 Class {
-	#name : #BormCommunicationTest,
-	#superclass : #BormTest,
-	#category : #'OpenPonk-BormModel-Tests'
+	#name : 'BormCommunicationTest',
+	#superclass : 'BormTest',
+	#category : 'OpenPonk-BormModel-Tests',
+	#package : 'OpenPonk-BormModel',
+	#tag : 'Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 BormCommunicationTest >> testAddDataFlow [
 	emptyCommunication addDataFlow: emptyDataFlow.
 	self assert: emptyCommunication dataFlows size equals: 1
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BormCommunicationTest >> testAllEntities [
 	self assert: emptyCommunication allEntities equals: (Set with: emptyCommunication entity)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BormCommunicationTest >> testAllEntities2 [
 	emptyCommunication addDataFlow: emptyDataFlow.
 	self
@@ -23,7 +25,7 @@ BormCommunicationTest >> testAllEntities2 [
 		equals: (Set with: emptyCommunication entity with: emptyDataFlow entity)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BormCommunicationTest >> testAllEntities3 [
 	emptyCommunication constraint: emptyConstraint.
 	self
@@ -31,20 +33,20 @@ BormCommunicationTest >> testAllEntities3 [
 		equals: (Set with: emptyCommunication entity with: emptyConstraint entity)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BormCommunicationTest >> testEmptyCommunication [
 	self assert: emptyCommunication dataFlows isEmpty.
 	self assert: emptyCommunication constraint equals: nil
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BormCommunicationTest >> testRemoveAllDataFlows [
 	emptyCommunication addDataFlow: emptyDataFlow.
 	emptyCommunication removeAllDataFlows.
 	self assert: emptyCommunication dataFlows isEmpty
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BormCommunicationTest >> testRemoveDataFlow [
 	emptyCommunication addDataFlow: emptyDataFlow.
 	emptyCommunication removeDataFlow: emptyDataFlow.

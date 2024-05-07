@@ -2,8 +2,8 @@
 Communication is a channel between two activities. Activites can send data flows in both directions through this channel
 "
 Class {
-	#name : #BormCommunication,
-	#superclass : #BormElement,
+	#name : 'BormCommunication',
+	#superclass : 'BormElement',
 	#traits : 'TBormRelationship',
 	#classTraits : 'TBormRelationship classTrait',
 	#instVars : [
@@ -11,20 +11,22 @@ Class {
 		'sender',
 		'receiver'
 	],
-	#category : #'OpenPonk-BormModel-Models'
+	#category : 'OpenPonk-BormModel-Models',
+	#package : 'OpenPonk-BormModel',
+	#tag : 'Models'
 }
 
-{ #category : #adding }
+{ #category : 'adding' }
 BormCommunication >> addDataFlow: aDataFlow [
 	^ self add: aDataFlow
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 BormCommunication >> addDataFlowNamed: aString [
 	^ self add: (BormDataFlow named: aString)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormCommunication >> allEntities [
 	^ (Set with: self entity) , (self dataFlows flatCollect: #allEntities)
 		,
@@ -33,12 +35,12 @@ BormCommunication >> allEntities [
 				ifFalse: [ {} ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormCommunication >> constraint [
 	^ constraint
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormCommunication >> constraint: aConstraint [
 	self hasConstraint
 		ifTrue: [ ^ self ].
@@ -47,50 +49,50 @@ BormCommunication >> constraint: aConstraint [
 	self announceAdded: aConstraint
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormCommunication >> constraints [
 	^ constraint ifNil: [ #() ] ifNotNil: [ ^ {constraint} ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormCommunication >> dataFlows [
 
 	^ elements
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormCommunication >> elements [
 
 	self hasConstraint ifFalse: [ ^ super elements ].
 	^ super elements , { self constraint }
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 BormCommunication >> has: anEntity [
 	^ (super has: anEntity) or: [ constraint = anEntity ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 BormCommunication >> hasConstraint [
 	^ constraint isNotNil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormCommunication >> receiver [
 	^ receiver
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormCommunication >> receiver: anActivity [
 	receiver := anActivity
 ]
 
-{ #category : #removing }
+{ #category : 'removing' }
 BormCommunication >> removeAllDataFlows [
 	^ self removeAll
 ]
 
-{ #category : #removing }
+{ #category : 'removing' }
 BormCommunication >> removeConstraint [
 	self hasConstraint
 		ifFalse: [ ^ self ].
@@ -99,37 +101,37 @@ BormCommunication >> removeConstraint [
 	constraint := nil
 ]
 
-{ #category : #removing }
+{ #category : 'removing' }
 BormCommunication >> removeDataFlow: aDataFlow [
 	^ self remove: aDataFlow
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormCommunication >> sender [
 	^ sender
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormCommunication >> sender: anActivity [
 	sender := anActivity
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormCommunication >> source [
 	^ self sender
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormCommunication >> source: aSource [
 	self sender: aSource
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormCommunication >> target [
 	^ self receiver
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormCommunication >> target: aSource [
 	self receiver: aSource
 ]

@@ -4,20 +4,22 @@ Activity represents some behavior in the model being executed when traversing fr
 Activity can also communicate with activities in other participants using communications.
 "
 Class {
-	#name : #BormActivity,
-	#superclass : #BormProcessNode,
+	#name : 'BormActivity',
+	#superclass : 'BormProcessNode',
 	#instVars : [
 		'communications'
 	],
-	#category : #'OpenPonk-BormModel-Models'
+	#category : 'OpenPonk-BormModel-Models',
+	#package : 'OpenPonk-BormModel',
+	#tag : 'Models'
 }
 
-{ #category : #associating }
+{ #category : 'associating' }
 BormActivity >> ==> anActivity [
 	^ BormFactory communicationFrom: self to: anActivity
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormActivity >> allElements [
 	"should return all elements recursively (incl. sub-elements)"
 
@@ -25,28 +27,28 @@ BormActivity >> allElements [
 		   (Set with: each) , each allElements ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormActivity >> allEntities [
 	^ super allEntities , (self sent flatCollect: #allEntities)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormActivity >> communications [
 	^ communications copy
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormActivity >> has: anElement [
 	^ (super has: anElement) or: [ communications includes: anElement ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 BormActivity >> initialize [
 	super initialize.
 	communications := OrderedCollection new
 ]
 
-{ #category : #inspection }
+{ #category : 'inspection' }
 BormActivity >> inspectionCommunications [
 
 	<inspectorPresentationOrder: 35 title: 'Communications'>
@@ -73,12 +75,12 @@ BormActivity >> inspectionCommunications [
 		  yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormActivity >> isActivity [
 	^ true
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 BormActivity >> receive: aCommunication [
 	(communications includes: aCommunication)
 		ifTrue: [ ^ self ].
@@ -87,12 +89,12 @@ BormActivity >> receive: aCommunication [
 	self changed
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormActivity >> received [
 	^ communications select: [ :each | each receiver = self ]
 ]
 
-{ #category : #removing }
+{ #category : 'removing' }
 BormActivity >> removeAllCommunications [
 	communications copy
 		do: [ :each | 
@@ -100,7 +102,7 @@ BormActivity >> removeAllCommunications [
 			each receiver removeCommunication: each ]
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 BormActivity >> removeCommunication: aCommunication [
 	communications remove: aCommunication.
 	aCommunication sender = self
@@ -109,7 +111,7 @@ BormActivity >> removeCommunication: aCommunication [
 			self announceRemoved: aCommunication ]
 ]
 
-{ #category : #removing }
+{ #category : 'removing' }
 BormActivity >> removedFrom: aParticipant [
 	super
 		removedFrom: aParticipant
@@ -118,7 +120,7 @@ BormActivity >> removedFrom: aParticipant [
 			self removeAllCommunications ]
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 BormActivity >> send: aCommunication [
 	(communications includes: aCommunication)
 		ifTrue: [ ^ self ].
@@ -128,7 +130,7 @@ BormActivity >> send: aCommunication [
 	self announceAdded: aCommunication
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormActivity >> sent [
 	^ communications select: [ :each | each sender = self ]
 ]

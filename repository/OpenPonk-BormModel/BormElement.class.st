@@ -1,23 +1,25 @@
 Class {
-	#name : #BormElement,
-	#superclass : #OPModelObject,
+	#name : 'BormElement',
+	#superclass : 'OPModelObject',
 	#instVars : [
 		'entity'
 	],
-	#category : #'OpenPonk-BormModel-Models'
+	#category : 'OpenPonk-BormModel-Models',
+	#package : 'OpenPonk-BormModel',
+	#tag : 'Models'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormElement >> allEntities [
 	^ Set with: self entity
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormElement >> entity [
 	^ entity
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormElement >> entity: anEntity [
 	entity := SRToOneLink
 		on: self
@@ -27,7 +29,7 @@ BormElement >> entity: anEntity [
 		to: anEntity
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 BormElement >> initialize [
 	super initialize.
 	self entity: BormEntity new

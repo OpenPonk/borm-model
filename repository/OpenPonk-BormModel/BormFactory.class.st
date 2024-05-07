@@ -2,17 +2,19 @@
 I provide some shortcuts for doing Borm-Model related operations like creation, moving, etc.
 "
 Class {
-	#name : #BormFactory,
-	#superclass : #Object,
-	#category : #'OpenPonk-BormModel-Factory'
+	#name : 'BormFactory',
+	#superclass : 'Object',
+	#category : 'OpenPonk-BormModel-Factory',
+	#package : 'OpenPonk-BormModel',
+	#tag : 'Factory'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 BormFactory class >> addFqnTransitions: aCollection in: aParticipant [
 	aCollection do: [ :pair | self fqnTransitionFrom: pair key to: pair value in: aParticipant ]
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 BormFactory class >> communicationFrom: fromActivity to: toActivity [
 	| comm |
 	comm := BormCommunication from: fromActivity to: toActivity.
@@ -21,18 +23,18 @@ BormFactory class >> communicationFrom: fromActivity to: toActivity [
 	^ comm
 ]
 
-{ #category : #moving }
+{ #category : 'moving' }
 BormFactory class >> detachParticipantsFrom: aDiagram [
 
 	aDiagram elements removeAll
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 BormFactory class >> fqnTransitionFrom: fromName to: toName in: aParticipant [
 	^ self transitionFrom: aParticipant @ fromName to: aParticipant @ toName
 ]
 
-{ #category : #moving }
+{ #category : 'moving' }
 BormFactory class >> moveParticipantsFrom: aSourceDiagram to: aTargetDiagram [
 	aTargetDiagram removeAll.
 	"detach elements from old diagram without causing a cascade"
@@ -41,7 +43,7 @@ BormFactory class >> moveParticipantsFrom: aSourceDiagram to: aTargetDiagram [
 	aSourceDiagram elements removeAll
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 BormFactory class >> transitionFrom: fromNode to: toNode [
 	| transition |
 	transition := BormTransition from: fromNode to: toNode.

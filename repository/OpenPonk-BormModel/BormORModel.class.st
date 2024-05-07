@@ -2,32 +2,34 @@
 Diagram represents the topmost component of BORM model. It contains participants.
 "
 Class {
-	#name : #BormORModel,
-	#superclass : #BormElement,
+	#name : 'BormORModel',
+	#superclass : 'BormElement',
 	#instVars : [
 		'project'
 	],
-	#category : #'OpenPonk-BormModel-Models'
+	#category : 'OpenPonk-BormModel-Models',
+	#package : 'OpenPonk-BormModel',
+	#tag : 'Models'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BormORModel class >> stonAllInstVarNames [
 	^ super stonAllInstVarNames copyWithout: #project
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormORModel >> @ aFqn [
 	^ (aFqn includesSubstring: '::')
 		ifTrue: [ self nodeNamed: aFqn ]
 		ifFalse: [ self participantNamed: aFqn ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormORModel >> allEntities [
 	^ super allEntities , (self participants flatCollect: #allEntities)
 ]
 
-{ #category : #'gt-inspector' }
+{ #category : 'gt-inspector' }
 BormORModel >> inspectionParticipants [
 
 	<inspectorPresentationOrder: 30 title: 'Participants'>
@@ -48,29 +50,29 @@ BormORModel >> inspectionParticipants [
 		  yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormORModel >> nodeNamed: aString [
 	| aName |
 	aName := aString splitOn: '::'.
 	^ (self participantNamed: aName first) @ aName second
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormORModel >> participantNamed: aString [
 	^ self elementNamed: aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormORModel >> participants [
 	^ self elements
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormORModel >> project [
 	^ project
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormORModel >> project: aProject [
 	project := aProject
 ]
