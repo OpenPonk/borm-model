@@ -1,10 +1,11 @@
 Class {
-	#name : #BaselineOfBormModel,
-	#superclass : #BaselineOf,
-	#category : #BaselineOfBormModel
+	#name : 'BaselineOfBormModel',
+	#superclass : 'BaselineOf',
+	#category : 'BaselineOfBormModel',
+	#package : 'BaselineOfBormModel'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BaselineOfBormModel >> baseline: spec [
 	<baseline>
 	spec
