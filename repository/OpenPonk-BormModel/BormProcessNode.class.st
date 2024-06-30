@@ -106,6 +106,12 @@ BormProcessNode >> outgoing [
 	^ transitions select: [ :each | each source = self ]
 ]
 
+{ #category : 'accessing' }
+BormProcessNode >> participant [
+
+	^ self owner
+]
+
 { #category : 'removing' }
 BormProcessNode >> removeAllTransitions [
 	transitions copy
