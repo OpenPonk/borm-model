@@ -4,68 +4,62 @@ State represents a state of execution in which the participant currently is.
 Also the state can be regular (default), initial, final,  or both.
 "
 Class {
-	#name : #BormState,
-	#superclass : #BormProcessNode,
+	#name : 'BormState',
+	#superclass : 'BormProcessNode',
 	#instVars : [
 		'isInitial',
 		'isFinal'
 	],
-	#category : #'OpenPonk-BormModel-Models'
+	#category : 'OpenPonk-BormModel-Models',
+	#package : 'OpenPonk-BormModel',
+	#tag : 'Models'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormState >> beFinal [
 	self isFinal: true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormState >> beInitial [
 	self isInitial: true
 ]
 
-{ #category : #'gt-inspector' }
-BormState >> gtInspectorPresentation: composite [
-	<gtInspectorPresentationOrder: 30>
-	composite table
-		title: 'Transitions';
-		display: [ transitions ]
-]
-
-{ #category : #initialization }
+{ #category : 'initialization' }
 BormState >> initialize [
 	super initialize.
 	isInitial := false.
 	isFinal := false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormState >> isFinal [
 	^ isFinal
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormState >> isFinal: aBoolean [
 	isFinal := aBoolean.
 	self changed
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormState >> isInitial [
 	^ isInitial
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormState >> isInitial: aBoolean [
 	isInitial := aBoolean.
 	self changed
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormState >> isState [
 	^ true
 ]
 
-{ #category : #removing }
+{ #category : 'removing' }
 BormState >> removedFrom: aParticipant [
 	super removedFrom: aParticipant do: [ self removeAllTransitions ]
 ]

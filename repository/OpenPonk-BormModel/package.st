@@ -1,1 +1,1 @@
-Package { #name : #'OpenPonk-BormModel' }
+Package { #name : 'OpenPonk-BormModel' }

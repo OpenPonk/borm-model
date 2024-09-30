@@ -2,21 +2,23 @@
 Node is superclass of all nodes in a participant. They are connected with transitions.
 "
 Class {
-	#name : #BormProcessNode,
-	#superclass : #BormElement,
+	#name : 'BormProcessNode',
+	#superclass : 'BormElement',
 	#instVars : [
 		'transitions',
 		'submodel'
 	],
-	#category : #'OpenPonk-BormModel-Models'
+	#category : 'OpenPonk-BormModel-Models',
+	#package : 'OpenPonk-BormModel',
+	#tag : 'Models'
 }
 
-{ #category : #associating }
+{ #category : 'associating' }
 BormProcessNode >> -> aNode [
 	^ BormFactory transitionFrom: self to: aNode
 ]
 
-{ #category : #adding }
+{ #category : 'adding' }
 BormProcessNode >> addTransition: aTransition [
 	(transitions includes: aTransition)
 		ifTrue: [ ^ self ].
@@ -28,28 +30,36 @@ BormProcessNode >> addTransition: aTransition [
 		ifFalse: [ self changed ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
+BormProcessNode >> allElements [
+	"should return all elements recursively (incl. sub-elements)"
+
+	^ super allElements , (self transitions flatCollect: [ :each |
+		   (Set with: each) , each allElements ])
+]
+
+{ #category : 'accessing' }
 BormProcessNode >> allEntities [
 	^ (Set with: self entity) , (self outgoing flatCollect: #allEntities)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormProcessNode >> has: anElement [
 	^ transitions includes: anElement
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormProcessNode >> incoming [
 	^ transitions select: [ :each | each target = self ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 BormProcessNode >> initialize [
 	super initialize.
 	transitions := OrderedCollection new
 ]
 
-{ #category : #inspection }
+{ #category : 'inspection' }
 BormProcessNode >> inspectionTransitions [
 
 	<inspectorPresentationOrder: 30 title: 'Transitions'>
@@ -76,27 +86,33 @@ BormProcessNode >> inspectionTransitions [
 		  yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormProcessNode >> isActivity [
 	^ false
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormProcessNode >> isState [
 	^ false
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 BormProcessNode >> isSubmodelNode [
 	^ submodel isNotNil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormProcessNode >> outgoing [
 	^ transitions select: [ :each | each source = self ]
 ]
 
-{ #category : #removing }
+{ #category : 'accessing' }
+BormProcessNode >> participant [
+
+	^ self owner
+]
+
+{ #category : 'removing' }
 BormProcessNode >> removeAllTransitions [
 	transitions copy
 		do: [ :each | 
@@ -104,7 +120,7 @@ BormProcessNode >> removeAllTransitions [
 			each target removeTransition: each ]
 ]
 
-{ #category : #removing }
+{ #category : 'removing' }
 BormProcessNode >> removeTransition: aTransition [
 	transitions remove: aTransition.
 	aTransition source = self
@@ -113,23 +129,23 @@ BormProcessNode >> removeTransition: aTransition [
 			self announceRemoved: aTransition ]
 ]
 
-{ #category : #removing }
+{ #category : 'removing' }
 BormProcessNode >> removedFrom: aParticipant [
 	^ self subclassResponsibility
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormProcessNode >> submodel [
 	^ submodel
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormProcessNode >> submodel: aModel [
 	submodel := aModel.
 	self changed
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormProcessNode >> transitions [
 	^ transitions
 ]

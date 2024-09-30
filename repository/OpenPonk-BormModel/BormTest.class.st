@@ -1,6 +1,6 @@
 Class {
-	#name : #BormTest,
-	#superclass : #TestCase,
+	#name : 'BormTest',
+	#superclass : 'TestCase',
 	#instVars : [
 		'emptyParticipant',
 		'emptyState',
@@ -12,55 +12,57 @@ Class {
 		'emptyConstraint',
 		'emptyModel'
 	],
-	#category : #'OpenPonk-BormModel-Tests'
+	#category : 'OpenPonk-BormModel-Tests',
+	#package : 'OpenPonk-BormModel',
+	#tag : 'Tests'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 BormTest class >> isAbstract [
 	^ self = BormTest
 ]
 
-{ #category : #'testing - instance creation' }
+{ #category : 'testing - instance creation' }
 BormTest >> emptyActivity [
 	^ BormActivity new
 ]
 
-{ #category : #'testing - instance creation' }
+{ #category : 'testing - instance creation' }
 BormTest >> emptyCommunication [
 	^ BormCommunication new
 ]
 
-{ #category : #'testing - instance creation' }
+{ #category : 'testing - instance creation' }
 BormTest >> emptyConstraint [
 	^ BormConstraint new
 ]
 
-{ #category : #'testing - instance creation' }
+{ #category : 'testing - instance creation' }
 BormTest >> emptyDataFlow [
 	^ BormDataFlow new
 ]
 
-{ #category : #'testing - instance creation' }
+{ #category : 'testing - instance creation' }
 BormTest >> emptyModel [
 	^ BormORModel new
 ]
 
-{ #category : #'testing - instance creation' }
+{ #category : 'testing - instance creation' }
 BormTest >> emptyParticipant [
 	^ BormParticipant new
 ]
 
-{ #category : #'testing - instance creation' }
+{ #category : 'testing - instance creation' }
 BormTest >> emptyState [
 	^ BormState new
 ]
 
-{ #category : #'testing - instance creation' }
+{ #category : 'testing - instance creation' }
 BormTest >> emptyTransition [
 	^ BormTransition new
 ]
 
-{ #category : #'testing - instance creation' }
+{ #category : 'testing - instance creation' }
 BormTest >> fullParticipant [
 	| participant nodes |
 	participant := self emptyParticipant.
@@ -84,7 +86,7 @@ BormTest >> fullParticipant [
 	^ participant
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 BormTest >> setUp [
 	emptyModel := self emptyModel.
 	emptyParticipant := self emptyParticipant.
@@ -97,7 +99,7 @@ BormTest >> setUp [
 	eventTriggered := false
 ]
 
-{ #category : #'testing - instance creation' }
+{ #category : 'testing - instance creation' }
 BormTest >> transitionFrom: aSourceNode to: aTargetNode [
 	| aTransition |
 	(aTransition := self emptyTransition) from: aSourceNode to: aTargetNode.
@@ -106,7 +108,7 @@ BormTest >> transitionFrom: aSourceNode to: aTargetNode [
 	^ aTransition
 ]
 
-{ #category : #'testing - instance creation' }
+{ #category : 'testing - instance creation' }
 BormTest >> transitionsFrom: aSourceState to: aTargetState with: anActivity [
 	^ Array
 		with: (self transitionFrom: aSourceState to: anActivity)

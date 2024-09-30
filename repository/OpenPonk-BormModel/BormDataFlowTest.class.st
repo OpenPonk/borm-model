@@ -1,15 +1,17 @@
 Class {
-	#name : #BormDataFlowTest,
-	#superclass : #BormTest,
-	#category : #'OpenPonk-BormModel-Tests'
+	#name : 'BormDataFlowTest',
+	#superclass : 'BormTest',
+	#category : 'OpenPonk-BormModel-Tests',
+	#package : 'OpenPonk-BormModel',
+	#tag : 'Tests'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BormDataFlowTest >> testAllEntities [
 	self assert: emptyDataFlow allEntities equals: (Set with: emptyDataFlow entity)
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BormDataFlowTest >> testChangeDataFlowType [
 	self assert: emptyDataFlow isInput.
 	self deny: emptyDataFlow isOutput.
@@ -21,7 +23,7 @@ BormDataFlowTest >> testChangeDataFlowType [
 	self deny: emptyDataFlow isOutput
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BormDataFlowTest >> testDefaultDataFlow [
 	self assert: emptyDataFlow isInput.
 	self deny: emptyDataFlow isOutput

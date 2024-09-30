@@ -1,20 +1,22 @@
 Class {
-	#name : #BormActivityTest,
-	#superclass : #BormProcessNodeTest,
+	#name : 'BormActivityTest',
+	#superclass : 'BormProcessNodeTest',
 	#instVars : [
 		'sender',
 		'receiver',
 		'communication'
 	],
-	#category : #'OpenPonk-BormModel-Tests'
+	#category : 'OpenPonk-BormModel-Tests',
+	#package : 'OpenPonk-BormModel',
+	#tag : 'Tests'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormActivityTest >> emptyNode [
 	^ emptyActivity
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 BormActivityTest >> setUp [
 	super setUp.
 	sender := BormActivity new.
@@ -24,12 +26,12 @@ BormActivityTest >> setUp [
 	receiver receive: communication
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BormActivityTest >> testAllEntities [
 	self assert: emptyActivity allEntities equals: (Set with: emptyActivity entity)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BormActivityTest >> testCommunication [
 	self assert: communication sender equals: sender.
 	self assert: communication receiver equals: receiver.
@@ -40,27 +42,27 @@ BormActivityTest >> testCommunication [
 	self assert: receiver received anyOne equals: communication
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BormActivityTest >> testEmptyActivity [
 	self assert: emptyActivity sent isEmpty.
 	self assert: emptyActivity received isEmpty
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BormActivityTest >> testRemoveAllCommunications [
 	sender removeAllCommunications.
 	self assert: sender sent isEmpty.
 	self assert: receiver received isEmpty
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BormActivityTest >> testRemoveAllCommunications2 [
 	receiver removeAllCommunications.
 	self assert: sender sent isEmpty.
 	self assert: receiver received isEmpty
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BormActivityTest >> testRemoveCommunication [
 	self assert: sender sent size equals: 1.
 	self assert: receiver received size equals: 1.

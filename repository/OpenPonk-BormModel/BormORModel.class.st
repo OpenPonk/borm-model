@@ -2,43 +2,34 @@
 Diagram represents the topmost component of BORM model. It contains participants.
 "
 Class {
-	#name : #BormORModel,
-	#superclass : #BormElement,
+	#name : 'BormORModel',
+	#superclass : 'BormElement',
 	#instVars : [
 		'project'
 	],
-	#category : #'OpenPonk-BormModel-Models'
+	#category : 'OpenPonk-BormModel-Models',
+	#package : 'OpenPonk-BormModel',
+	#tag : 'Models'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BormORModel class >> stonAllInstVarNames [
 	^ super stonAllInstVarNames copyWithout: #project
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormORModel >> @ aFqn [
 	^ (aFqn includesSubstring: '::')
 		ifTrue: [ self nodeNamed: aFqn ]
 		ifFalse: [ self participantNamed: aFqn ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormORModel >> allEntities [
 	^ super allEntities , (self participants flatCollect: #allEntities)
 ]
 
-{ #category : #'gt-inspector' }
-BormORModel >> gtModelOn: aComposite [
-	<gtInspectorPresentationOrder: 30>
-	aComposite table
-		title: 'Participants';
-		display: [ self participants ];
-		column: 'Name' evaluated: [ :each | each name ] width: 100;
-		column: 'Type' evaluated: [ :each | each type ] width: 80;
-		column: 'Number of nodes' evaluated: [ :each | each nodes size ]
-]
-
-{ #category : #'gt-inspector' }
+{ #category : 'gt-inspector' }
 BormORModel >> inspectionParticipants [
 
 	<inspectorPresentationOrder: 30 title: 'Participants'>
@@ -59,39 +50,29 @@ BormORModel >> inspectionParticipants [
 		  yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormORModel >> nodeNamed: aString [
 	| aName |
 	aName := aString splitOn: '::'.
 	^ (self participantNamed: aName first) @ aName second
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormORModel >> participantNamed: aString [
 	^ self elementNamed: aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormORModel >> participants [
 	^ self elements
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormORModel >> project [
 	^ project
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormORModel >> project: aProject [
 	project := aProject
-]
-
-{ #category : #'gt-spotter' }
-BormORModel >> spotterForModelFor: aStep [
-	<spotterOrder: 5>
-	^ aStep listProcessor
-		title: 'Borm Participants';
-		allCandidates: [ self participants ];
-		itemName: #name;
-		filter: GTFilterSubstring
 ]

@@ -4,79 +4,52 @@ Participant is statemachine-like diagram; it is composed of states and transitio
 The type of a participant can be specified with BormParticipantType and role with BormParticipantRole.
 "
 Class {
-	#name : #BormParticipant,
-	#superclass : #BormElement,
+	#name : 'BormParticipant',
+	#superclass : 'BormElement',
 	#instVars : [
 		'type',
 		'role'
 	],
-	#category : #'OpenPonk-BormModel-Models'
+	#category : 'OpenPonk-BormModel-Models',
+	#package : 'OpenPonk-BormModel',
+	#tag : 'Models'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormParticipant >> @ aName [
 	^ self nodeNamed: aName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormParticipant >> allEntities [
 	^ (Set with: self entity) , (self nodes flatCollect: #allEntities)
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BormParticipant >> changed [
 	super changed.
 	owner changed
 ]
 
-{ #category : #defaults }
+{ #category : 'defaults' }
 BormParticipant >> defaultRole [
 	^ BormParticipantRole Undefined
 ]
 
-{ #category : #defaults }
+{ #category : 'defaults' }
 BormParticipant >> defaultType [
 	^ BormParticipantType Person
 ]
 
-{ #category : #'gt-inspector' }
-BormParticipant >> gtInspectorPresentation: composite [
-	<gtInspectorPresentationOrder: 30>
-	composite table
-		title: 'Nodes';
-		display: [ self nodes ];
-		column: 'Type'
-			evaluated: [ :each | 
-					each isState
-						ifTrue: [ 'state' ]
-						ifFalse: [ 'activity' ] ]
-			width: 60;
-		column: 'Name' evaluated: #name width: 100
-]
-
-{ #category : #'gt-inspector' }
-BormParticipant >> gtModelOn: aComposite [
-	<gtInspectorPresentationOrder: 30>
-	aComposite table
-		title: 'Details';
-		display: [ { 
-			'Name' -> self name.
-			'Type' -> self type.
-			'Role' -> self role.
-			 } ];
-		column: 'Detail' evaluated: #key;
-		column: 'Value' evaluated: #value
-]
-
-{ #category : #initialization }
+{ #category : 'initialization' }
 BormParticipant >> initialize [
 	super initialize.
 	type := self defaultType.
 	role := self defaultRole
 ]
 
-{ #category : #'gt-inspector' }
-BormParticipant >> inspectionParticipants [
+{ #category : 'gt-inspector' }
+BormParticipant >> inspectionNodes [
 
 	<inspectorPresentationOrder: 30 title: 'Nodes'>
 	^ SpTablePresenter new
@@ -95,33 +68,33 @@ BormParticipant >> inspectionParticipants [
 		  yourself
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormParticipant >> nodeNamed: aName [
 	^ self elementNamed: aName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormParticipant >> nodes [
 	^ self elements
 ]
 
-{ #category : #removing }
+{ #category : 'removing' }
 BormParticipant >> removeAllNodes [
 	self removeAll
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormParticipant >> role [
 	^ role
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormParticipant >> role: aParticipantRole [
 	role := aParticipantRole.
 	self changed
 ]
 
-{ #category : #'gt-spotter' }
+{ #category : 'gt-spotter' }
 BormParticipant >> spotterForCommunicationFor: aStep [
 	<spotterOrder: 5>
 	^ aStep listProcessor
@@ -130,7 +103,7 @@ BormParticipant >> spotterForCommunicationFor: aStep [
  ]
 ]
 
-{ #category : #'gt-spotter' }
+{ #category : 'gt-spotter' }
 BormParticipant >> spotterPreviewOn: aComposite [
 	<spotterPreview: 5>
 	
@@ -146,12 +119,12 @@ BormParticipant >> spotterPreviewOn: aComposite [
 		entity: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormParticipant >> type [
 	^ type
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormParticipant >> type: aParticipantType [
 	type := aParticipantType.
 	self changed

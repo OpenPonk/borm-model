@@ -1,16 +1,18 @@
 Trait {
-	#name : #TBormRelationship,
-	#category : #'OpenPonk-BormModel-Models'
+	#name : 'TBormRelationship',
+	#category : 'OpenPonk-BormModel-Models',
+	#package : 'OpenPonk-BormModel',
+	#tag : 'Models'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TBormRelationship classSide >> from: aSourceObject to: aTargetObject [
 	^ self new
 		from: aSourceObject to: aTargetObject;
 		yourself
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TBormRelationship classSide >> from: aSourceObject to: aTargetObject named: aString [
 	^ self new
 		from: aSourceObject to: aTargetObject;
@@ -18,7 +20,7 @@ TBormRelationship classSide >> from: aSourceObject to: aTargetObject named: aStr
 		yourself
 ]
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TBormRelationship >> from: aSource to: aTarget [
 	self source: aSource.
 	self target: aTarget

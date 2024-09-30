@@ -1,10 +1,12 @@
 Class {
-	#name : #BormParticipantTest,
-	#superclass : #BormTest,
-	#category : #'OpenPonk-BormModel-Tests'
+	#name : 'BormParticipantTest',
+	#superclass : 'BormTest',
+	#category : 'OpenPonk-BormModel-Tests',
+	#package : 'OpenPonk-BormModel',
+	#tag : 'Tests'
 }
 
-{ #category : #tests }
+{ #category : 'tests' }
 BormParticipantTest >> testAddNodes [
 	self assert: emptyParticipant nodes size equals: 0.
 	emptyParticipant add: emptyState.
@@ -17,12 +19,12 @@ BormParticipantTest >> testAddNodes [
 	self assert: emptyActivity owner equals: emptyParticipant
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BormParticipantTest >> testAllEntities [
 	self assert: emptyParticipant allEntities equals: {emptyParticipant entity} asSet
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BormParticipantTest >> testAllEntities2 [
 	emptyParticipant add: emptyState.
 	self
@@ -30,20 +32,20 @@ BormParticipantTest >> testAllEntities2 [
 		equals: (Set with: emptyParticipant entity with: emptyState entity)
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BormParticipantTest >> testBigParticipant [
 	| person |
 	person := self fullParticipant.
 	self assert: person nodes size equals: 5
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BormParticipantTest >> testChangeRole [
 	emptyParticipant role: BormParticipantRole Cooperates.
 	self assert: emptyParticipant role equals: BormParticipantRole Cooperates
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BormParticipantTest >> testChangeType [
 	emptyParticipant type: BormParticipantType Organization.
 	self assert: emptyParticipant type equals: BormParticipantType Organization.
@@ -53,17 +55,17 @@ BormParticipantTest >> testChangeType [
 	self assert: emptyParticipant type equals: BormParticipantType Person
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BormParticipantTest >> testDefaultRole [
 	self assert: emptyParticipant role equals: BormParticipantRole Undefined
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BormParticipantTest >> testDefaultType [
 	self assert: emptyParticipant type equals: BormParticipantType Person
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BormParticipantTest >> testRemoveAllNodes [
 	| participant |
 	participant := self fullParticipant.
@@ -72,7 +74,7 @@ BormParticipantTest >> testRemoveAllNodes [
 	self assert: participant nodes isEmpty
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 BormParticipantTest >> testRemoveNodes [
 	emptyParticipant add: emptyState.
 	emptyParticipant add: emptyActivity.

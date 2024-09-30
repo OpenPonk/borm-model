@@ -2,8 +2,8 @@
 Transition is a link between process nodes. It can have associated constraint label.
 "
 Class {
-	#name : #BormTransition,
-	#superclass : #BormElement,
+	#name : 'BormTransition',
+	#superclass : 'BormElement',
 	#traits : 'TBormRelationship',
 	#classTraits : 'TBormRelationship classTrait',
 	#instVars : [
@@ -11,10 +11,12 @@ Class {
 		'source',
 		'target'
 	],
-	#category : #'OpenPonk-BormModel-Models'
+	#category : 'OpenPonk-BormModel-Models',
+	#package : 'OpenPonk-BormModel',
+	#tag : 'Models'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormTransition >> allEntities [
 	^ (Set with: self entity)
 		,
@@ -23,12 +25,12 @@ BormTransition >> allEntities [
 				ifFalse: [ {} ])
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormTransition >> constraint [
 	^ constraint
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormTransition >> constraint: aConstraint [
 	self hasConstraint
 		ifTrue: [ ^ self ].
@@ -37,22 +39,29 @@ BormTransition >> constraint: aConstraint [
 	self announceAdded: aConstraint
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormTransition >> constraints [
 	^ constraint ifNil: [ #() ] ifNotNil: [ ^ {constraint} ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
+BormTransition >> elements [
+
+	self hasConstraint ifFalse: [ ^ #(  ) ].
+	^ { self constraint }
+]
+
+{ #category : 'accessing' }
 BormTransition >> has: anEntity [
 	^ constraint = anEntity
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 BormTransition >> hasConstraint [
 	^ constraint isNotNil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormTransition >> removeConstraint [
 	self hasConstraint
 		ifFalse: [ ^ self ].
@@ -61,22 +70,22 @@ BormTransition >> removeConstraint [
 	constraint := nil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormTransition >> source [
 	^ source
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormTransition >> source: aNode [
 	source := aNode
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormTransition >> target [
 	^ target
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BormTransition >> target: aNode [
 	target := aNode
 ]
