@@ -5,16 +5,16 @@ Class {
 	#package : 'BaselineOfBormModel'
 }
 
-{ #category : 'accessing' }
+{ #category : 'baselines' }
 BaselineOfBormModel >> baseline: spec [
 	<baseline>
 	spec
 		for: #common
 		do: [ spec
 				baseline: 'OpenPonkModel'
-					with: [ spec repository: 'github://openponk/openponk-model/repository' ];
+					with: [ spec repository: 'github://openponk/openponk-model' ];
 				baseline: 'SynchronizedLinks'
-					with: [ spec repository: 'github://openponk/synchronized-links/repository' ].
+					with: [ spec repository: 'github://openponk/synchronized-links' ].
 			spec
 				package: 'OpenPonk-BormModel'
 				with: [ spec requires: #('OpenPonkModel' 'SynchronizedLinks') ].
