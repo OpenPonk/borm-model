@@ -14,7 +14,8 @@ Class {
 }
 
 { #category : 'associating' }
-BormProcessNode >> -> aNode [
+BormProcessNode >> => aNode [
+
 	^ BormFactory transitionFrom: self to: aNode
 ]
 
