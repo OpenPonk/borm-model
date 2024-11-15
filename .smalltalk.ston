@@ -1,12 +1,15 @@
 SmalltalkCISpec {
 	#loading : [
 		SCIMetacelloLoadSpec {
-			#baseline : 'BormModel',
+			#baseline : 'OpenPonkBormModel',
 			#directory : 'repository',
 			#platforms : [ #pharo ]
 		}
 	],
 	#testing : {
-		#packages : [ 'OpenPonk-BormModel*' ]
+		#packages : [ 'OpenPonk*' ],
+		#coverage : {
+			#packages : [ 'OpenPonk-Borm*' ]
+		}
 	}
 }
