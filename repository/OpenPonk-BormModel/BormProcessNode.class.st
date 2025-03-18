@@ -6,7 +6,11 @@ Class {
 	#superclass : 'BormElement',
 	#instVars : [
 		'transitions',
-		'submodel'
+		'submodel',
+		'inputSimulationCondition',
+		'outputSimulationCondition',
+		'inputTransitionSimulationCondition',
+		'inputCommunicationSimulationCondition'
 	],
 	#category : 'OpenPonk-BormModel-Models',
 	#package : 'OpenPonk-BormModel',
@@ -56,8 +60,49 @@ BormProcessNode >> incoming [
 
 { #category : 'initialization' }
 BormProcessNode >> initialize [
+
 	super initialize.
-	transitions := OrderedCollection new
+	transitions := OrderedCollection new.
+	inputTransitionSimulationCondition := BormNodeAllNeighborSimulationCondition
+		                                      new.
+	inputCommunicationSimulationCondition := BormNodeAllNeighborSimulationCondition
+		                                      new.
+	outputSimulationCondition := BormNodeAllNeighborSimulationCondition
+		                             new
+]
+
+{ #category : 'accessing' }
+BormProcessNode >> inputCommunicationSimulationCondition [
+
+	^ inputCommunicationSimulationCondition
+]
+
+{ #category : 'accessing' }
+BormProcessNode >> inputCommunicationSimulationCondition: aBormNodeAnyNeighborSimulationCondition [
+
+	inputCommunicationSimulationCondition := aBormNodeAnyNeighborSimulationCondition
+]
+
+{ #category : 'accessing' }
+BormProcessNode >> inputSimulationCondition [
+	^ inputSimulationCondition
+]
+
+{ #category : 'accessing' }
+BormProcessNode >> inputSimulationCondition: aBormNodeAnyNeighborSimulationCondition [ 
+	inputSimulationCondition := aBormNodeAnyNeighborSimulationCondition
+]
+
+{ #category : 'accessing' }
+BormProcessNode >> inputTransitionSimulationCondition [
+
+	^ inputTransitionSimulationCondition
+]
+
+{ #category : 'accessing' }
+BormProcessNode >> inputTransitionSimulationCondition: aBormNodeAnyNeighborSimulationCondition [
+
+	inputTransitionSimulationCondition   := aBormNodeAnyNeighborSimulationCondition
 ]
 
 { #category : 'inspection' }
@@ -105,6 +150,16 @@ BormProcessNode >> isSubmodelNode [
 { #category : 'accessing' }
 BormProcessNode >> outgoing [
 	^ transitions select: [ :each | each source = self ]
+]
+
+{ #category : 'accessing' }
+BormProcessNode >> outputSimulationCondition [
+	^ outputSimulationCondition
+]
+
+{ #category : 'accessing' }
+BormProcessNode >> outputSimulationCondition: aBormNodeAnyNeighborSimulationCondition [ 
+	outputSimulationCondition := aBormNodeAnyNeighborSimulationCondition
 ]
 
 { #category : 'accessing' }
