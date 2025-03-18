@@ -5,3 +5,8 @@ Class {
 	#package : 'OpenPonk-BormModel',
 	#tag : 'Models'
 }
+
+{ #category : 'hooks' }
+BormNodeNoneNeighborSimulationCondition >> nameAsOutput [ 
+	^ 'None'
+]

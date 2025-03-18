@@ -17,3 +17,15 @@ BormNodeSimulationCondition >> hash [
 
 	^ self class hash
 ]
+
+{ #category : 'hooks' }
+BormNodeSimulationCondition >> nameAsInput [
+
+	^ self nameAsOutput
+]
+
+{ #category : 'hooks' }
+BormNodeSimulationCondition >> nameAsOutput [
+
+	^ self subclassResponsibility
+]

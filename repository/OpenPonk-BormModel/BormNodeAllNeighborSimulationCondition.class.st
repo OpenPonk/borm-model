@@ -5,3 +5,9 @@ Class {
 	#package : 'OpenPonk-BormModel',
 	#tag : 'Models'
 }
+
+{ #category : 'hooks' }
+BormNodeAllNeighborSimulationCondition >> nameAsOutput [
+
+	^ 'All'
+]
