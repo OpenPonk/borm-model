@@ -29,11 +29,11 @@ BormORModel >> allEntities [
 	^ super allEntities , (self participants flatCollect: #allEntities)
 ]
 
-{ #category : 'gt-inspector' }
-BormORModel >> inspectionParticipants [
+{ #category : 'as yet unclassified' }
+BormORModel >> inspectionParticipants: aBuilder [
 
 	<inspectorPresentationOrder: 30 title: 'Participants'>
-	^ SpTablePresenter new
+	^ aBuilder newTable
 		  items: self participants;
 		  addColumn: (SpStringTableColumn new
 				   title: 'Name';

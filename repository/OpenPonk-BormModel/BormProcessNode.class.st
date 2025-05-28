@@ -105,11 +105,11 @@ BormProcessNode >> inputTransitionSimulationCondition: aBormNodeAnyNeighborSimul
 	inputTransitionSimulationCondition   := aBormNodeAnyNeighborSimulationCondition
 ]
 
-{ #category : 'inspection' }
-BormProcessNode >> inspectionTransitions [
+{ #category : 'as yet unclassified' }
+BormProcessNode >> inspectionTransitions: aBuilder [
 
 	<inspectorPresentationOrder: 30 title: 'Transitions'>
-	^ SpTablePresenter new
+	^ aBuilder newTable
 		  items: self transitions;
 		  addColumn: (SpStringTableColumn new
 				   title: 'Name';
@@ -117,17 +117,17 @@ BormProcessNode >> inspectionTransitions [
 				   yourself);
 		  addColumn: (SpStringTableColumn new
 				   title: 'Direction';
-				   evaluated: [ :transition | 
-					   transition source = self
-						   ifTrue: [ 'outgoing' ]
-						   ifFalse: [ 'incoming' ] ];
+				   evaluated: [ :transition |
+						   transition source = self
+							   ifTrue: [ 'outgoing' ]
+							   ifFalse: [ 'incoming' ] ];
 				   yourself);
 		  addColumn: (SpStringTableColumn new
 				   title: 'Source / Target';
-				   evaluated: [ :transition | 
-					   transition source = self
-						   ifTrue: [ transition target name ]
-						   ifFalse: [ transition source name ] ];
+				   evaluated: [ :transition |
+						   transition source = self
+							   ifTrue: [ transition target name ]
+							   ifFalse: [ transition source name ] ];
 				   yourself);
 		  yourself
 ]

@@ -48,18 +48,18 @@ BormParticipant >> initialize [
 	role := self defaultRole
 ]
 
-{ #category : 'gt-inspector' }
-BormParticipant >> inspectionNodes [
+{ #category : 'as yet unclassified' }
+BormParticipant >> inspectionNodes: aBuilder [
 
 	<inspectorPresentationOrder: 30 title: 'Nodes'>
-	^ SpTablePresenter new
+	^ aBuilder newTable
 		  items: self nodes;
 		  addColumn: (SpStringTableColumn new
 				   title: 'Type';
-				   evaluated: [ :each | 
-					   each isState
-						   ifTrue: [ 'state' ]
-						   ifFalse: [ 'activity' ] ];
+				   evaluated: [ :each |
+						   each isState
+							   ifTrue: [ 'state' ]
+							   ifFalse: [ 'activity' ] ];
 				   yourself);
 		  addColumn: (SpStringTableColumn new
 				   title: 'Name';

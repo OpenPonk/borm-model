@@ -48,11 +48,11 @@ BormActivity >> initialize [
 	communications := OrderedCollection new
 ]
 
-{ #category : 'inspection' }
-BormActivity >> inspectionCommunications [
+{ #category : 'as yet unclassified' }
+BormActivity >> inspectionCommunications: aBuilder [
 
 	<inspectorPresentationOrder: 35 title: 'Communications'>
-	^ SpTablePresenter new
+	^ aBuilder newTable
 		  items: self communications;
 		  addColumn: (SpStringTableColumn new
 				   title: 'Name';
@@ -60,17 +60,17 @@ BormActivity >> inspectionCommunications [
 				   yourself);
 		  addColumn: (SpStringTableColumn new
 				   title: 'Direction';
-				   evaluated: [ :communication | 
-					   communication source = self
-						   ifTrue: [ 'sent' ]
-						   ifFalse: [ 'received' ] ];
+				   evaluated: [ :communication |
+						   communication source = self
+							   ifTrue: [ 'sent' ]
+							   ifFalse: [ 'received' ] ];
 				   yourself);
 		  addColumn: (SpStringTableColumn new
 				   title: 'Sender / Receiver';
-				   evaluated: [ :communication | 
-					   communication source = self
-						   ifTrue: [ communication target name ]
-						   ifFalse: [ communication source name ] ];
+				   evaluated: [ :communication |
+						   communication source = self
+							   ifTrue: [ communication target name ]
+							   ifFalse: [ communication source name ] ];
 				   yourself);
 		  yourself
 ]
