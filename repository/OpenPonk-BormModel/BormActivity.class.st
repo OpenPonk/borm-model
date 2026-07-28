@@ -23,8 +23,9 @@ BormActivity >> ==> anActivity [
 BormActivity >> allElements [
 	"should return all elements recursively (incl. sub-elements)"
 
-	^ super allElements , (self communications flatCollect: [ :each |
-		   (Set with: each) , each allElements ])
+	^ super allElements
+	  ,
+	  (self communications flatCollect: [ :each | each withAllElements ])
 ]
 
 { #category : 'accessing' }
