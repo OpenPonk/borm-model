@@ -1,5 +1,5 @@
 "
-Diagram represents the topmost component of BORM model. It contains participants.
+I am the root container and topmost element of a BORM Object Relation model. I manage the collection of participants and serve as the primary entry point for the diagram's semantic structure.
 "
 Class {
 	#name : 'BormORModel',
@@ -12,7 +12,7 @@ Class {
 	#tag : 'Models'
 }
 
-{ #category : 'as yet unclassified' }
+{ #category : 'ston' }
 BormORModel class >> stonAllInstVarNames [
 	^ super stonAllInstVarNames copyWithout: #project
 ]

@@ -1,5 +1,5 @@
 "
-Node is superclass of all nodes in a participant. They are connected with transitions.
+I am the abstract base class for process nodes (such as states and activities) within a BORM participant. I manage incoming and outgoing transitions and handle simulation conditions for process execution.
 "
 Class {
 	#name : 'BormProcessNode',
@@ -49,6 +49,12 @@ BormProcessNode >> allEntities [
 ]
 
 { #category : 'accessing' }
+BormProcessNode >> communications [
+
+	^ #(  )
+]
+
+{ #category : 'testing' }
 BormProcessNode >> has: anElement [
 	^ transitions includes: anElement
 ]
@@ -178,11 +184,11 @@ BormProcessNode >> removeAllTransitions [
 
 { #category : 'removing' }
 BormProcessNode >> removeTransition: aTransition [
+
 	transitions remove: aTransition.
-	aTransition source = self
-		ifTrue: [ 
-			aTransition removedFrom: self.
-			self announceRemoved: aTransition ]
+	aTransition source = self ifFalse: [ ^ self ].
+	aTransition removedFrom: self.
+	self announceRemovedChild: aTransition
 ]
 
 { #category : 'removing' }

@@ -1,3 +1,6 @@
+"
+I am an abstract unit test class verifying the common behavior of BORM process nodes, testing transition assignments, entity retrieval, and submodel linkages.
+"
 Class {
 	#name : 'BormProcessNodeTest',
 	#superclass : 'BormTest',

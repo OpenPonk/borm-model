@@ -1,5 +1,5 @@
 "
-Communication is a channel between two activities. Activites can send data flows in both directions through this channel
+I represent a communication channel between two activities in a BORM model. I manage directional data flows sent between a sender and a receiver, and can hold an associated constraint.
 "
 Class {
 	#name : 'BormCommunication',
@@ -97,7 +97,7 @@ BormCommunication >> removeConstraint [
 	self hasConstraint
 		ifFalse: [ ^ self ].
 	constraint removedFrom: self.
-	self announceRemoved: constraint.
+	self announceRemovedChild: constraint.
 	constraint := nil
 ]
 

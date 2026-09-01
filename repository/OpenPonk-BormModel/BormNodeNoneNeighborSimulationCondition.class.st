@@ -1,3 +1,6 @@
+"
+I am a specific BORM simulation condition indicating that NONE of the specified neighbor transitions should be active or fulfilled.
+"
 Class {
 	#name : 'BormNodeNoneNeighborSimulationCondition',
 	#superclass : 'BormNodeSimulationCondition',

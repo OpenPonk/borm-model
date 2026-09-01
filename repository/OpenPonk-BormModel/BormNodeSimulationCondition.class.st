@@ -1,3 +1,6 @@
+"
+I am the abstract base class for simulation conditions applied to BORM nodes. I define how a node evaluates its input or output neighbors during process simulation.
+"
 Class {
 	#name : 'BormNodeSimulationCondition',
 	#superclass : 'Object',

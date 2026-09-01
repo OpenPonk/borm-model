@@ -1,5 +1,5 @@
 "
-I provide some shortcuts for doing Borm-Model related operations like creation, moving, etc.
+I am a utility factory for BORM models. I provide high-level shortcuts for generating transitions, creating communications, and moving participants between processes.
 "
 Class {
 	#name : 'BormFactory',

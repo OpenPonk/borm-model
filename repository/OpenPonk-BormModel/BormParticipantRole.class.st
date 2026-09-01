@@ -1,7 +1,5 @@
 "
-I represent the possible roles for a participant.
-
-See the class side for the listing.
+I provide constant identifiers for the roles a participant can assume in a BORM model (e.g., `IsResponsible`, `Initiates`, `Cooperates`).
 "
 Class {
 	#name : 'BormParticipantRole',

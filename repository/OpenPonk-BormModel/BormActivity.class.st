@@ -1,7 +1,5 @@
 "
-Activity represents some behavior in the model being executed when traversing from one state to another.
-
-Activity can also communicate with activities in other participants using communications.
+I represent an activity within a BORM participant's process flow. I model executed behavior occurring between states and can engage in external communications with activities in other participants.
 "
 Class {
 	#name : 'BormActivity',
@@ -38,7 +36,7 @@ BormActivity >> communications [
 	^ communications copy
 ]
 
-{ #category : 'accessing' }
+{ #category : 'testing' }
 BormActivity >> has: anElement [
 	^ (super has: anElement) or: [ communications includes: anElement ]
 ]
@@ -105,11 +103,11 @@ BormActivity >> removeAllCommunications [
 
 { #category : 'adding' }
 BormActivity >> removeCommunication: aCommunication [
+
 	communications remove: aCommunication.
-	aCommunication sender = self
-		ifTrue: [ 
-			aCommunication removedFrom: self.
-			self announceRemoved: aCommunication ]
+	aCommunication sender = self ifFalse: [ ^ self ].
+	aCommunication removedFrom: self.
+	self announceRemovedChild: aCommunication
 ]
 
 { #category : 'removing' }

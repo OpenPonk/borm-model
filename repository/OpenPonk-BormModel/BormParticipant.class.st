@@ -1,7 +1,5 @@
 "
-Participant is statemachine-like diagram; it is composed of states and transitions between them.
-
-The type of a participant can be specified with BormParticipantType and role with BormParticipantRole.
+I represent a participant in a BORM model, acting as a state machine-like container composed of states, activities, and transitions. I define my specific participant type and organizational role.
 "
 Class {
 	#name : 'BormParticipant',
@@ -25,7 +23,7 @@ BormParticipant >> allEntities [
 	^ (Set with: self entity) , (self nodes flatCollect: #allEntities)
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'updating' }
 BormParticipant >> changed [
 	super changed.
 	owner changed
@@ -92,31 +90,6 @@ BormParticipant >> role [
 BormParticipant >> role: aParticipantRole [
 	role := aParticipantRole.
 	self changed
-]
-
-{ #category : 'gt-spotter' }
-BormParticipant >> spotterForCommunicationFor: aStep [
-	<spotterOrder: 5>
-	^ aStep listProcessor
-		title: 'Incoming communications';
-		allCandidates: [ (self nodes select: [ :each | each isKindOf: BormActivity ] thenCollect: [ :each | each received ]) flattened
- ]
-]
-
-{ #category : 'gt-spotter' }
-BormParticipant >> spotterPreviewOn: aComposite [
-	<spotterPreview: 5>
-	
-	^ aComposite table
-		title: 'Details';
-		display: [ { 
-			'Name' -> self name.
-			'Type' -> self type.
-			'Role' -> self role.
-			 } ];
-		column: 'Detail' evaluated: #key;
-		column: 'Value' evaluated: #value;
-		entity: self
 ]
 
 { #category : 'accessing' }

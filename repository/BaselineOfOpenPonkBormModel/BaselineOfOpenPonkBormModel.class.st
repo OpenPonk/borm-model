@@ -1,3 +1,6 @@
+"
+Metacello baseline for the OpenPonk BORM model definitions, managing package dependencies and load configurations.
+"
 Class {
 	#name : 'BaselineOfOpenPonkBormModel',
 	#superclass : 'BaselineOf',

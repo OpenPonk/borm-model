@@ -1,3 +1,6 @@
+"
+I am a unit test class verifying the behavior of BORM communications, including the addition, removal, and lifecycle management of contained data flows.
+"
 Class {
 	#name : 'BormCommunicationTest',
 	#superclass : 'BormTest',

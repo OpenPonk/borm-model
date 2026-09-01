@@ -1,3 +1,6 @@
+"
+I am a unit test class verifying the specific behavior of BORM states, extending node tests to check initial and final state toggles.
+"
 Class {
 	#name : 'BormStateTest',
 	#superclass : 'BormProcessNodeTest',

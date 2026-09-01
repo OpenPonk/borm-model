@@ -1,3 +1,6 @@
+"
+I am a unit test class verifying the behavior of BORM data flows, specifically focusing on their input/output typings and entity associations.
+"
 Class {
 	#name : 'BormDataFlowTest',
 	#superclass : 'BormTest',
@@ -6,12 +9,12 @@ Class {
 	#tag : 'Tests'
 }
 
-{ #category : 'as yet unclassified' }
+{ #category : 'tests' }
 BormDataFlowTest >> testAllEntities [
 	self assert: emptyDataFlow allEntities equals: (Set with: emptyDataFlow entity)
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'tests' }
 BormDataFlowTest >> testChangeDataFlowType [
 	self assert: emptyDataFlow isInput.
 	self deny: emptyDataFlow isOutput.

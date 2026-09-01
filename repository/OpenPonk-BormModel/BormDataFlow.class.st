@@ -1,7 +1,5 @@
 "
-Data flow is an optional data package sent through communication channel from one activity to another.
-
-The sender can send ""input"" (default) data flows (from the receivers perspective), while the receiver can answer with ""output"" data flows.
+I represent a data flow package exchanged through a BORM communication channel. I indicate whether the data is an input or an output from the perspective of the receiving activity.
 "
 Class {
 	#name : 'BormDataFlow',
@@ -24,17 +22,12 @@ BormDataFlow class >> outputType [
 	^ #output
 ]
 
-{ #category : 'accessing' }
-BormDataFlow >> allEntities [
-	^ Set with: self entity
-]
-
-{ #category : 'accessing' }
+{ #category : 'actions' }
 BormDataFlow >> beInput [
 	^ type := self class inputType
 ]
 
-{ #category : 'accessing' }
+{ #category : 'actions' }
 BormDataFlow >> beOutput [
 	type := self class outputType
 ]

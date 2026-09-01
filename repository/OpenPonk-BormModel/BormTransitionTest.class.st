@@ -1,3 +1,6 @@
+"
+I am a unit test class verifying the behavior of BORM transitions, focusing on source/target node connections and constraint assignments.
+"
 Class {
 	#name : 'BormTransitionTest',
 	#superclass : 'BormTest',

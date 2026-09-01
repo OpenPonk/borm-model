@@ -1,3 +1,6 @@
+"
+I am the abstract base class for all elements in the BORM (Business Object Relation Modeling) metamodel. I manage an optional reference to a semantic conceptual entity that I represent.
+"
 Class {
 	#name : 'BormElement',
 	#superclass : 'OPModelObject',

@@ -1,3 +1,6 @@
+"
+I am a unit test class verifying the behavior of BORM participants, including role/type configurations and the management of their internal process nodes.
+"
 Class {
 	#name : 'BormParticipantTest',
 	#superclass : 'BormTest',
