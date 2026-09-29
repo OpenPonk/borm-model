@@ -1,5 +1,5 @@
 "
-Transition is a link between process nodes. It can have associated constraint label.
+I represent a directed transition link between two BORM process nodes (states or activities). I define the process flow and can be governed by an associated constraint.
 "
 Class {
 	#name : 'BormTransition',
@@ -51,7 +51,7 @@ BormTransition >> elements [
 	^ { self constraint }
 ]
 
-{ #category : 'accessing' }
+{ #category : 'testing' }
 BormTransition >> has: anEntity [
 	^ constraint = anEntity
 ]
@@ -66,7 +66,7 @@ BormTransition >> removeConstraint [
 	self hasConstraint
 		ifFalse: [ ^ self ].
 	constraint removedFrom: self.
-	self announceRemoved: constraint.
+	self announceRemovedChild: constraint.
 	constraint := nil
 ]
 

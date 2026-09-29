@@ -1,3 +1,6 @@
+"
+I am a unit test class verifying the behavior of BORM Object Relation models, ensuring correct participant management and entity retrieval at the root level.
+"
 Class {
 	#name : 'BormORModelTest',
 	#superclass : 'BormTest',
@@ -10,7 +13,7 @@ Class {
 BormORModelTest >> testAddParticipant [
 
 	emptyModel
-		when: OPElementAdded
+		when: OPModelChildAdded
 		do: [ :event | eventTriggered := true ]
 		for: self.
 	emptyModel add: emptyParticipant.
@@ -48,7 +51,7 @@ BormORModelTest >> testRemoveAll [
 BormORModelTest >> testRemoveParticipant [
 
 	emptyModel
-		when: OPElementRemoved
+		when: OPModelChildRemoved
 		do: [ :event | eventTriggered := true ]
 		for: self.
 	emptyModel add: emptyParticipant.

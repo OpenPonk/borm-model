@@ -1,3 +1,6 @@
+"
+I am a trait providing common edge-creation behavior (e.g., `from:to:`) for BORM directional relationships (transitions and communications).
+"
 Trait {
 	#name : 'TBormRelationship',
 	#category : 'OpenPonk-BormModel-Models',

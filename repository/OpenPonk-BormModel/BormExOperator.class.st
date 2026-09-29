@@ -1,5 +1,5 @@
 "
-Operator lists all possible types of a Clause. See class-side for listing.
+I provide constant identifiers (`All`, `Any`, `One`) representing the possible logical operators for clauses within a BORM boolean expression tree.
 "
 Class {
 	#name : 'BormExOperator',

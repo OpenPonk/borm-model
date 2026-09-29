@@ -1,3 +1,6 @@
+"
+I am a unit test class verifying the specific behavior of BORM activities, extending node tests to include communication channels and data exchanges.
+"
 Class {
 	#name : 'BormActivityTest',
 	#superclass : 'BormProcessNodeTest',
@@ -11,7 +14,7 @@ Class {
 	#tag : 'Tests'
 }
 
-{ #category : 'accessing' }
+{ #category : 'testing - instance creation' }
 BormActivityTest >> emptyNode [
 	^ emptyActivity
 ]

@@ -1,5 +1,5 @@
 "
-BormExVariable is a leaf of an expression tree, it represents a process node.
+I am a leaf node in a BORM boolean expression tree. I wrap a reference to a specific BORM process node, representing its execution state as a boolean variable.
 "
 Class {
 	#name : 'BormExVariable',

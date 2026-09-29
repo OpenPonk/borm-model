@@ -1,3 +1,6 @@
+"
+I am an abstract base class for BORM metamodel unit tests. I provide boilerplate setups for empty models, participants, states, activities, and relationships to facilitate testing.
+"
 Class {
 	#name : 'BormTest',
 	#superclass : 'TestCase',
@@ -88,6 +91,8 @@ BormTest >> fullParticipant [
 
 { #category : 'running' }
 BormTest >> setUp [
+
+	super setUp.
 	emptyModel := self emptyModel.
 	emptyParticipant := self emptyParticipant.
 	emptyState := self emptyState.

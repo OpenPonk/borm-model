@@ -1,3 +1,6 @@
+"
+I represent a conceptual semantic entity in a BORM model. I track all my structural and visual representations across different diagrams or model elements.
+"
 Class {
 	#name : 'BormEntity',
 	#superclass : 'OPModelObject',
@@ -14,7 +17,7 @@ BormEntity >> addRepresentation: anElement [
 	self representations add: anElement
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'initialization' }
 BormEntity >> initialize [
 	super initialize.
 	representations := SRToManyLink on: self slot: #representations oppositeSlot: #entity

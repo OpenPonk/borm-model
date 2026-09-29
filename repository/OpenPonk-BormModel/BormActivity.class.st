@@ -1,7 +1,5 @@
 "
-Activity represents some behavior in the model being executed when traversing from one state to another.
-
-Activity can also communicate with activities in other participants using communications.
+I represent an activity within a BORM participant's process flow. I model executed behavior occurring between states and can engage in external communications with activities in other participants.
 "
 Class {
 	#name : 'BormActivity',
@@ -23,8 +21,9 @@ BormActivity >> ==> anActivity [
 BormActivity >> allElements [
 	"should return all elements recursively (incl. sub-elements)"
 
-	^ super allElements , (self communications flatCollect: [ :each |
-		   (Set with: each) , each allElements ])
+	^ super allElements
+	  ,
+	  (self communications flatCollect: [ :each | each withAllElements ])
 ]
 
 { #category : 'accessing' }
@@ -37,7 +36,7 @@ BormActivity >> communications [
 	^ communications copy
 ]
 
-{ #category : 'accessing' }
+{ #category : 'testing' }
 BormActivity >> has: anElement [
 	^ (super has: anElement) or: [ communications includes: anElement ]
 ]
@@ -48,11 +47,11 @@ BormActivity >> initialize [
 	communications := OrderedCollection new
 ]
 
-{ #category : 'inspection' }
-BormActivity >> inspectionCommunications [
+{ #category : 'as yet unclassified' }
+BormActivity >> inspectionCommunications: aBuilder [
 
 	<inspectorPresentationOrder: 35 title: 'Communications'>
-	^ SpTablePresenter new
+	^ aBuilder newTable
 		  items: self communications;
 		  addColumn: (SpStringTableColumn new
 				   title: 'Name';
@@ -60,17 +59,17 @@ BormActivity >> inspectionCommunications [
 				   yourself);
 		  addColumn: (SpStringTableColumn new
 				   title: 'Direction';
-				   evaluated: [ :communication | 
-					   communication source = self
-						   ifTrue: [ 'sent' ]
-						   ifFalse: [ 'received' ] ];
+				   evaluated: [ :communication |
+						   communication source = self
+							   ifTrue: [ 'sent' ]
+							   ifFalse: [ 'received' ] ];
 				   yourself);
 		  addColumn: (SpStringTableColumn new
 				   title: 'Sender / Receiver';
-				   evaluated: [ :communication | 
-					   communication source = self
-						   ifTrue: [ communication target name ]
-						   ifFalse: [ communication source name ] ];
+				   evaluated: [ :communication |
+						   communication source = self
+							   ifTrue: [ communication target name ]
+							   ifFalse: [ communication source name ] ];
 				   yourself);
 		  yourself
 ]
@@ -104,11 +103,11 @@ BormActivity >> removeAllCommunications [
 
 { #category : 'adding' }
 BormActivity >> removeCommunication: aCommunication [
+
 	communications remove: aCommunication.
-	aCommunication sender = self
-		ifTrue: [ 
-			aCommunication removedFrom: self.
-			self announceRemoved: aCommunication ]
+	aCommunication sender = self ifFalse: [ ^ self ].
+	aCommunication removedFrom: self.
+	self announceRemovedChild: aCommunication
 ]
 
 { #category : 'removing' }

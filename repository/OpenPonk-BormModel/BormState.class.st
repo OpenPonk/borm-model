@@ -1,7 +1,5 @@
 "
-State represents a state of execution in which the participant currently is.
-
-Also the state can be regular (default), initial, final,  or both.
+I represent a distinct state of execution within a BORM participant. I track whether I am a regular, initial, or final state in the overall process lifecycle.
 "
 Class {
 	#name : 'BormState',
@@ -15,12 +13,12 @@ Class {
 	#tag : 'Models'
 }
 
-{ #category : 'accessing' }
+{ #category : 'actions' }
 BormState >> beFinal [
 	self isFinal: true
 ]
 
-{ #category : 'accessing' }
+{ #category : 'actions' }
 BormState >> beInitial [
 	self isInitial: true
 ]

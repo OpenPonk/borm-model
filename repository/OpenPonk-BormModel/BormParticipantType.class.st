@@ -1,7 +1,5 @@
 "
-I represent the possible types for a participant.
-
-See the class side for the listing.
+I provide constant identifiers for the types of participants in a BORM model (e.g., `Person`, `Organization`, `System`).
 "
 Class {
 	#name : 'BormParticipantType',

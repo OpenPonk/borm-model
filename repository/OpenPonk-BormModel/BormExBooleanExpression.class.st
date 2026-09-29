@@ -1,5 +1,5 @@
 "
-BooleanExpression is an abstract class representing a tree expression.
+I am the abstract base class for a boolean expression tree used in BORM models to evaluate logical conditions (e.g., combinations of input/output transitions).
 "
 Class {
 	#name : 'BormExBooleanExpression',

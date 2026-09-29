@@ -1,12 +1,16 @@
 "
-Node is superclass of all nodes in a participant. They are connected with transitions.
+I am the abstract base class for process nodes (such as states and activities) within a BORM participant. I manage incoming and outgoing transitions and handle simulation conditions for process execution.
 "
 Class {
 	#name : 'BormProcessNode',
 	#superclass : 'BormElement',
 	#instVars : [
 		'transitions',
-		'submodel'
+		'submodel',
+		'inputSimulationCondition',
+		'outputSimulationCondition',
+		'inputTransitionSimulationCondition',
+		'inputCommunicationSimulationCondition'
 	],
 	#category : 'OpenPonk-BormModel-Models',
 	#package : 'OpenPonk-BormModel',
@@ -35,8 +39,8 @@ BormProcessNode >> addTransition: aTransition [
 BormProcessNode >> allElements [
 	"should return all elements recursively (incl. sub-elements)"
 
-	^ super allElements , (self transitions flatCollect: [ :each |
-		   (Set with: each) , each allElements ])
+	^ super allElements
+	  , (self transitions flatCollect: [ :each | each withAllElements ])
 ]
 
 { #category : 'accessing' }
@@ -45,6 +49,12 @@ BormProcessNode >> allEntities [
 ]
 
 { #category : 'accessing' }
+BormProcessNode >> communications [
+
+	^ #(  )
+]
+
+{ #category : 'testing' }
 BormProcessNode >> has: anElement [
 	^ transitions includes: anElement
 ]
@@ -56,15 +66,56 @@ BormProcessNode >> incoming [
 
 { #category : 'initialization' }
 BormProcessNode >> initialize [
+
 	super initialize.
-	transitions := OrderedCollection new
+	transitions := OrderedCollection new.
+	inputTransitionSimulationCondition := BormNodeAllNeighborSimulationCondition
+		                                      new.
+	inputCommunicationSimulationCondition := BormNodeAllNeighborSimulationCondition
+		                                      new.
+	outputSimulationCondition := BormNodeAllNeighborSimulationCondition
+		                             new
 ]
 
-{ #category : 'inspection' }
-BormProcessNode >> inspectionTransitions [
+{ #category : 'accessing' }
+BormProcessNode >> inputCommunicationSimulationCondition [
+
+	^ inputCommunicationSimulationCondition
+]
+
+{ #category : 'accessing' }
+BormProcessNode >> inputCommunicationSimulationCondition: aBormNodeAnyNeighborSimulationCondition [
+
+	inputCommunicationSimulationCondition := aBormNodeAnyNeighborSimulationCondition
+]
+
+{ #category : 'accessing' }
+BormProcessNode >> inputSimulationCondition [
+	^ inputSimulationCondition
+]
+
+{ #category : 'accessing' }
+BormProcessNode >> inputSimulationCondition: aBormNodeAnyNeighborSimulationCondition [ 
+	inputSimulationCondition := aBormNodeAnyNeighborSimulationCondition
+]
+
+{ #category : 'accessing' }
+BormProcessNode >> inputTransitionSimulationCondition [
+
+	^ inputTransitionSimulationCondition
+]
+
+{ #category : 'accessing' }
+BormProcessNode >> inputTransitionSimulationCondition: aBormNodeAnyNeighborSimulationCondition [
+
+	inputTransitionSimulationCondition   := aBormNodeAnyNeighborSimulationCondition
+]
+
+{ #category : 'as yet unclassified' }
+BormProcessNode >> inspectionTransitions: aBuilder [
 
 	<inspectorPresentationOrder: 30 title: 'Transitions'>
-	^ SpTablePresenter new
+	^ aBuilder newTable
 		  items: self transitions;
 		  addColumn: (SpStringTableColumn new
 				   title: 'Name';
@@ -72,17 +123,17 @@ BormProcessNode >> inspectionTransitions [
 				   yourself);
 		  addColumn: (SpStringTableColumn new
 				   title: 'Direction';
-				   evaluated: [ :transition | 
-					   transition source = self
-						   ifTrue: [ 'outgoing' ]
-						   ifFalse: [ 'incoming' ] ];
+				   evaluated: [ :transition |
+						   transition source = self
+							   ifTrue: [ 'outgoing' ]
+							   ifFalse: [ 'incoming' ] ];
 				   yourself);
 		  addColumn: (SpStringTableColumn new
 				   title: 'Source / Target';
-				   evaluated: [ :transition | 
-					   transition source = self
-						   ifTrue: [ transition target name ]
-						   ifFalse: [ transition source name ] ];
+				   evaluated: [ :transition |
+						   transition source = self
+							   ifTrue: [ transition target name ]
+							   ifFalse: [ transition source name ] ];
 				   yourself);
 		  yourself
 ]
@@ -108,6 +159,16 @@ BormProcessNode >> outgoing [
 ]
 
 { #category : 'accessing' }
+BormProcessNode >> outputSimulationCondition [
+	^ outputSimulationCondition
+]
+
+{ #category : 'accessing' }
+BormProcessNode >> outputSimulationCondition: aBormNodeAnyNeighborSimulationCondition [ 
+	outputSimulationCondition := aBormNodeAnyNeighborSimulationCondition
+]
+
+{ #category : 'accessing' }
 BormProcessNode >> participant [
 
 	^ self owner
@@ -123,11 +184,11 @@ BormProcessNode >> removeAllTransitions [
 
 { #category : 'removing' }
 BormProcessNode >> removeTransition: aTransition [
+
 	transitions remove: aTransition.
-	aTransition source = self
-		ifTrue: [ 
-			aTransition removedFrom: self.
-			self announceRemoved: aTransition ]
+	aTransition source = self ifFalse: [ ^ self ].
+	aTransition removedFrom: self.
+	self announceRemovedChild: aTransition
 ]
 
 { #category : 'removing' }
