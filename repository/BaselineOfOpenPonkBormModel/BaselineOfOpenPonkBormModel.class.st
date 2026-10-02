@@ -15,9 +15,9 @@ BaselineOfOpenPonkBormModel >> baseline: spec [
 		for: #common
 		do: [ spec
 				baseline: 'OpenPonkModel'
-					with: [ spec repository: 'github://openponk/openponk-model:v5.0.1' ];
+					with: [ spec repository: 'github://OpenPonk/openponk-model' ];
 				baseline: 'OpenPonkSynchronizedLinks'
-					with: [ spec repository: 'github://openponk/synchronized-links:v5.0.1' ].
+					with: [ spec repository: 'github://OpenPonk/synchronized-links' ].
 			spec
 				package: 'OpenPonk-BormModel'
 				with: [ spec requires: #('OpenPonkModel' 'OpenPonkSynchronizedLinks') ].
