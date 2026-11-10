@@ -38,20 +38,23 @@ BormCommunicationTest >> testAllEntities3 [
 
 { #category : 'tests' }
 BormCommunicationTest >> testEmptyCommunication [
-	self assert: emptyCommunication dataFlows isEmpty.
+
+	self assertEmpty: emptyCommunication dataFlows.
 	self assert: emptyCommunication constraint equals: nil
 ]
 
 { #category : 'tests' }
 BormCommunicationTest >> testRemoveAllDataFlows [
+
 	emptyCommunication addDataFlow: emptyDataFlow.
 	emptyCommunication removeAllDataFlows.
-	self assert: emptyCommunication dataFlows isEmpty
+	self assertEmpty: emptyCommunication dataFlows
 ]
 
 { #category : 'tests' }
 BormCommunicationTest >> testRemoveDataFlow [
+
 	emptyCommunication addDataFlow: emptyDataFlow.
 	emptyCommunication removeDataFlow: emptyDataFlow.
-	self assert: emptyCommunication dataFlows isEmpty
+	self assertEmpty: emptyCommunication dataFlows
 ]

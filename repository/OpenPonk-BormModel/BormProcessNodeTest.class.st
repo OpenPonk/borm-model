@@ -55,8 +55,9 @@ BormProcessNodeTest >> testAllEntitiesOutgoing [
 
 { #category : 'tests' }
 BormProcessNodeTest >> testEmptyProcessNode [
-	self assert: emptyNode incoming isEmpty.
-	self assert: emptyNode outgoing isEmpty.
+
+	self assertEmpty: emptyNode incoming.
+	self assertEmpty: emptyNode outgoing.
 	self deny: emptyNode isSubmodelNode
 ]
 

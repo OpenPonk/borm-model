@@ -11,14 +11,15 @@ Class {
 
 { #category : 'tests' }
 BormParticipantTest >> testAddNodes [
+
 	self assert: emptyParticipant nodes size equals: 0.
 	emptyParticipant add: emptyState.
 	self assert: emptyParticipant nodes size equals: 1.
-	self assert: (emptyParticipant nodes includes: emptyState).
+	self assertCollection: emptyParticipant nodes includesAll: { emptyState }.
 	self assert: emptyState owner equals: emptyParticipant.
 	emptyParticipant add: emptyActivity.
 	self assert: emptyParticipant nodes size equals: 2.
-	self assert: (emptyParticipant nodes includes: emptyActivity).
+	self assertCollection: emptyParticipant nodes includesAll: { emptyActivity }.
 	self assert: emptyActivity owner equals: emptyParticipant
 ]
 
@@ -70,11 +71,12 @@ BormParticipantTest >> testDefaultType [
 
 { #category : 'tests' }
 BormParticipantTest >> testRemoveAllNodes [
+
 	| participant |
 	participant := self fullParticipant.
 	self assert: participant nodes size equals: 5.
 	participant removeAllNodes.
-	self assert: participant nodes isEmpty
+	self assertEmpty: participant nodes
 ]
 
 { #category : 'tests' }

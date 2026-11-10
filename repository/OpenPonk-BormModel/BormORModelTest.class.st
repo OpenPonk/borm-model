@@ -37,7 +37,8 @@ BormORModelTest >> testAllEntities2 [
 
 { #category : 'tests' }
 BormORModelTest >> testEmpty [
-	self assert: emptyModel participants isEmpty
+
+	self assertEmpty: emptyModel participants
 ]
 
 { #category : 'tests' }

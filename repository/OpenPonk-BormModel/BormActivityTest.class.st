@@ -47,30 +47,34 @@ BormActivityTest >> testCommunication [
 
 { #category : 'tests' }
 BormActivityTest >> testEmptyActivity [
-	self assert: emptyActivity sent isEmpty.
-	self assert: emptyActivity received isEmpty
+
+	self assertEmpty: emptyActivity sent.
+	self assertEmpty: emptyActivity received
 ]
 
 { #category : 'tests' }
 BormActivityTest >> testRemoveAllCommunications [
+
 	sender removeAllCommunications.
-	self assert: sender sent isEmpty.
-	self assert: receiver received isEmpty
+	self assertEmpty: sender sent.
+	self assertEmpty: receiver received
 ]
 
 { #category : 'tests' }
 BormActivityTest >> testRemoveAllCommunications2 [
+
 	receiver removeAllCommunications.
-	self assert: sender sent isEmpty.
-	self assert: receiver received isEmpty
+	self assertEmpty: sender sent.
+	self assertEmpty: receiver received
 ]
 
 { #category : 'tests' }
 BormActivityTest >> testRemoveCommunication [
+
 	self assert: sender sent size equals: 1.
 	self assert: receiver received size equals: 1.
 	sender removeCommunication: communication.
 	receiver removeCommunication: communication.
-	self assert: sender sent isEmpty.
-	self assert: receiver received isEmpty
+	self assertEmpty: sender sent.
+	self assertEmpty: receiver received
 ]
