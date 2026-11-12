@@ -21,5 +21,8 @@ BaselineOfOpenPonkBormModel >> baseline: spec [
 			spec
 				package: 'OpenPonk-BormModel'
 				with: [ spec requires: #('OpenPonkModel' 'OpenPonkSynchronizedLinks') ].
-			spec group: 'default' with: #('OpenPonk-BormModel') ]
+			spec
+				package: 'OpenPonk-BormModel-Tests'
+				with: [ spec requires: #('OpenPonk-BormModel') ].
+			spec group: 'default' with: #('OpenPonk-BormModel' 'OpenPonk-BormModel-Tests') ]
 ]
