@@ -71,6 +71,21 @@ BormTransitionTest >> testConstraintAssignmentReplacementNilAndRemoval [
 ]
 
 { #category : 'tests' }
+BormTransitionTest >> testElementsAndAllElementsReflectConstraintPresence [
+
+	self assertEmpty: emptyTransition elements.
+	self assertEmpty: emptyTransition allElements.
+
+	emptyTransition constraint: emptyConstraint.
+	self assertCollection: emptyTransition elements hasSameElements: { emptyConstraint }.
+	self assertCollection: emptyTransition allElements hasSameElements: { emptyConstraint }.
+
+	emptyTransition constraint: nil.
+	self assertEmpty: emptyTransition elements.
+	self assertEmpty: emptyTransition allElements
+]
+
+{ #category : 'tests' }
 BormTransitionTest >> testEmptyConstraint [
 
 	self assert: emptyTransition constraint identicalTo: nil

@@ -30,6 +30,27 @@ BormActivityTest >> setUp [
 ]
 
 { #category : 'tests' }
+BormActivityTest >> testAllElementsIncludesTransitionsCommunicationsAndChildren [
+
+	| transition transitionConstraint communicationConstraint |
+	transitionConstraint := self emptyConstraint.
+	communicationConstraint := self emptyConstraint.
+	transition := emptyActivity => emptyState.
+	transition constraint: transitionConstraint.
+	emptyActivity send: emptyCommunication.
+	receiver receive: emptyCommunication.
+	emptyCommunication constraint: communicationConstraint.
+	emptyCommunication addDataFlow: emptyDataFlow.
+
+	self assertCollection: emptyActivity allElements hasSameElements: {
+			transition.
+			transitionConstraint.
+			emptyCommunication.
+			communicationConstraint.
+			emptyDataFlow }
+]
+
+{ #category : 'tests' }
 BormActivityTest >> testCommunication [
 
 	self assert: communication sender identicalTo: sender.
@@ -109,6 +130,25 @@ BormActivityTest >> testRemoveAllCommunications2 [
 ]
 
 { #category : 'tests' }
+BormActivityTest >> testRemoveAllCommunicationsWithPartialCommunication [
+
+	| partialCommunication |
+	partialCommunication := self emptyCommunication.
+	partialCommunication constraint: emptyConstraint.
+	partialCommunication addDataFlow: emptyDataFlow.
+	emptyActivity send: partialCommunication.
+	partialCommunication sender: nil.
+
+	emptyActivity removeAllCommunications.
+	self assertEmpty: emptyActivity communications.
+	self assert: partialCommunication owner identicalTo: nil.
+	self assert: partialCommunication constraint identicalTo: nil.
+	self assert: emptyConstraint owner identicalTo: nil.
+	self assertEmpty: partialCommunication dataFlows.
+	self assert: emptyDataFlow owner identicalTo: nil
+]
+
+{ #category : 'tests' }
 BormActivityTest >> testRemoveCommunication [
 
 	self assertCollection: sender sent hasSameElements: { communication }.
@@ -171,4 +211,25 @@ BormActivityTest >> testSelfLoopCommunicationInBothOrders [
 		self assert: emptyDataFlow owner identicalTo: nil.
 		self assert: sendFirstLoop owner identicalTo: nil.
 		self assert: receiveFirstLoop owner identicalTo: nil ] ensure: [ emptyActivity unsubscribe: self ]
+]
+
+{ #category : 'tests' }
+BormActivityTest >> testSendWhenOwnerAlreadyMatchesDoesNotDuplicateAdditionAnnouncement [
+
+	| addedEvents |
+	addedEvents := OrderedCollection new.
+	emptyActivity when: OPModelChildAdded do: [ :event | addedEvents add: event ] for: self.
+	[
+		emptyCommunication addedTo: emptyActivity.
+		emptyActivity send: emptyCommunication.
+		self assert: emptyCommunication sender identicalTo: emptyActivity.
+		self assert: emptyCommunication owner identicalTo: emptyActivity.
+		self assertCollection: emptyActivity sent hasSameElements: { emptyCommunication }.
+		self assertEmpty: addedEvents.
+
+		emptyCommunication sender: nil.
+		emptyActivity send: emptyCommunication.
+		self assert: emptyCommunication sender identicalTo: emptyActivity.
+		self assertCollection: emptyActivity sent hasSameElements: { emptyCommunication }.
+		self assertEmpty: addedEvents ] ensure: [ emptyActivity unsubscribe: self ]
 ]
