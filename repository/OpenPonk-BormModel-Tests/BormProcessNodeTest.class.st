@@ -29,18 +29,56 @@ BormProcessNodeTest >> setUp [
 ]
 
 { #category : 'tests' }
+BormProcessNodeTest >> testAddAndRemoveTransitionEdgeCases [
+
+	| source target transition addedEvents removedEvents |
+	source := emptyNode.
+	target := emptyNode isState
+		          ifTrue: [ emptyActivity ]
+		          ifFalse: [ emptyState ].
+	addedEvents := OrderedCollection new.
+	removedEvents := OrderedCollection new.
+	source when: OPModelChildAdded do: [ :event | addedEvents add: event ] for: self.
+	source when: OPModelChildRemoved do: [ :event | removedEvents add: event ] for: self.
+	[
+		transition := self transitionFrom: source to: target.
+		source addTransition: transition.
+		self assertCollection: source outgoing hasSameElements: { transition }.
+		self assert: addedEvents size equals: 1.
+		self assert: addedEvents first child identicalTo: transition.
+
+		target removeTransition: transition.
+		self assertEmpty: target incoming.
+		self assert: transition owner identicalTo: source.
+		self assertEmpty: removedEvents.
+
+		source removeTransition: transition.
+		self assertEmpty: source outgoing.
+		self assert: transition owner identicalTo: nil.
+		self assert: removedEvents size equals: 1.
+		self assert: removedEvents first child identicalTo: transition.
+
+		self should: [ source removeTransition: emptyTransition ] raise: NotFound ] ensure: [ source unsubscribe: self ]
+]
+
+{ #category : 'tests' }
 BormProcessNodeTest >> testAddTransition [
+
 	| source target transition |
 	source := emptyState.
 	target := emptyActivity.
 	transition := self transitionFrom: source to: target.
-	self assert: source outgoing size equals: 1.
-	self assert: source outgoing anyOne equals: transition.
-	self assert: target incoming size equals: 1.
-	self assert: target incoming anyOne equals: transition.
-	self assert: transition owner equals: source.
-	self assert: transition source equals: source.
-	self assert: transition target equals: target
+	self assertCollection: source outgoing hasSameElements: { transition }.
+	self assertCollection: target incoming hasSameElements: { transition }.
+	self assert: transition owner identicalTo: source.
+	self assert: transition source identicalTo: source.
+	self assert: transition target identicalTo: target
+]
+
+{ #category : 'tests' }
+BormProcessNodeTest >> testAllEntities [
+
+	self assert: emptyNode allEntities equals: (Set with: emptyNode entity)
 ]
 
 { #category : 'tests' }
@@ -58,50 +96,85 @@ BormProcessNodeTest >> testEmptyProcessNode [
 
 	self assertEmpty: emptyNode incoming.
 	self assertEmpty: emptyNode outgoing.
-	self deny: emptyNode isSubmodelNode
+	self assertEmpty: emptyNode transitions.
+	self assert: emptyNode participant identicalTo: nil.
+	self assert: emptyNode submodel identicalTo: nil.
+	self deny: emptyNode isSubmodelNode description: 'Empty process node must not report as submodel node'
+]
+
+{ #category : 'tests' }
+BormProcessNodeTest >> testParticipantAssociationTransitionsAndAllElements [
+
+	| otherNode transition |
+	otherNode := emptyNode isState
+		             ifTrue: [ emptyActivity ]
+		             ifFalse: [ emptyState ].
+	emptyParticipant add: emptyNode.
+	self assert: emptyNode participant identicalTo: emptyParticipant.
+
+	transition := emptyNode => otherNode.
+	transition constraint: emptyConstraint.
+	self assert: (emptyNode has: transition) description: 'Source node must report having the created transition'.
+	self assertCollection: emptyNode transitions hasSameElements: { transition }.
+	self assertCollection: emptyNode allElements hasSameElements: {
+			transition.
+			emptyConstraint }
 ]
 
 { #category : 'tests' }
 BormProcessNodeTest >> testRemoveAllTransitionsFromSource [
-	| source target transition |
+
+	| source target |
 	source := emptyState.
 	target := emptyActivity.
-	transition := self transitionFrom: source to: target.
+	self transitionFrom: source to: target.
 	source removeAllTransitions.
-	self assert: source outgoing size equals: 0.
-	self assert: target incoming size equals: 0
+	self assertEmpty: source outgoing.
+	self assertEmpty: target incoming
 ]
 
 { #category : 'tests' }
 BormProcessNodeTest >> testRemoveAllTransitionsFromTarget [
-	| source target transition |
+
+	| source target |
 	source := emptyState.
 	target := emptyActivity.
-	transition := self transitionFrom: source to: target.
+	self transitionFrom: source to: target.
 	target removeAllTransitions.
-	self assert: source outgoing size equals: 0.
-	self assert: target incoming size equals: 0
+	self assertEmpty: source outgoing.
+	self assertEmpty: target incoming
 ]
 
 { #category : 'tests' }
 BormProcessNodeTest >> testRemoveTransition [
+
 	| source target transition |
 	source := emptyState.
 	target := emptyActivity.
 	transition := self transitionFrom: source to: target.
 	source removeTransition: transition.
 	target removeTransition: transition.
-	self assert: source outgoing size equals: 0.
-	self assert: target incoming size equals: 0
+	self assertEmpty: source outgoing.
+	self assertEmpty: target incoming
 ]
 
 { #category : 'tests' }
 BormProcessNodeTest >> testSubdiagram [
-	self deny: emptyNode isSubmodelNode.
-	emptyNode submodel: emptyModel.
-	self assert: emptyNode isSubmodelNode.
-	self assert: emptyNode submodel equals: emptyModel.
-	emptyNode submodel: nil.
-	self deny: emptyNode isSubmodelNode.
-	self assert: emptyNode submodel equals: nil
+
+	| changeEvents |
+	changeEvents := OrderedCollection new.
+	emptyNode when: OPModelChanged do: [ :event | changeEvents add: event ] for: self.
+	[
+		self deny: emptyNode isSubmodelNode description: 'Process node without submodel must not report as submodel node'.
+
+		emptyNode submodel: emptyModel.
+		self assert: emptyNode isSubmodelNode description: 'Process node with assigned submodel must report as submodel node'.
+		self assert: emptyNode submodel identicalTo: emptyModel.
+		self assert: changeEvents size equals: 1.
+		self assert: changeEvents first model identicalTo: emptyNode.
+
+		emptyNode submodel: nil.
+		self deny: emptyNode isSubmodelNode description: 'Process node after clearing submodel must not report as submodel node'.
+		self assert: emptyNode submodel identicalTo: nil.
+		self assert: changeEvents size equals: 2 ] ensure: [ emptyNode unsubscribe: self ]
 ]

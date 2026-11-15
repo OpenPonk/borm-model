@@ -11,8 +11,10 @@ Class {
 
 { #category : 'tests' }
 BormCommunicationTest >> testAddDataFlow [
+
 	emptyCommunication addDataFlow: emptyDataFlow.
-	self assert: emptyCommunication dataFlows size equals: 1
+	self assertCollection: emptyCommunication dataFlows hasSameElements: { emptyDataFlow }.
+	self assert: emptyDataFlow owner identicalTo: emptyCommunication
 ]
 
 { #category : 'tests' }
@@ -40,7 +42,7 @@ BormCommunicationTest >> testAllEntities3 [
 BormCommunicationTest >> testEmptyCommunication [
 
 	self assertEmpty: emptyCommunication dataFlows.
-	self assert: emptyCommunication constraint equals: nil
+	self assert: emptyCommunication constraint identicalTo: nil
 ]
 
 { #category : 'tests' }

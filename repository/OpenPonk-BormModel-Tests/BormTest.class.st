@@ -11,7 +11,6 @@ Class {
 		'emptyDataFlow',
 		'emptyCommunication',
 		'emptyTransition',
-		'eventTriggered',
 		'emptyConstraint',
 		'emptyModel'
 	],
@@ -100,8 +99,7 @@ BormTest >> setUp [
 	emptyDataFlow := self emptyDataFlow.
 	emptyCommunication := self emptyCommunication.
 	emptyTransition := self emptyTransition.
-	emptyConstraint := self emptyConstraint.
-	eventTriggered := false
+	emptyConstraint := self emptyConstraint
 ]
 
 { #category : 'testing - instance creation' }

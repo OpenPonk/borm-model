@@ -24,5 +24,6 @@ BormTransitionTest >> testAllEntities2 [
 
 { #category : 'tests' }
 BormTransitionTest >> testEmptyConstraint [
-	self assert: emptyTransition constraint equals: nil
+
+	self assert: emptyTransition constraint identicalTo: nil
 ]

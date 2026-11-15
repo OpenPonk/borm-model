@@ -12,15 +12,15 @@ Class {
 { #category : 'tests' }
 BormParticipantTest >> testAddNodes [
 
-	self assert: emptyParticipant nodes size equals: 0.
+	self assertEmpty: emptyParticipant nodes.
 	emptyParticipant add: emptyState.
-	self assert: emptyParticipant nodes size equals: 1.
-	self assertCollection: emptyParticipant nodes includesAll: { emptyState }.
-	self assert: emptyState owner equals: emptyParticipant.
+	self assertCollection: emptyParticipant nodes hasSameElements: { emptyState }.
+	self assert: emptyState owner identicalTo: emptyParticipant.
 	emptyParticipant add: emptyActivity.
-	self assert: emptyParticipant nodes size equals: 2.
-	self assertCollection: emptyParticipant nodes includesAll: { emptyActivity }.
-	self assert: emptyActivity owner equals: emptyParticipant
+	self assertCollection: emptyParticipant nodes hasSameElements: {
+			emptyState.
+			emptyActivity }.
+	self assert: emptyActivity owner identicalTo: emptyParticipant
 ]
 
 { #category : 'tests' }
@@ -81,13 +81,16 @@ BormParticipantTest >> testRemoveAllNodes [
 
 { #category : 'tests' }
 BormParticipantTest >> testRemoveNodes [
+
 	emptyParticipant add: emptyState.
 	emptyParticipant add: emptyActivity.
-	self assert: emptyParticipant nodes size equals: 2.
+	self assertCollection: emptyParticipant nodes hasSameElements: {
+			emptyState.
+			emptyActivity }.
 	emptyParticipant remove: emptyState.
-	self assert: emptyParticipant nodes size equals: 1.
-	self assert: emptyState owner equals: nil.
+	self assertCollection: emptyParticipant nodes hasSameElements: { emptyActivity }.
+	self assert: emptyState owner identicalTo: nil.
 	emptyParticipant remove: emptyActivity.
-	self assert: emptyParticipant nodes size equals: 0.
-	self assert: emptyActivity owner equals: nil
+	self assertEmpty: emptyParticipant nodes.
+	self assert: emptyActivity owner identicalTo: nil
 ]
