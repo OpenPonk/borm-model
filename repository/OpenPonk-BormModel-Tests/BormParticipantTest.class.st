@@ -44,6 +44,29 @@ BormParticipantTest >> testBigParticipant [
 ]
 
 { #category : 'tests' }
+BormParticipantTest >> testChangeDoesNotDuplicateModelChangedAndHandlesMissingOwner [
+
+	| modelEvents participantEvents |
+	modelEvents := OrderedCollection new.
+	participantEvents := OrderedCollection new.
+	emptyParticipant changed.
+	emptyParticipant role: BormParticipantRole Initiates.
+	self assert: emptyParticipant role identicalTo: BormParticipantRole Initiates.
+
+	emptyModel add: emptyParticipant.
+	emptyModel when: OPModelChanged do: [ :event | modelEvents add: event ] for: self.
+	emptyParticipant when: OPModelChanged do: [ :event | participantEvents add: event ] for: self.
+	[
+		emptyParticipant role: BormParticipantRole Performs.
+		self assert: participantEvents size equals: 1.
+		self assert: participantEvents first model identicalTo: emptyParticipant.
+		self assert: modelEvents size equals: 1.
+		self assert: modelEvents first model identicalTo: emptyModel ] ensure: [
+			emptyModel unsubscribe: self.
+			emptyParticipant unsubscribe: self ]
+]
+
+{ #category : 'tests' }
 BormParticipantTest >> testChangeRole [
 	emptyParticipant role: BormParticipantRole Cooperates.
 	self assert: emptyParticipant role equals: BormParticipantRole Cooperates
@@ -77,6 +100,30 @@ BormParticipantTest >> testRemoveAllNodes [
 	self assert: participant nodes size equals: 5.
 	participant removeAllNodes.
 	self assertEmpty: participant nodes
+]
+
+{ #category : 'tests' }
+BormParticipantTest >> testRemoveAllNodesCleansUpTransitionsAndCrossParticipantCommunications [
+
+	| otherParticipant otherActivity transition communication |
+	otherParticipant := self emptyParticipant.
+	otherActivity := self emptyActivity.
+	otherParticipant add: otherActivity.
+	emptyParticipant add: emptyState.
+	emptyParticipant add: emptyActivity.
+	transition := emptyState => emptyActivity.
+	communication := emptyActivity ==> otherActivity.
+	communication constraint: emptyConstraint.
+
+	emptyParticipant removeAllNodes.
+	self assertEmpty: emptyParticipant nodes.
+	self assertEmpty: emptyState transitions.
+	self assertEmpty: emptyActivity transitions.
+	self assertEmpty: emptyActivity communications.
+	self assertEmpty: otherActivity communications.
+	self assert: transition owner identicalTo: nil.
+	self assert: communication owner identicalTo: nil.
+	self assert: emptyConstraint owner identicalTo: nil
 ]
 
 { #category : 'tests' }

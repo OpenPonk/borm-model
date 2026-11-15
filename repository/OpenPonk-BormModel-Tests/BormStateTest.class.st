@@ -72,6 +72,23 @@ BormStateTest >> testEmptyState [
 ]
 
 { #category : 'tests' }
+BormStateTest >> testRemoveSelfAndSelfLoopClearsParticipantAndConstraint [
+
+	| selfLoop |
+	emptyParticipant add: emptyState.
+	selfLoop := emptyState => emptyState.
+	selfLoop constraint: emptyConstraint.
+
+	self assert: emptyState remove identicalTo: emptyState.
+	self assertEmpty: emptyParticipant nodes.
+	self assert: emptyState owner identicalTo: nil.
+	self assertEmpty: emptyState transitions.
+	self assert: selfLoop owner identicalTo: nil.
+	self assert: selfLoop constraint identicalTo: nil.
+	self assert: emptyConstraint owner identicalTo: nil
+]
+
+{ #category : 'tests' }
 BormStateTest >> testRemovedFromParticipantClearsTransitionsAndOwner [
 
 	| otherParticipant transition |
@@ -79,14 +96,18 @@ BormStateTest >> testRemovedFromParticipantClearsTransitionsAndOwner [
 	emptyParticipant add: emptyState.
 	emptyParticipant add: emptyActivity.
 	transition := self transitionFrom: emptyState to: emptyActivity.
+	transition constraint: emptyConstraint.
 
 	self should: [ emptyState removedFrom: otherParticipant ] raise: AssertionFailure.
 
-	emptyState removedFrom: emptyParticipant.
+	emptyParticipant remove: emptyState.
+	self deny: (emptyParticipant has: emptyState) description: 'Participant must no longer contain removed state'.
 	self assert: emptyState owner identicalTo: nil.
 	self assertEmpty: emptyState transitions.
 	self assertEmpty: emptyActivity transitions.
-	self assert: transition owner identicalTo: nil
+	self assert: transition owner identicalTo: nil.
+	self assert: transition constraint identicalTo: nil.
+	self assert: emptyConstraint owner identicalTo: nil
 ]
 
 { #category : 'tests' }

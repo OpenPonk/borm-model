@@ -8,3 +8,9 @@ Class {
 	#package : 'OpenPonk-BormModel',
 	#tag : 'Models'
 }
+
+{ #category : 'removing' }
+BormConstraint >> remove [
+
+	owner ifNotNil: [ :currentOwner | currentOwner removeConstraint ]
+]

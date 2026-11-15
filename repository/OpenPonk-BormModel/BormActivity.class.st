@@ -47,7 +47,7 @@ BormActivity >> initialize [
 	communications := OrderedCollection new
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'inspecting' }
 BormActivity >> inspectionCommunications: aBuilder [
 
 	<inspectorPresentationOrder: 35 title: 'Communications'>
@@ -81,10 +81,10 @@ BormActivity >> isActivity [
 
 { #category : 'adding' }
 BormActivity >> receive: aCommunication [
-	(communications includes: aCommunication)
-		ifTrue: [ ^ self ].
+
+	((communications includes: aCommunication) and: [ aCommunication receiver = self ]) ifTrue: [ ^ self ].
 	aCommunication receiver: self.
-	communications add: aCommunication.
+	(communications includes: aCommunication) ifFalse: [ communications add: aCommunication ].
 	self changed
 ]
 
@@ -93,15 +93,21 @@ BormActivity >> received [
 	^ communications select: [ :each | each receiver = self ]
 ]
 
-{ #category : 'removing' }
-BormActivity >> removeAllCommunications [
-	communications copy
-		do: [ :each | 
-			each sender removeCommunication: each.
-			each receiver removeCommunication: each ]
+{ #category : 'accessing' }
+BormActivity >> relatedElements [
+
+	^ super relatedElements , self communications
 ]
 
-{ #category : 'adding' }
+{ #category : 'removing' }
+BormActivity >> removeAllCommunications [
+
+	communications copy do: [ :each |
+			each remove.
+			(self has: each) ifTrue: [ self removeCommunication: each ] ]
+]
+
+{ #category : 'removing' }
 BormActivity >> removeCommunication: aCommunication [
 
 	communications remove: aCommunication.
@@ -110,21 +116,14 @@ BormActivity >> removeCommunication: aCommunication [
 	self announceRemovedChild: aCommunication
 ]
 
-{ #category : 'removing' }
-BormActivity >> removedFrom: aParticipant [
-	super
-		removedFrom: aParticipant
-		do: [ 
-			self removeAllTransitions.
-			self removeAllCommunications ]
-]
-
 { #category : 'adding' }
 BormActivity >> send: aCommunication [
-	(communications includes: aCommunication)
-		ifTrue: [ ^ self ].
+
+	((communications includes: aCommunication) and: [ aCommunication sender = self and: [ aCommunication owner = self ] ]) ifTrue: [
+		^ self ].
 	aCommunication sender: self.
-	communications add: aCommunication.
+	(communications includes: aCommunication) ifFalse: [ communications add: aCommunication ].
+	aCommunication owner = self ifTrue: [ ^ self ].
 	aCommunication addedTo: self.
 	self announceAdded: aCommunication
 ]

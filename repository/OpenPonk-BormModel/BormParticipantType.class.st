@@ -9,17 +9,20 @@ Class {
 	#tag : 'Models'
 }
 
-{ #category : 'enumeration' }
+{ #category : 'constants' }
 BormParticipantType class >> Organization [
+
 	^ #Organization
 ]
 
-{ #category : 'enumeration' }
+{ #category : 'constants' }
 BormParticipantType class >> Person [
+
 	^ #Person
 ]
 
-{ #category : 'enumeration' }
+{ #category : 'constants' }
 BormParticipantType class >> System [
+
 	^ #System
 ]

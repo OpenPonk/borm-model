@@ -9,47 +9,56 @@ Class {
 	#tag : 'Models'
 }
 
-{ #category : 'as yet unclassified' }
+{ #category : 'constants' }
 BormParticipantRole class >> Acquires [
+
 	^ #Acquires
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'constants' }
 BormParticipantRole class >> Approves [
+
 	^ #Approves
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'constants' }
 BormParticipantRole class >> Consults [
+
 	^ #Consults
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'constants' }
 BormParticipantRole class >> Cooperates [
+
 	^ #Cooperates
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'constants' }
 BormParticipantRole class >> Initiates [
+
 	^ #Initiates
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'constants' }
 BormParticipantRole class >> IsInformed [
+
 	^ #IsInformed
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'constants' }
 BormParticipantRole class >> IsResponsible [
+
 	^ #IsResponsible
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'constants' }
 BormParticipantRole class >> Performs [
+
 	^ #Performs
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'constants' }
 BormParticipantRole class >> Undefined [
+
 	^ #Undefined
 ]

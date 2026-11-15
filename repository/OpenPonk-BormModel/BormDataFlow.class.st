@@ -12,24 +12,28 @@ Class {
 	#tag : 'Models'
 }
 
-{ #category : 'enumeration' }
+{ #category : 'constants' }
 BormDataFlow class >> inputType [
+
 	^ #input
 ]
 
-{ #category : 'enumeration' }
+{ #category : 'constants' }
 BormDataFlow class >> outputType [
+
 	^ #output
 ]
 
 { #category : 'actions' }
 BormDataFlow >> beInput [
-	^ type := self class inputType
+
+	self type: self class inputType
 ]
 
 { #category : 'actions' }
 BormDataFlow >> beOutput [
-	type := self class outputType
+
+	self type: self class outputType
 ]
 
 { #category : 'initialization' }

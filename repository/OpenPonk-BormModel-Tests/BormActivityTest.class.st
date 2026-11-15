@@ -47,6 +47,52 @@ BormActivityTest >> testEmptyActivity [
 ]
 
 { #category : 'tests' }
+BormActivityTest >> testParticipantRemovalClearsCommunicationsAcrossParticipants [
+
+	| senderParticipant receiverParticipant senderActivity receiverActivity crossCommunication reverseCommunication |
+	senderParticipant := self emptyParticipant.
+	receiverParticipant := self emptyParticipant.
+	senderActivity := self emptyActivity.
+	receiverActivity := self emptyActivity.
+	senderParticipant add: senderActivity.
+	receiverParticipant add: receiverActivity.
+
+	crossCommunication := senderActivity ==> receiverActivity.
+	crossCommunication constraint: emptyConstraint.
+	crossCommunication addDataFlow: emptyDataFlow.
+
+	senderParticipant remove: senderActivity.
+	self assertEmpty: senderParticipant nodes.
+	self assert: senderActivity owner identicalTo: nil.
+	self assertEmpty: senderActivity communications.
+	self assertEmpty: receiverActivity communications.
+	self assert: crossCommunication owner identicalTo: nil.
+	self assert: crossCommunication constraint identicalTo: nil.
+	self assert: emptyConstraint owner identicalTo: nil.
+	self assertEmpty: crossCommunication dataFlows.
+	self assert: emptyDataFlow owner identicalTo: nil.
+
+	senderParticipant add: senderActivity.
+	reverseCommunication := senderActivity ==> receiverActivity.
+	self assert: receiverActivity remove identicalTo: receiverActivity.
+	self assertEmpty: receiverParticipant nodes.
+	self assertEmpty: senderActivity communications.
+	self assertEmpty: receiverActivity communications.
+	self assert: reverseCommunication owner identicalTo: nil
+]
+
+{ #category : 'tests' }
+BormActivityTest >> testRelatedElementsIncludesTransitionsAndCommunications [
+
+	| transition localCommunication |
+	transition := emptyActivity => emptyState.
+	localCommunication := emptyActivity ==> receiver.
+	self assertCollection: emptyActivity relatedElements hasSameElements: {
+			transition.
+			localCommunication }
+]
+
+{ #category : 'tests' }
 BormActivityTest >> testRemoveAllCommunications [
 
 	sender removeAllCommunications.
@@ -71,4 +117,58 @@ BormActivityTest >> testRemoveCommunication [
 	receiver removeCommunication: communication.
 	self assertEmpty: sender sent.
 	self assertEmpty: receiver received
+]
+
+{ #category : 'tests' }
+BormActivityTest >> testSelfLoopCommunicationInBothOrders [
+
+	| factoryLoop sendFirstLoop receiveFirstLoop addedEvents |
+	addedEvents := OrderedCollection new.
+	emptyActivity when: OPModelChildAdded do: [ :event | addedEvents add: event ] for: self.
+	[
+		factoryLoop := BormFactory communicationFrom: emptyActivity to: emptyActivity.
+		self assert: factoryLoop sender identicalTo: emptyActivity.
+		self assert: factoryLoop receiver identicalTo: emptyActivity.
+		self assert: factoryLoop owner identicalTo: emptyActivity.
+		self assertCollection: emptyActivity sent hasSameElements: { factoryLoop }.
+		self assertCollection: emptyActivity received hasSameElements: { factoryLoop }.
+		self assertCollection: emptyActivity communications hasSameElements: { factoryLoop }.
+
+		sendFirstLoop := self emptyCommunication.
+		emptyActivity send: sendFirstLoop.
+		emptyActivity send: sendFirstLoop.
+		emptyActivity receive: sendFirstLoop.
+		emptyActivity receive: sendFirstLoop.
+		self assert: sendFirstLoop sender identicalTo: emptyActivity.
+		self assert: sendFirstLoop receiver identicalTo: emptyActivity.
+		self assert: sendFirstLoop owner identicalTo: emptyActivity.
+
+		receiveFirstLoop := self emptyCommunication.
+		emptyActivity receive: receiveFirstLoop.
+		emptyActivity send: receiveFirstLoop.
+		self assert: receiveFirstLoop sender identicalTo: emptyActivity.
+		self assert: receiveFirstLoop receiver identicalTo: emptyActivity.
+		self assert: receiveFirstLoop owner identicalTo: emptyActivity.
+
+		self assert: addedEvents size equals: 3.
+		self assertCollection: emptyActivity sent hasSameElements: {
+				factoryLoop.
+				sendFirstLoop.
+				receiveFirstLoop }.
+		self assertCollection: emptyActivity received hasSameElements: {
+				factoryLoop.
+				sendFirstLoop.
+				receiveFirstLoop }.
+
+		factoryLoop constraint: emptyConstraint.
+		factoryLoop addDataFlow: emptyDataFlow.
+		emptyActivity removeAllCommunications.
+		self assertEmpty: emptyActivity communications.
+		self assert: factoryLoop owner identicalTo: nil.
+		self assert: factoryLoop constraint identicalTo: nil.
+		self assert: emptyConstraint owner identicalTo: nil.
+		self assertEmpty: factoryLoop dataFlows.
+		self assert: emptyDataFlow owner identicalTo: nil.
+		self assert: sendFirstLoop owner identicalTo: nil.
+		self assert: receiveFirstLoop owner identicalTo: nil ] ensure: [ emptyActivity unsubscribe: self ]
 ]

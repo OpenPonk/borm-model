@@ -15,6 +15,32 @@ BormDataFlowTest >> testAllEntities [
 ]
 
 { #category : 'tests' }
+BormDataFlowTest >> testBeInputAndBeOutputReturnSelfAndAnnounceChange [
+
+	| changeEvents returnedFlow |
+	changeEvents := OrderedCollection new.
+	emptyDataFlow when: OPModelChanged do: [ :event | changeEvents add: event ] for: self.
+	[
+		returnedFlow := emptyDataFlow beOutput.
+		self assert: returnedFlow identicalTo: emptyDataFlow.
+		self assert: emptyDataFlow isOutput description: 'beOutput must switch data flow to output'.
+		self assert: changeEvents size equals: 1.
+		self assert: changeEvents first model identicalTo: emptyDataFlow.
+
+		returnedFlow := emptyDataFlow beInput.
+		self assert: returnedFlow identicalTo: emptyDataFlow.
+		self assert: emptyDataFlow isInput description: 'beInput must switch data flow to input'.
+		self assert: changeEvents size equals: 2.
+		self assert: changeEvents second model identicalTo: emptyDataFlow ] ensure: [ emptyDataFlow unsubscribe: self ].
+
+	returnedFlow := self emptyDataFlow
+		                name: 'Order';
+		                beInput.
+	emptyCommunication addDataFlow: returnedFlow.
+	self assertCollection: emptyCommunication dataFlows hasSameElements: { returnedFlow }
+]
+
+{ #category : 'tests' }
 BormDataFlowTest >> testChangeDataFlowType [
 
 	self assert: emptyDataFlow isInput description: 'New data flow must start as input'.

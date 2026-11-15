@@ -29,6 +29,35 @@ BormProcessNodeTest >> setUp [
 ]
 
 { #category : 'tests' }
+BormProcessNodeTest >> testAddAndRemoveSelfLoopTransition [
+
+	| selfLoop reverseSelfLoop |
+	selfLoop := emptyNode => emptyNode.
+	self assertCollection: emptyNode outgoing hasSameElements: { selfLoop }.
+	self assertCollection: emptyNode incoming hasSameElements: { selfLoop }.
+	self assertCollection: emptyNode transitions hasSameElements: { selfLoop }.
+	self assert: selfLoop owner identicalTo: emptyNode.
+
+	selfLoop constraint: emptyConstraint.
+	emptyNode removeAllTransitions.
+	self assertEmpty: emptyNode transitions.
+	self assert: selfLoop owner identicalTo: nil.
+	self assert: selfLoop constraint identicalTo: nil.
+	self assert: emptyConstraint owner identicalTo: nil.
+
+	reverseSelfLoop := self emptyTransition.
+	reverseSelfLoop target: emptyNode.
+	emptyNode addTransition: reverseSelfLoop.
+	reverseSelfLoop source: emptyNode.
+	emptyNode addTransition: reverseSelfLoop.
+	self assert: reverseSelfLoop owner identicalTo: emptyNode.
+
+	emptyNode removeAllTransitions.
+	self assertEmpty: emptyNode transitions.
+	self assert: reverseSelfLoop owner identicalTo: nil
+]
+
+{ #category : 'tests' }
 BormProcessNodeTest >> testAddAndRemoveTransitionEdgeCases [
 
 	| source target transition addedEvents removedEvents |
@@ -122,6 +151,20 @@ BormProcessNodeTest >> testParticipantAssociationTransitionsAndAllElements [
 ]
 
 { #category : 'tests' }
+BormProcessNodeTest >> testRelatedElementsReturnsTransitionsCopy [
+
+	| otherNode transition related |
+	otherNode := emptyNode isState
+		             ifTrue: [ emptyActivity ]
+		             ifFalse: [ emptyState ].
+	transition := emptyNode => otherNode.
+	related := emptyNode relatedElements.
+	self assertCollection: related hasSameElements: { transition }.
+	related removeAll.
+	self assertCollection: emptyNode transitions hasSameElements: { transition }
+]
+
+{ #category : 'tests' }
 BormProcessNodeTest >> testRemoveAllTransitionsFromSource [
 
 	| source target |
@@ -143,6 +186,30 @@ BormProcessNodeTest >> testRemoveAllTransitionsFromTarget [
 	target removeAllTransitions.
 	self assertEmpty: source outgoing.
 	self assertEmpty: target incoming
+]
+
+{ #category : 'tests' }
+BormProcessNodeTest >> testRemoveAllTransitionsWithPartialTransitionAndConstraint [
+
+	| otherNode partialTransition sourceOnlyTransition |
+	otherNode := emptyNode isState
+		             ifTrue: [ emptyActivity ]
+		             ifFalse: [ emptyState ].
+	partialTransition := self emptyTransition.
+	emptyNode addTransition: partialTransition.
+
+	sourceOnlyTransition := self emptyTransition.
+	sourceOnlyTransition from: emptyNode to: otherNode.
+	sourceOnlyTransition constraint: emptyConstraint.
+	emptyNode addTransition: sourceOnlyTransition.
+
+	emptyNode removeAllTransitions.
+	self assertEmpty: emptyNode transitions.
+	self assertEmpty: otherNode transitions.
+	self assert: partialTransition owner identicalTo: nil.
+	self assert: sourceOnlyTransition owner identicalTo: nil.
+	self assert: sourceOnlyTransition constraint identicalTo: nil.
+	self assert: emptyConstraint owner identicalTo: nil
 ]
 
 { #category : 'tests' }

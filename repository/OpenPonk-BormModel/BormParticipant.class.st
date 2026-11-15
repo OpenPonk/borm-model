@@ -23,12 +23,6 @@ BormParticipant >> allEntities [
 	^ (Set with: self entity) , (self nodes flatCollect: #allEntities)
 ]
 
-{ #category : 'updating' }
-BormParticipant >> changed [
-	super changed.
-	owner changed
-]
-
 { #category : 'defaults' }
 BormParticipant >> defaultRole [
 	^ BormParticipantRole Undefined
@@ -46,7 +40,7 @@ BormParticipant >> initialize [
 	role := self defaultRole
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'inspecting' }
 BormParticipant >> inspectionNodes: aBuilder [
 
 	<inspectorPresentationOrder: 30 title: 'Nodes'>

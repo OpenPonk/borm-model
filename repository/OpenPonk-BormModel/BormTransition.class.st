@@ -32,8 +32,10 @@ BormTransition >> constraint [
 
 { #category : 'accessing' }
 BormTransition >> constraint: aConstraint [
-	self hasConstraint
-		ifTrue: [ ^ self ].
+
+	constraint = aConstraint ifTrue: [ ^ self ].
+	self removeConstraint.
+	aConstraint ifNil: [ ^ self ].
 	constraint := aConstraint.
 	aConstraint addedTo: self.
 	self announceAdded: aConstraint
@@ -61,13 +63,26 @@ BormTransition >> hasConstraint [
 	^ constraint isNotNil
 ]
 
-{ #category : 'accessing' }
+{ #category : 'removing' }
+BormTransition >> remove [
+
+	self removeConstraint.
+	(target isNotNil and: [ target has: self ]) ifTrue: [ target removeTransition: self ].
+	(source isNotNil and: [ source has: self ]) ifTrue: [ source removeTransition: self ].
+	owner ifNotNil: [
+			self detach.
+			self changed ]
+]
+
+{ #category : 'removing' }
 BormTransition >> removeConstraint [
-	self hasConstraint
-		ifFalse: [ ^ self ].
-	constraint removedFrom: self.
-	self announceRemovedChild: constraint.
-	constraint := nil
+
+	| removedConstraint |
+	self hasConstraint ifFalse: [ ^ self ].
+	removedConstraint := constraint.
+	constraint := nil.
+	removedConstraint removedFrom: self.
+	self announceRemovedChild: removedConstraint
 ]
 
 { #category : 'accessing' }

@@ -25,13 +25,17 @@ BormProcessNode >> => aNode [
 
 { #category : 'adding' }
 BormProcessNode >> addTransition: aTransition [
-	(transitions includes: aTransition)
-		ifTrue: [ ^ self ].
+
+	(transitions includes: aTransition) ifTrue: [
+			(aTransition source = self and: [ aTransition owner ~= self ]) ifTrue: [
+					aTransition addedTo: self.
+					self announceAdded: aTransition ].
+			^ self ].
 	transitions add: aTransition.
 	aTransition source = self
-		ifTrue: [ 
-			aTransition addedTo: self.
-			self announceAdded: aTransition ]
+		ifTrue: [
+				aTransition addedTo: self.
+				self announceAdded: aTransition ]
 		ifFalse: [ self changed ]
 ]
 
@@ -84,9 +88,9 @@ BormProcessNode >> inputCommunicationSimulationCondition [
 ]
 
 { #category : 'accessing' }
-BormProcessNode >> inputCommunicationSimulationCondition: aBormNodeAnyNeighborSimulationCondition [
+BormProcessNode >> inputCommunicationSimulationCondition: aSimulationCondition [
 
-	inputCommunicationSimulationCondition := aBormNodeAnyNeighborSimulationCondition
+	inputCommunicationSimulationCondition := aSimulationCondition
 ]
 
 { #category : 'accessing' }
@@ -95,8 +99,9 @@ BormProcessNode >> inputSimulationCondition [
 ]
 
 { #category : 'accessing' }
-BormProcessNode >> inputSimulationCondition: aBormNodeAnyNeighborSimulationCondition [ 
-	inputSimulationCondition := aBormNodeAnyNeighborSimulationCondition
+BormProcessNode >> inputSimulationCondition: aSimulationCondition [
+
+	inputSimulationCondition := aSimulationCondition
 ]
 
 { #category : 'accessing' }
@@ -106,12 +111,12 @@ BormProcessNode >> inputTransitionSimulationCondition [
 ]
 
 { #category : 'accessing' }
-BormProcessNode >> inputTransitionSimulationCondition: aBormNodeAnyNeighborSimulationCondition [
+BormProcessNode >> inputTransitionSimulationCondition: aSimulationCondition [
 
-	inputTransitionSimulationCondition   := aBormNodeAnyNeighborSimulationCondition
+	inputTransitionSimulationCondition := aSimulationCondition
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'inspecting' }
 BormProcessNode >> inspectionTransitions: aBuilder [
 
 	<inspectorPresentationOrder: 30 title: 'Transitions'>
@@ -164,8 +169,9 @@ BormProcessNode >> outputSimulationCondition [
 ]
 
 { #category : 'accessing' }
-BormProcessNode >> outputSimulationCondition: aBormNodeAnyNeighborSimulationCondition [ 
-	outputSimulationCondition := aBormNodeAnyNeighborSimulationCondition
+BormProcessNode >> outputSimulationCondition: aSimulationCondition [
+
+	outputSimulationCondition := aSimulationCondition
 ]
 
 { #category : 'accessing' }
@@ -174,12 +180,18 @@ BormProcessNode >> participant [
 	^ self owner
 ]
 
+{ #category : 'accessing' }
+BormProcessNode >> relatedElements [
+
+	^ self transitions copy
+]
+
 { #category : 'removing' }
 BormProcessNode >> removeAllTransitions [
-	transitions copy
-		do: [ :each | 
-			each source removeTransition: each.
-			each target removeTransition: each ]
+
+	transitions copy do: [ :each |
+			each remove.
+			(self has: each) ifTrue: [ self removeTransition: each ] ]
 ]
 
 { #category : 'removing' }
@@ -189,11 +201,6 @@ BormProcessNode >> removeTransition: aTransition [
 	aTransition source = self ifFalse: [ ^ self ].
 	aTransition removedFrom: self.
 	self announceRemovedChild: aTransition
-]
-
-{ #category : 'removing' }
-BormProcessNode >> removedFrom: aParticipant [
-	^ self subclassResponsibility
 ]
 
 { #category : 'accessing' }

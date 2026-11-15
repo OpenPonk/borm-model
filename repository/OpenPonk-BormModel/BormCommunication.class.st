@@ -42,8 +42,10 @@ BormCommunication >> constraint [
 
 { #category : 'accessing' }
 BormCommunication >> constraint: aConstraint [
-	self hasConstraint
-		ifTrue: [ ^ self ].
+
+	constraint = aConstraint ifTrue: [ ^ self ].
+	self removeConstraint.
+	aConstraint ifNil: [ ^ self ].
 	constraint := aConstraint.
 	aConstraint addedTo: self.
 	self announceAdded: aConstraint
@@ -88,17 +90,31 @@ BormCommunication >> receiver: anActivity [
 ]
 
 { #category : 'removing' }
+BormCommunication >> remove [
+
+	self removeConstraint.
+	self removeAllDataFlows.
+	(receiver isNotNil and: [ receiver has: self ]) ifTrue: [ receiver removeCommunication: self ].
+	(sender isNotNil and: [ sender has: self ]) ifTrue: [ sender removeCommunication: self ].
+	owner ifNotNil: [
+			self detach.
+			self changed ]
+]
+
+{ #category : 'removing' }
 BormCommunication >> removeAllDataFlows [
 	^ self removeAll
 ]
 
 { #category : 'removing' }
 BormCommunication >> removeConstraint [
-	self hasConstraint
-		ifFalse: [ ^ self ].
-	constraint removedFrom: self.
-	self announceRemovedChild: constraint.
-	constraint := nil
+
+	| removedConstraint |
+	self hasConstraint ifFalse: [ ^ self ].
+	removedConstraint := constraint.
+	constraint := nil.
+	removedConstraint removedFrom: self.
+	self announceRemovedChild: removedConstraint
 ]
 
 { #category : 'removing' }
@@ -132,6 +148,7 @@ BormCommunication >> target [
 ]
 
 { #category : 'accessing' }
-BormCommunication >> target: aSource [
-	self receiver: aSource
+BormCommunication >> target: aTarget [
+
+	self receiver: aTarget
 ]

@@ -56,8 +56,3 @@ BormState >> isInitial: aBoolean [
 BormState >> isState [
 	^ true
 ]
-
-{ #category : 'removing' }
-BormState >> removedFrom: aParticipant [
-	super removedFrom: aParticipant do: [ self removeAllTransitions ]
-]

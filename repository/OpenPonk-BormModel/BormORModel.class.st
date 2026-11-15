@@ -29,7 +29,7 @@ BormORModel >> allEntities [
 	^ super allEntities , (self participants flatCollect: #allEntities)
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'inspecting' }
 BormORModel >> inspectionParticipants: aBuilder [
 
 	<inspectorPresentationOrder: 30 title: 'Participants'>
@@ -52,9 +52,11 @@ BormORModel >> inspectionParticipants: aBuilder [
 
 { #category : 'accessing' }
 BormORModel >> nodeNamed: aString [
-	| aName |
-	aName := aString splitOn: '::'.
-	^ (self participantNamed: aName first) @ aName second
+
+	| parts |
+	parts := aString splitOn: '::'.
+	parts size = 2 ifFalse: [ NotFound signalFor: aString in: self ].
+	^ (self participantNamed: parts first) @ parts second
 ]
 
 { #category : 'accessing' }

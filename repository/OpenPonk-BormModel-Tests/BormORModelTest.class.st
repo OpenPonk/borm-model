@@ -65,6 +65,18 @@ BormORModelTest >> testEmpty [
 ]
 
 { #category : 'tests' }
+BormORModelTest >> testNodeNamedInvalidFormatRaisesNotFound [
+
+	emptyParticipant name: 'Customer'.
+	emptyParticipant add: (emptyState name: 'Waiting').
+	emptyModel add: emptyParticipant.
+
+	self should: [ emptyModel nodeNamed: 'Waiting' ] raise: NotFound.
+	self should: [ emptyModel nodeNamed: '' ] raise: NotFound.
+	self should: [ emptyModel nodeNamed: 'Customer::Waiting::Extra' ] raise: NotFound
+]
+
+{ #category : 'tests' }
 BormORModelTest >> testParticipantAndNodeLookupAndAtOperator [
 
 	| node |
@@ -123,4 +135,36 @@ BormORModelTest >> testRemoveParticipant [
 		self assert: participantRemovedEvents first model identicalTo: emptyModel ] ensure: [
 			emptyModel unsubscribe: self.
 			emptyParticipant unsubscribe: self ]
+]
+
+{ #category : 'tests' }
+BormORModelTest >> testRemoveParticipantCleansUpNodesTransitionsAndCrossParticipantCommunications [
+
+	| participant1 participant2 state1 activity1 activity2 transition communication |
+	participant1 := self emptyParticipant name: 'P1'.
+	participant2 := self emptyParticipant name: 'P2'.
+	state1 := self emptyState name: 'S1'.
+	activity1 := self emptyActivity name: 'A1'.
+	activity2 := self emptyActivity name: 'A2'.
+	participant1 add: state1.
+	participant1 add: activity1.
+	participant2 add: activity2.
+	transition := state1 => activity1.
+	communication := activity1 ==> activity2.
+	communication constraint: emptyConstraint.
+	communication addDataFlow: emptyDataFlow.
+	emptyModel add: participant1.
+	emptyModel add: participant2.
+
+	emptyModel remove: participant1.
+	self assertCollection: emptyModel participants hasSameElements: { participant2 }.
+	self assert: participant1 owner identicalTo: nil.
+	self assertEmpty: activity2 communications.
+	self assertEmpty: state1 transitions.
+	self assertEmpty: activity1 transitions.
+	self assertEmpty: activity1 communications.
+	self assert: transition owner identicalTo: nil.
+	self assert: communication owner identicalTo: nil.
+	self assert: emptyConstraint owner identicalTo: nil.
+	self assert: emptyDataFlow owner identicalTo: nil
 ]
