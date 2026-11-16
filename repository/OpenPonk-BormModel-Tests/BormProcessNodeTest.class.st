@@ -121,6 +121,25 @@ BormProcessNodeTest >> testAllEntitiesOutgoing [
 ]
 
 { #category : 'tests' }
+BormProcessNodeTest >> testDefaultAndCustomSimulationConditions [
+
+	| anyCondition noneCondition |
+	self assert: emptyNode inputTransitionSimulationCondition class identicalTo: BormNodeAllNeighborSimulationCondition.
+	self assert: emptyNode inputCommunicationSimulationCondition class identicalTo: BormNodeAllNeighborSimulationCondition.
+	self assert: emptyNode outputSimulationCondition class identicalTo: BormNodeAllNeighborSimulationCondition.
+
+	anyCondition := BormNodeAnyNeighborSimulationCondition new.
+	noneCondition := BormNodeNoneNeighborSimulationCondition new.
+	emptyNode inputTransitionSimulationCondition: anyCondition.
+	emptyNode inputCommunicationSimulationCondition: noneCondition.
+	emptyNode outputSimulationCondition: anyCondition.
+
+	self assert: emptyNode inputTransitionSimulationCondition identicalTo: anyCondition.
+	self assert: emptyNode inputCommunicationSimulationCondition identicalTo: noneCondition.
+	self assert: emptyNode outputSimulationCondition identicalTo: anyCondition
+]
+
+{ #category : 'tests' }
 BormProcessNodeTest >> testEmptyProcessNode [
 
 	self assertEmpty: emptyNode incoming.
@@ -129,6 +148,34 @@ BormProcessNodeTest >> testEmptyProcessNode [
 	self assert: emptyNode participant identicalTo: nil.
 	self assert: emptyNode submodel identicalTo: nil.
 	self deny: emptyNode isSubmodelNode description: 'Empty process node must not report as submodel node'
+]
+
+{ #category : 'tests' }
+BormProcessNodeTest >> testInspectionTransitions [
+
+	| otherNode outgoingTransition incomingTransition partialOutgoing partialIncoming table |
+	emptyNode name: 'Current'.
+	otherNode := (emptyNode isState
+		              ifTrue: [ emptyActivity ]
+		              ifFalse: [ emptyState ])
+		             name: 'Neighbor';
+		             yourself.
+	outgoingTransition := emptyNode => otherNode.
+	outgoingTransition name: 'out'.
+	incomingTransition := otherNode => emptyNode.
+	incomingTransition name: 'in'.
+	partialOutgoing := self emptyTransition name: 'pendingOut'.
+	partialOutgoing source: emptyNode.
+	emptyNode addTransition: partialOutgoing.
+	partialIncoming := self emptyTransition name: 'pendingIn'.
+	partialIncoming target: emptyNode.
+	emptyNode addTransition: partialIncoming.
+
+	table := emptyNode inspectionTransitions: self newInspectorBuilder.
+	self
+		assert: (self inspectorRowsOf: table)
+		equals: #( #( 'out' 'outgoing' 'Neighbor' ) #( 'in' 'incoming' 'Neighbor' ) #( 'pendingOut' 'outgoing' '' )
+			   #( 'pendingIn' 'incoming' '' ) )
 ]
 
 { #category : 'tests' }

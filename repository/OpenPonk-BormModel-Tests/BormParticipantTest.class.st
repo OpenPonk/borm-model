@@ -37,10 +37,35 @@ BormParticipantTest >> testAllEntities2 [
 ]
 
 { #category : 'tests' }
+BormParticipantTest >> testAllParticipantRoles [
+
+	| roles |
+	roles := {
+		         BormParticipantRole Undefined.
+		         BormParticipantRole Initiates.
+		         BormParticipantRole Performs.
+		         BormParticipantRole Cooperates.
+		         BormParticipantRole Acquires.
+		         BormParticipantRole Approves.
+		         BormParticipantRole Consults.
+		         BormParticipantRole IsInformed.
+		         BormParticipantRole IsResponsible }.
+	self assert: roles asSet size equals: 9.
+	roles do: [ :eachRole |
+			emptyParticipant role: eachRole.
+			self assert: emptyParticipant role identicalTo: eachRole ]
+]
+
+{ #category : 'tests' }
 BormParticipantTest >> testBigParticipant [
-	| person |
-	person := self fullParticipant.
-	self assert: person nodes size equals: 5
+
+	| participant |
+	participant := self fullParticipant.
+	self assert: participant nodes size equals: 5.
+	self assert: (participant @ 'initial') isInitial description: 'First node in fullParticipant must be initial'.
+	self assert: (participant @ 'final') isFinal description: 'Last node in fullParticipant must be final'.
+	self assert: (participant @ 'a1') outgoing size equals: 1.
+	self assert: (participant @ 'a1') incoming size equals: 1
 ]
 
 { #category : 'tests' }
@@ -68,28 +93,45 @@ BormParticipantTest >> testChangeDoesNotDuplicateModelChangedAndHandlesMissingOw
 
 { #category : 'tests' }
 BormParticipantTest >> testChangeRole [
+
 	emptyParticipant role: BormParticipantRole Cooperates.
-	self assert: emptyParticipant role equals: BormParticipantRole Cooperates
+	self assert: emptyParticipant role identicalTo: BormParticipantRole Cooperates
 ]
 
 { #category : 'tests' }
 BormParticipantTest >> testChangeType [
+
 	emptyParticipant type: BormParticipantType Organization.
-	self assert: emptyParticipant type equals: BormParticipantType Organization.
+	self assert: emptyParticipant type identicalTo: BormParticipantType Organization.
 	emptyParticipant type: BormParticipantType System.
-	self assert: emptyParticipant type equals: BormParticipantType System.
+	self assert: emptyParticipant type identicalTo: BormParticipantType System.
 	emptyParticipant type: BormParticipantType Person.
-	self assert: emptyParticipant type equals: BormParticipantType Person
+	self assert: emptyParticipant type identicalTo: BormParticipantType Person
 ]
 
 { #category : 'tests' }
 BormParticipantTest >> testDefaultRole [
-	self assert: emptyParticipant role equals: BormParticipantRole Undefined
+
+	self assert: emptyParticipant role identicalTo: BormParticipantRole Undefined
 ]
 
 { #category : 'tests' }
 BormParticipantTest >> testDefaultType [
-	self assert: emptyParticipant type equals: BormParticipantType Person
+
+	self assert: emptyParticipant type identicalTo: BormParticipantType Person
+]
+
+{ #category : 'tests' }
+BormParticipantTest >> testInspectionNodes [
+
+	| table |
+	emptyState name: 'Waiting'.
+	emptyActivity name: 'Order'.
+	emptyParticipant add: emptyState.
+	emptyParticipant add: emptyActivity.
+
+	table := emptyParticipant inspectionNodes: self newInspectorBuilder.
+	self assert: (self inspectorRowsOf: table) equals: #( #( 'state' 'Waiting' ) #( 'activity' 'Order' ) )
 ]
 
 { #category : 'tests' }

@@ -18,6 +18,18 @@ BormCommunicationTest >> testAddDataFlow [
 ]
 
 { #category : 'tests' }
+BormCommunicationTest >> testAddDataFlowNamed [
+
+	| addedDataFlow |
+	addedDataFlow := emptyCommunication addDataFlowNamed: 'Invoice'.
+	self assert: addedDataFlow class identicalTo: BormDataFlow.
+	self assert: addedDataFlow name equals: 'Invoice'.
+	self assert: addedDataFlow isInput description: 'Named data flow added to communication must default to input'.
+	self assert: addedDataFlow owner identicalTo: emptyCommunication.
+	self assertCollection: emptyCommunication dataFlows hasSameElements: { addedDataFlow }
+]
+
+{ #category : 'tests' }
 BormCommunicationTest >> testAllEntities [
 	self assert: emptyCommunication allEntities equals: (Set with: emptyCommunication entity)
 ]
@@ -87,10 +99,48 @@ BormCommunicationTest >> testConstraintAssignmentReplacementNilAndRemoval [
 ]
 
 { #category : 'tests' }
+BormCommunicationTest >> testConstraints [
+
+	self assertEmpty: emptyCommunication constraints.
+	emptyCommunication constraint: emptyConstraint.
+	self assertCollection: emptyCommunication constraints hasSameElements: { emptyConstraint }.
+	emptyCommunication constraint: nil.
+	self assertEmpty: emptyCommunication constraints
+]
+
+{ #category : 'tests' }
+BormCommunicationTest >> testCreationFromToNamed [
+
+	| receiverActivity createdCommunication |
+	receiverActivity := self emptyActivity.
+	createdCommunication := BormCommunication from: emptyActivity to: receiverActivity named: 'Order'.
+	self assert: createdCommunication class identicalTo: BormCommunication.
+	self assert: createdCommunication sender identicalTo: emptyActivity.
+	self assert: createdCommunication receiver identicalTo: receiverActivity.
+	self assert: createdCommunication name equals: 'Order'
+]
+
+{ #category : 'tests' }
 BormCommunicationTest >> testEmptyCommunication [
 
 	self assertEmpty: emptyCommunication dataFlows.
 	self assert: emptyCommunication constraint identicalTo: nil
+]
+
+{ #category : 'tests' }
+BormCommunicationTest >> testHasChecksDataFlowsConstraintAndRejectsNil [
+
+	self deny: (emptyCommunication has: nil) description: 'Communication without constraint must not report having nil'.
+	self deny: (emptyCommunication has: emptyDataFlow) description: 'Empty communication must not report having unrelated data flow'.
+	self
+		deny: (emptyCommunication has: emptyConstraint)
+		description: 'Empty communication must not report having unrelated constraint'.
+
+	emptyCommunication addDataFlow: emptyDataFlow.
+	emptyCommunication constraint: emptyConstraint.
+	self assert: (emptyCommunication has: emptyDataFlow) description: 'Communication must report having added data flow'.
+	self assert: (emptyCommunication has: emptyConstraint) description: 'Communication must report having assigned constraint'.
+	self deny: (emptyCommunication has: nil) description: 'Communication with constraint must not report having nil'
 ]
 
 { #category : 'tests' }

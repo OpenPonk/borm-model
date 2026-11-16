@@ -25,8 +25,9 @@ BormEntity >> initialize [
 
 { #category : 'accessing' }
 BormEntity >> name [
-	super name ifNotEmpty: [ :n | ^ n ].
-	^ self representations value ifEmpty: [ '' ] ifNotEmpty: [ :r | r first name ]
+
+	super name ifNotNil: [ :entityName | entityName ifNotEmpty: [ ^ entityName ] ].
+	^ self representations value ifEmpty: [ '' ] ifNotEmpty: [ :linkedElements | linkedElements first name ]
 ]
 
 { #category : 'accessing' }
@@ -37,9 +38,4 @@ BormEntity >> removeRepresentation: anElement [
 { #category : 'accessing' }
 BormEntity >> representations [
 	^ representations
-]
-
-{ #category : 'accessing' }
-BormEntity >> representations: aCollection [
-	representations values: aCollection
 ]

@@ -65,6 +65,24 @@ BormORModelTest >> testEmpty [
 ]
 
 { #category : 'tests' }
+BormORModelTest >> testInspectionParticipants [
+
+	| secondParticipant table |
+	emptyParticipant name: 'Customer'.
+	emptyParticipant add: (emptyState name: 'Waiting').
+	emptyParticipant add: (emptyActivity name: 'Order').
+	secondParticipant := self emptyParticipant
+		                     name: 'Courier';
+		                     type: BormParticipantType Organization;
+		                     yourself.
+	emptyModel add: emptyParticipant.
+	emptyModel add: secondParticipant.
+
+	table := emptyModel inspectionParticipants: self newInspectorBuilder.
+	self assert: (self inspectorRowsOf: table) equals: #( #( 'Customer' #Person 2 ) #( 'Courier' #Organization 0 ) )
+]
+
+{ #category : 'tests' }
 BormORModelTest >> testNodeNamedInvalidFormatRaisesNotFound [
 
 	emptyParticipant name: 'Customer'.

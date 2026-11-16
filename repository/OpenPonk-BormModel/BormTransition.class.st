@@ -55,7 +55,8 @@ BormTransition >> elements [
 
 { #category : 'testing' }
 BormTransition >> has: anEntity [
-	^ constraint = anEntity
+
+	^ self hasConstraint and: [ constraint = anEntity ]
 ]
 
 { #category : 'testing' }

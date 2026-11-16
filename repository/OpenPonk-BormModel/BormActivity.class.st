@@ -67,9 +67,9 @@ BormActivity >> inspectionCommunications: aBuilder [
 		  addColumn: (SpStringTableColumn new
 				   title: 'Sender / Receiver';
 				   evaluated: [ :communication |
-						   communication source = self
-							   ifTrue: [ communication target name ]
-							   ifFalse: [ communication source name ] ];
+						   (communication source = self
+							    ifTrue: [ communication target ]
+							    ifFalse: [ communication source ]) ifNil: [ '' ] ifNotNil: [ :endpoint | endpoint name ] ];
 				   yourself);
 		  yourself
 ]

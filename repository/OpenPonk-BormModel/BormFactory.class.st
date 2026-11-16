@@ -1,5 +1,5 @@
 "
-I am a utility factory for BORM models. I provide high-level shortcuts for generating transitions, creating communications, and moving participants between processes.
+Utility factory for BORM models providing high-level shortcuts for creating transitions and communications.
 "
 Class {
 	#name : 'BormFactory',
@@ -23,24 +23,9 @@ BormFactory class >> communicationFrom: fromActivity to: toActivity [
 	^ comm
 ]
 
-{ #category : 'moving' }
-BormFactory class >> detachParticipantsFrom: aDiagram [
-
-	aDiagram elements removeAll
-]
-
 { #category : 'instance creation' }
 BormFactory class >> fqnTransitionFrom: fromName to: toName in: aParticipant [
 	^ self transitionFrom: aParticipant @ fromName to: aParticipant @ toName
-]
-
-{ #category : 'moving' }
-BormFactory class >> moveParticipantsFrom: aSourceDiagram to: aTargetDiagram [
-	aTargetDiagram removeAll.
-	"detach elements from old diagram without causing a cascade"
-	aSourceDiagram elements do: [ :each | each announcer unsubscribe: aSourceDiagram ].
-	aSourceDiagram elements do: [ :each | aTargetDiagram add: each ].
-	aSourceDiagram elements removeAll
 ]
 
 { #category : 'instance creation' }

@@ -30,6 +30,13 @@ BormActivityTest >> setUp [
 ]
 
 { #category : 'tests' }
+BormActivityTest >> testActivityPredicates [
+
+	self assert: emptyActivity isActivity description: 'BormActivity must report isActivity'.
+	self deny: emptyActivity isState description: 'BormActivity must not report isState'
+]
+
+{ #category : 'tests' }
 BormActivityTest >> testAllElementsIncludesTransitionsCommunicationsAndChildren [
 
 	| transition transitionConstraint communicationConstraint |
@@ -51,6 +58,26 @@ BormActivityTest >> testAllElementsIncludesTransitionsCommunicationsAndChildren 
 ]
 
 { #category : 'tests' }
+BormActivityTest >> testAllEntities [
+
+	| incomingActivity outgoingCommunication incomingCommunication |
+	self assert: emptyActivity allEntities equals: (Set with: emptyActivity entity).
+
+	incomingActivity := self emptyActivity.
+	outgoingCommunication := emptyActivity ==> receiver.
+	outgoingCommunication constraint: emptyConstraint.
+	outgoingCommunication addDataFlow: emptyDataFlow.
+	incomingCommunication := incomingActivity ==> emptyActivity.
+	incomingCommunication addDataFlow: self emptyDataFlow.
+
+	self assert: emptyActivity allEntities equals: (Set
+			 with: emptyActivity entity
+			 with: outgoingCommunication entity
+			 with: emptyConstraint entity
+			 with: emptyDataFlow entity)
+]
+
+{ #category : 'tests' }
 BormActivityTest >> testCommunication [
 
 	self assert: communication sender identicalTo: sender.
@@ -65,6 +92,32 @@ BormActivityTest >> testEmptyActivity [
 
 	self assertEmpty: emptyActivity sent.
 	self assertEmpty: emptyActivity received
+]
+
+{ #category : 'tests' }
+BormActivityTest >> testInspectionCommunications [
+
+	| otherActivity sentCommunication receivedCommunication partialOutgoing partialIncoming table |
+	emptyActivity name: 'Order'.
+	otherActivity := self emptyActivity name: 'Fulfill'.
+	sentCommunication := emptyActivity ==> otherActivity.
+	sentCommunication name: 'Request'.
+	receivedCommunication := otherActivity ==> emptyActivity.
+	receivedCommunication name: 'Receipt'.
+	partialOutgoing := self emptyCommunication name: 'PendingOut'.
+	partialOutgoing sender: emptyActivity.
+	emptyActivity add: partialOutgoing.
+	emptyActivity send: partialOutgoing.
+	partialIncoming := self emptyCommunication name: 'PendingIn'.
+	partialIncoming receiver: emptyActivity.
+	emptyActivity receive: partialIncoming.
+
+	table := emptyActivity inspectionCommunications: self newInspectorBuilder.
+	self
+		assert: (self inspectorRowsOf: table)
+		equals:
+			#( #( 'Request' 'sent' 'Fulfill' ) #( 'Receipt' 'received' 'Fulfill' ) #( 'PendingOut' 'sent' '' ) #( 'PendingIn' 'received'
+			      '' ) )
 ]
 
 { #category : 'tests' }
@@ -111,6 +164,12 @@ BormActivityTest >> testRelatedElementsIncludesTransitionsAndCommunications [
 	self assertCollection: emptyActivity relatedElements hasSameElements: {
 			transition.
 			localCommunication }
+]
+
+{ #category : 'tests' }
+BormActivityTest >> testRemoveAbsentCommunicationRaisesNotFound [
+
+	self should: [ emptyActivity removeCommunication: emptyCommunication ] raise: NotFound
 ]
 
 { #category : 'tests' }

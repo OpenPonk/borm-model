@@ -7,7 +7,6 @@ Class {
 	#instVars : [
 		'transitions',
 		'submodel',
-		'inputSimulationCondition',
 		'outputSimulationCondition',
 		'inputTransitionSimulationCondition',
 		'inputCommunicationSimulationCondition'
@@ -94,17 +93,6 @@ BormProcessNode >> inputCommunicationSimulationCondition: aSimulationCondition [
 ]
 
 { #category : 'accessing' }
-BormProcessNode >> inputSimulationCondition [
-	^ inputSimulationCondition
-]
-
-{ #category : 'accessing' }
-BormProcessNode >> inputSimulationCondition: aSimulationCondition [
-
-	inputSimulationCondition := aSimulationCondition
-]
-
-{ #category : 'accessing' }
 BormProcessNode >> inputTransitionSimulationCondition [
 
 	^ inputTransitionSimulationCondition
@@ -136,9 +124,9 @@ BormProcessNode >> inspectionTransitions: aBuilder [
 		  addColumn: (SpStringTableColumn new
 				   title: 'Source / Target';
 				   evaluated: [ :transition |
-						   transition source = self
-							   ifTrue: [ transition target name ]
-							   ifFalse: [ transition source name ] ];
+						   (transition source = self
+							    ifTrue: [ transition target ]
+							    ifFalse: [ transition source ]) ifNil: [ '' ] ifNotNil: [ :endpoint | endpoint name ] ];
 				   yourself);
 		  yourself
 ]

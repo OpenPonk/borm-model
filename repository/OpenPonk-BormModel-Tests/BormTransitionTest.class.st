@@ -71,6 +71,27 @@ BormTransitionTest >> testConstraintAssignmentReplacementNilAndRemoval [
 ]
 
 { #category : 'tests' }
+BormTransitionTest >> testConstraints [
+
+	self assertEmpty: emptyTransition constraints.
+	emptyTransition constraint: emptyConstraint.
+	self assertCollection: emptyTransition constraints hasSameElements: { emptyConstraint }.
+	emptyTransition constraint: nil.
+	self assertEmpty: emptyTransition constraints
+]
+
+{ #category : 'tests' }
+BormTransitionTest >> testCreationFromToNamed [
+
+	| createdTransition |
+	createdTransition := BormTransition from: emptyState to: emptyActivity named: 'proceed'.
+	self assert: createdTransition class identicalTo: BormTransition.
+	self assert: createdTransition source identicalTo: emptyState.
+	self assert: createdTransition target identicalTo: emptyActivity.
+	self assert: createdTransition name equals: 'proceed'
+]
+
+{ #category : 'tests' }
 BormTransitionTest >> testElementsAndAllElementsReflectConstraintPresence [
 
 	self assertEmpty: emptyTransition elements.
@@ -89,6 +110,17 @@ BormTransitionTest >> testElementsAndAllElementsReflectConstraintPresence [
 BormTransitionTest >> testEmptyConstraint [
 
 	self assert: emptyTransition constraint identicalTo: nil
+]
+
+{ #category : 'tests' }
+BormTransitionTest >> testHasChecksConstraintAndRejectsNil [
+
+	self deny: (emptyTransition has: nil) description: 'Transition without constraint must not report having nil'.
+	self deny: (emptyTransition has: emptyConstraint) description: 'Empty transition must not report having unrelated constraint'.
+
+	emptyTransition constraint: emptyConstraint.
+	self assert: (emptyTransition has: emptyConstraint) description: 'Transition must report having assigned constraint'.
+	self deny: (emptyTransition has: nil) description: 'Transition with constraint must not report having nil'
 ]
 
 { #category : 'tests' }

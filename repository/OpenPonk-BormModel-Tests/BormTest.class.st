@@ -88,6 +88,22 @@ BormTest >> fullParticipant [
 	^ participant
 ]
 
+{ #category : 'testing - instance creation' }
+BormTest >> inspectorRowsOf: aTablePresenter [
+
+	^ aTablePresenter items
+		  collect: [ :eachItem | aTablePresenter columns collect: [ :eachColumn | eachColumn evaluation value: eachItem ] as: Array ]
+		  as: Array
+]
+
+{ #category : 'testing - instance creation' }
+BormTest >> newInspectorBuilder [
+
+	^ SpPresenter new
+		  application: SpApplication defaultApplication;
+		  yourself
+]
+
 { #category : 'running' }
 BormTest >> setUp [
 
